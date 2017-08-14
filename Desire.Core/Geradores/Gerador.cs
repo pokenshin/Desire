@@ -70,19 +70,14 @@ namespace Desire.Core.Geradores
             //Deslocamentos
             ser.Deslocamentos = calculoValores.CriaListaDeslocamentosSer(ser);
 
-
             //Itens Equipados
             ser.ItensEquipados = GeraListaEquipamentos(ser.Especies[0].MaxItensEquipados, ser.Especies[0].MaxArmasEquipadas);
             //Pericias
             ser.Pericias = calculoValores.CriaListaPericiasSer(ser);
             ser.Pericias.Concat(GeraListaPericias(5));
             
-
-
-
             //Energias
             ser.Energias = calculoValores.CriaListaEnergiasSer(ser);
-
 
             //Geradores
             //Identidade
@@ -95,6 +90,14 @@ namespace Desire.Core.Geradores
 
             //Subatributos
             ser = calculoValores.CalculaSubatributos(ser);
+
+            //Energias
+            //Especial
+            //Defeitos
+            //Dons
+            //Habilidades
+            //
+
 
             //TODO: Aplicar modificadores
             return ser;
@@ -885,7 +888,8 @@ namespace Desire.Core.Geradores
                         Pontos = GeraInteiro(1, 100),
                         Porcentagem = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15)),
                         Potencia = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15)),
-                        Vigor = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15))
+                        Vigor = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15)),
+                        Evolucao = new Evolucao(GeraInteiro(1, 17), 16, GeraBoolean(50))
                     };
                     return forca;
 
@@ -901,6 +905,7 @@ namespace Desire.Core.Geradores
                         Porcentagem = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15)),
                         Prioridade = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15)),
                         Reflexo = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15)),
+                        Evolucao = new Evolucao(GeraInteiro(1, 17), 16, GeraBoolean(50))
                     };
                     return destreza;
 
@@ -916,6 +921,7 @@ namespace Desire.Core.Geradores
                         Regeneracao = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15)),
                         Resistencia = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15)),
                         Vitalidade = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15)),
+                        Evolucao = new Evolucao(GeraInteiro(1, 17), 16, GeraBoolean(50))
                     };
                     return materia;
 
@@ -931,6 +937,7 @@ namespace Desire.Core.Geradores
                         Pontos = GeraInteiro(1, 100),
                         Porcentagem = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15)),
                         Senso = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15)),
+                        Evolucao = new Evolucao(GeraInteiro(1, 17), 16, GeraBoolean(50))
                     };
                     return intelecto;
 
@@ -946,6 +953,7 @@ namespace Desire.Core.Geradores
                         Singularidade = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15)),
                         Tutor = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15)),
                         Visualizacao = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15)),
+                        Evolucao = new Evolucao(GeraInteiro(1, 17), 16, GeraBoolean(50))
                     };
                     return criatividade;
 
@@ -961,6 +969,7 @@ namespace Desire.Core.Geradores
                         Plano = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15)),
                         Pontos = GeraInteiro(1, 100),
                         Porcentagem = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15)),
+                        Evolucao = new Evolucao(GeraInteiro(1, 17), 16, GeraBoolean(50))
                     };
                     return existencia;
 
@@ -976,6 +985,7 @@ namespace Desire.Core.Geradores
                         Nivel = GeraInteiro(1, 6),
                         Pontos = GeraInteiro(1, 100),
                         Porcentagem = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15))
+                        Evolucao = new Evolucao(GeraInteiro(1, 17), 16, GeraBoolean(50))
                     };
                     return ideia;
 

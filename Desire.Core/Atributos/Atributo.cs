@@ -10,5 +10,6 @@ namespace Desire.Core
         public int Nivel { get; set; }
         public int Pontos { get; set; }
         public ValorMag Porcentagem { get; set; }
+        public Evolucao Evolucao { get; set; }
     }
 }
