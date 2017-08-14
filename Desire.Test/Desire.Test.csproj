@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>    
+    <TargetFramework>netcoreapp1.1</TargetFramework>    
+    <ShouldCreateLogs>True</ShouldCreateLogs>    
+    <AdvancedSettingsExpanded>False</AdvancedSettingsExpanded>    
+    <UpdateAssemblyVersion>True</UpdateAssemblyVersion>    
+    <UpdateAssemblyFileVersion>True</UpdateAssemblyFileVersion>    
+    <UpdateAssemblyInfoVersion>True</UpdateAssemblyInfoVersion>    
+    <AssemblyVersionSettings>None.None.Increment.None</AssemblyVersionSettings>    
+    <AssemblyFileVersionSettings>None.None.Increment.None</AssemblyFileVersionSettings>    
+    <AssemblyInfoVersionSettings>None.None.Increment.None</AssemblyInfoVersionSettings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.1.11" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.1.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Desire.Core\Desire.Core.csproj" />
+    <ProjectReference Include="..\DesireWebApp\DesireWebApp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
+  </ItemGroup>
+
+</Project>

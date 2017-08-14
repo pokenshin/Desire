@@ -27,6 +27,13 @@ namespace DesireWebApp.Controllers
             return View();
         }
 
+        public IActionResult Ficha()
+        {
+            ViewData["Message"] = "Ficha do Desire.";
+
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View();

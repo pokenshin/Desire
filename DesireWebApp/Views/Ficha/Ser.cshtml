@@ -1,0 +1,705 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Ser";
+}
+    <form class="ficha_wrap">
+        <div class="ficha_ident_wrap">
+            <div class="ficha_ident_line">
+                <div class="ficha_ident_label">Nome:</div>
+                <div class="ficha_ident_field"><input name="ident_nome" size="50"></div>
+            </div>
+            <div class="ficha_ident_line">
+                <div class="ficha_ident_label">Plano:</div>
+                <div class="ficha_ident_field"><select name="ident_plano"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select></div>
+                <div class="ficha_ident_label">Realidade:</div>
+                <div class="ficha_ident_field"><select name="ident_realidade"><option value="1">Viroginesgard</option></select></div>
+                <div class="ficha_ident_label">Origem:</div>
+                <div class="ficha_ident_field"><input name="ident_origem"></div>
+                <div class="ficha_ident_label">Tempo:</div>
+                <div class="ficha_ident_field"><input name="ident_tempo"></div>
+            </div>
+            <div class="ficha_ident_line">
+                <div class="ficha_ident_label">Espécie:</div>
+                <div class="ficha_ident_field"><select name="ident_especie"><option value="1">Humano</option><option value="2">Archin</option><option value="3">Elfo</option></select></div>
+                <div class="ficha_ident_label">Classe:</div>
+                <div class="ficha_ident_field"><select name="ident_classe"><option value="1">Necromante</option><option value="2">Linha da Vida</option><option value="3">Elfo</option></select></div>
+            </div>
+            <div class="ficha_ident_line">
+                <div class="ficha_ident_label">Indole:</div>
+                <div class="ficha_ident_field"><select name="ident_indole"><option value="1">Bom</option><option value="2">Neutro</option><option value="3">Mau</option></select></div>
+                <div class="ficha_ident_label">Mg:</div>
+                <div class="ficha_ident_field"><input name="ident_mg" size="2"></div>
+                <div class="ficha_ident_label">Rei:</div>
+                <div class="ficha_ident_field"><input name="ident_rei" size="2"></div>
+                <div class="ficha_ident_label">Ki:</div>
+                <div class="ficha_ident_field"><input name="ident_ki" size="2"></div>
+                <div class="ficha_ident_label">Nivel:</div>
+                <div class="ficha_ident_field"><input name="ident_nivel" size="2"></div>
+            </div>
+        </div>
+
+        <div class="ficha_left_wrap">
+
+            <!-- Atributos !-->
+            <div class="ficha_atrib_wrap">
+                <!-- Atributo Força !-->
+                <div class="ficha_atrib_line">
+                    <div class="ficha_atrib_classe">N</div>
+                    <div class="ficha_atrib_nivel">1</div>
+                    <div class="ficha_atrib_nome">
+                        <h2>Força</h2>
+                        <h3>Pts: 123</h3>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Potência</h1>
+                        <p>30%</p>
+                        <h4>25</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Golpe</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Dureza</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Vigor</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Carga</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_pct">
+                        <h1>%</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                </div>
+
+                <!-- Atributo Matéria !-->
+                <div class="ficha_atrib_line">
+                    <div class="ficha_atrib_classe">N</div>
+                    <div class="ficha_atrib_nivel">1</div>
+                    <div class="ficha_atrib_nome">
+                        <h2>Matéria</h2>
+                        <h3>Pts: 123</h3>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Colapso</h1>
+                        <p>30%</p>
+                        <h4>25</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Imunidade</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Resistência</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Vitalidade</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Regeneração</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_pct">
+                        <h1>%</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                </div>
+
+                <!-- Atributo Destreza !-->
+                <div class="ficha_atrib_line">
+                    <div class="ficha_atrib_classe">N</div>
+                    <div class="ficha_atrib_nivel">1</div>
+                    <div class="ficha_atrib_nome">
+                        <h2>Destreza</h2>
+                        <h3>Pts: 123</h3>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Reflexo</h1>
+                        <p>30%</p>
+                        <h4>25</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Esquiva</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Ataque</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Prioridade</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Iniciativa</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_pct">
+                        <h1>%</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                </div>
+
+                <!-- Atributo Intelecto !-->
+                <div class="ficha_atrib_line">
+                    <div class="ficha_atrib_classe">N</div>
+                    <div class="ficha_atrib_nivel">1</div>
+                    <div class="ficha_atrib_nome">
+                        <h2>Intelecto</h2>
+                        <h3>Pts: 123</h3>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Concentração</h1>
+                        <p>30%</p>
+                        <h4>25</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Aprendizagem</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Memória</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Senso</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Eidos</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_pct">
+                        <h1>%</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                </div>
+
+                <!-- Atributo Criatividade !-->
+                <div class="ficha_atrib_line">
+                    <div class="ficha_atrib_classe">N</div>
+                    <div class="ficha_atrib_nivel">1</div>
+                    <div class="ficha_atrib_nome">
+                        <h2>Criatividade</h2>
+                        <h3>Pts: 123</h3>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Singularidade</h1>
+                        <p>30%</p>
+                        <h4>25</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Tutor</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Visualização</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Invenção</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Realidade</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_pct">
+                        <h1>%</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                </div>
+
+                <!-- Atributo Criatividade !-->
+                <div class="ficha_atrib_line">
+                    <div class="ficha_atrib_classe">N</div>
+                    <div class="ficha_atrib_nivel">1</div>
+                    <div class="ficha_atrib_nome">
+                        <h2>Existência</h2>
+                        <h3>Pts: 123</h3>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Conhecimento</h1>
+                        <p>30%</p>
+                        <h4>25</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Experiência</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Ciência</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Consciência</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Plano</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_pct">
+                        <h1>%</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                </div>
+
+
+                <!-- Atributo Idéia !-->
+                <div class="ficha_atrib_line">
+                    <div class="ficha_atrib_classe">N</div>
+                    <div class="ficha_atrib_nivel">1</div>
+                    <div class="ficha_atrib_nome">
+                        <h2>Idéia</h2>
+                        <h3>Pts: 123</h3>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Ki</h1>
+                        <p>30%</p>
+                        <h4>25</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Base</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Mistério</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Irrealidade</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Nexo</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                    <div class="ficha_atrib_pct">
+                        <h1>%</h1>
+                        <p>30%</p>
+                        <h4>3</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carisma !-->
+            <div class="ficha_carisma_wrap">
+                <div class="ficha_carisma_title">Carisma</div>
+                <div class="ficha_carisma_box">
+                    <h1>Negativo</h1>
+                    <p>10%</p>
+                </div>
+                <div class="ficha_carisma_box">
+                    <h1>Neutro</h1>
+                    <p>20%</p>
+                </div>
+                <div class="ficha_carisma_box">
+                    <h1>Positivo</h1>
+                    <p>50%</p>
+                </div>
+            </div>
+
+            <!-- Special !-->
+            <div class="ficha_special_wrap">
+                <div class="ficha_special_box">
+                    <h1>Especial</h1>
+                    <p>5%</p>
+                </div>
+            </div>
+
+            <!-- Destino !-->
+            <div class="ficha_destino_wrap">
+                <div class="ficha_destino_title">Destino</div>
+                <div class="ficha_destino_box">
+                    <h1>Desgraça</h1>
+                    <p>10%</p>
+                </div>
+                <div class="ficha_destino_box">
+                    <h1>Azar</h1>
+                    <p>20%</p>
+                </div>
+                <div class="ficha_destino_box">
+                    <h1>Acaso</h1>
+                    <p>50%</p>
+                </div>
+                <div class="ficha_destino_box">
+                    <h1>Sorte</h1>
+                    <p>50%</p>
+                </div>
+                <div class="ficha_destino_box">
+                    <h1>Milagre</h1>
+                    <p>50%</p>
+                </div>
+            </div>
+
+            <!-- Deslocamentos !-->
+            <div class="ficha_deslocamento_wrap">
+                <div class="ficha_deslocamento_box">
+                    <h1>Corrida</h1>
+                    <p>10m</p>
+                </div>
+                <div class="ficha_deslocamento_box">
+                    <h1>Natação</h1>
+                    <p>10m</p>
+                </div>
+                <div class="ficha_deslocamento_box">
+                    <h1>Vôo</h1>
+                    <p>10m</p>
+                </div>
+                <div class="ficha_deslocamento_box">
+                    <h1>Teletransporte</h1>
+                    <p>10m</p>
+                </div>
+            </div>
+
+            <!-- Subatributos !-->
+            <div class="ficha_subatributo_wrap">
+                <div class="ficha_subatributo_title">Subatributos</div>
+                <div class="ficha_subatributo_line">
+                    <div class="ficha_atrib_box">
+                        <h1>Iniciativa</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Destrias</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Ações</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Turnos</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Espaço</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Instinto</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Raciocínio</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Subconsciência</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Autocontrole</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                </div>
+                <div class="ficha_subatributo_line">
+                    <div class="ficha_atrib_box">
+                        <h1>Trabalho</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Altura</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Largura</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Comprimento</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Volume</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Anatomia</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Ânimo</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Movimento</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Precisão</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                </div>
+                <div class="ficha_subatributo_line">
+                    <div class="ficha_atrib_box">
+                        <h1>Essência</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Massa</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Massa 1</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Massa 2</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>Massa 3</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>H.P.</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>M.P.</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>A.P.</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                    <div class="ficha_atrib_box">
+                        <h1>S.P.</h1>
+                        <p>-40</p>
+                        <h4>2</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ficha_right_wrap">
+
+            <!-- Energias !-->
+            <div class="ficha_energia_wrap">
+                <div class="ficha_energia_title">Energias</div>
+                <div class="ficha_energia_group">
+                    <div class="ficha_energia_sigla">SP</div>
+                    <div class="ficha_energia_pontos">1231241231</div>
+                    <div class="ficha_energia_bonus">512312</div>
+                </div>
+                <div class="ficha_energia_group">
+                    <div class="ficha_energia_sigla">SP</div>
+                    <div class="ficha_energia_pontos">1231241231</div>
+                    <div class="ficha_energia_bonus">512312</div>
+                </div>
+                <div class="ficha_energia_group">
+                    <div class="ficha_energia_sigla">SP</div>
+                    <div class="ficha_energia_pontos">1231241231</div>
+                    <div class="ficha_energia_bonus">512312</div>
+                </div>
+                <div class="ficha_energia_group">
+                    <div class="ficha_energia_sigla">SP</div>
+                    <div class="ficha_energia_pontos">1231241231</div>
+                    <div class="ficha_energia_bonus">512312</div>
+                </div>
+                <div class="ficha_energia_group">
+                    <div class="ficha_energia_sigla">SP</div>
+                    <div class="ficha_energia_pontos">1231241231</div>
+                    <div class="ficha_energia_bonus">512312</div>
+                </div>
+                <div class="ficha_energia_group">
+                    <div class="ficha_energia_sigla">SP</div>
+                    <div class="ficha_energia_pontos">1231241231</div>
+                    <div class="ficha_energia_bonus">512312</div>
+                </div>
+                <div class="ficha_energia_group">
+                    <div class="ficha_energia_sigla">SP</div>
+                    <div class="ficha_energia_pontos">1231241231</div>
+                    <div class="ficha_energia_bonus">512312</div>
+                </div>
+                <div class="ficha_energia_group">
+                    <div class="ficha_energia_sigla">SP</div>
+                    <div class="ficha_energia_pontos">1231241231</div>
+                    <div class="ficha_energia_bonus">512312</div>
+                </div>
+                <div class="ficha_energia_group">
+                    <div class="ficha_energia_sigla">SP</div>
+                    <div class="ficha_energia_pontos">1231241231</div>
+                    <div class="ficha_energia_bonus">512312</div>
+                </div>
+                <div class="ficha_energia_group">
+                    <div class="ficha_energia_sigla">SP</div>
+                    <div class="ficha_energia_pontos">1231241231</div>
+                    <div class="ficha_energia_bonus">512312</div>
+                </div>
+                <div class="ficha_energia_group">
+                    <div class="ficha_energia_sigla">SP</div>
+                    <div class="ficha_energia_pontos">1231241231</div>
+                    <div class="ficha_energia_bonus">512312</div>
+                </div>
+                <div class="ficha_energia_group">
+                    <div class="ficha_energia_sigla">SP</div>
+                    <div class="ficha_energia_pontos">1231241231</div>
+                    <div class="ficha_energia_bonus">512312</div>
+                </div>
+                <div class="ficha_energia_group">
+                    <div class="ficha_energia_sigla">SP</div>
+                    <div class="ficha_energia_pontos">1231241231</div>
+                    <div class="ficha_energia_bonus">512312</div>
+                </div>
+            </div>
+
+            <!-- Dano !-->
+            <div class="ficha_dano_wrap">
+                <div class="ficha_dano_title">Dano</div>
+                <div class="ficha_dano_box">
+                    <h1>Corpo a Corpo</h1>
+                    <p>1000</p>
+                </div>
+                <div class="ficha_dano_box">
+                    <h1>Arremesso</h1>
+                    <p>1000</p>
+                </div>
+                <div class="ficha_dano_box">
+                    <h1>Disparo</h1>
+                    <p>1000</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Tabela de Combate !-->
+        <div class="ficha_combate_wrap">
+            <table>
+                <tr class="ficha_combate_header">
+                    <td class="ficha_combate_title">Combate</td>
+                    <td colspan="2">Ataque</td>
+                    <td colspan="2">Reflexo</td>
+                    <td colspan="2">Esquiva</td>
+                    <td colspan="2">Habilidade</td>
+                </tr>
+                <tr>
+                    <td class="ficha_combate_tipo">Base</td>
+                    <td>10%</td>
+                    <td>10</td>
+                    <td>10%</td>
+                    <td>10</td>
+                    <td>10%</td>
+                    <td>10</td>
+                    <td>10%</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td class="ficha_combate_tipo">Item</td>
+                    <td>10%</td>
+                    <td>10</td>
+                    <td>10%</td>
+                    <td>10</td>
+                    <td>10%</td>
+                    <td>10</td>
+                    <td>10%</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td class="ficha_combate_tipo">Bonus</td>
+                    <td>10%</td>
+                    <td>10</td>
+                    <td>10%</td>
+                    <td>10</td>
+                    <td>10%</td>
+                    <td>10</td>
+                    <td>10%</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td class="ficha_combate_tipo">Outros</td>
+                    <td>10%</td>
+                    <td>10</td>
+                    <td>10%</td>
+                    <td>10</td>
+                    <td>10%</td>
+                    <td>10</td>
+                    <td>10%</td>
+                    <td>10</td>
+                </tr>
+                <tr class="ficha_combate_total">
+                    <td class="ficha_combate_tipo">Total</td>
+                    <td>10%</td>
+                    <td>10</td>
+                    <td>10%</td>
+                    <td>10</td>
+                    <td>10%</td>
+                    <td>10</td>
+                    <td>10%</td>
+                    <td>10</td>
+                </tr>
+            </table>
+        </div>
+    </form>
+
