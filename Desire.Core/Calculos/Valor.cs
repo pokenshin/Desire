@@ -156,7 +156,7 @@ namespace Desire.Core.Calculos
                 return new ValorMag(0, 1);
             else
             {
-                int magFinal = (valorMag1.Magnitude + valorMag2.Magnitude) - 4;
+                int magFinal = (valorMag1.Magnitude + valorMag2.Magnitude) - 2;
 
                 int valorFinal = (valorMag1.Valor * valorMag2.Valor);
                 while (valorFinal > 99)
@@ -164,8 +164,6 @@ namespace Desire.Core.Calculos
                     valorFinal = valorFinal / 10;
                     magFinal = magFinal + 1;
                 }
-
-                magFinal = magFinal + 2;
 
                 return new ValorMag(valorFinal, magFinal);
             }
@@ -181,8 +179,16 @@ namespace Desire.Core.Calculos
                 return valorMag1;
             else
             {
-                int valorFinal = (int)Math.Floor((Decimal)valorMag1.Valor / (Decimal)valorMag2.Valor) / 10;
-                int magFinal = (valorMag1.Magnitude - valorMag2.Magnitude);
+                int magFinal = ((valorMag1.Magnitude - 2) - (valorMag2.Magnitude - 2)) + 2;
+
+                int valorFinal = (valorMag1.Valor / valorMag2.Valor);
+
+                if (valorFinal < 10)
+                { 
+                    valorFinal = valorFinal * 10;
+                    magFinal = magFinal - 1;
+                }
+
                 return new ValorMag(valorFinal, magFinal);
             }
         }
