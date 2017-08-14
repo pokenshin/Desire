@@ -386,7 +386,7 @@ namespace Desire.Test
             int[] resultado = gerador.GeraInteirosQueSomam(5, 100);
             int soma = resultado[0] + resultado[1] + resultado[2] + resultado[3] + resultado[4];
 
-            Assert.IsTrue(soma == 99 || soma == 100);
+            Assert.IsTrue(soma == 100);
         }
 
         //Testa a função GeraListaEspecies que gera especies aleatorias

@@ -69,6 +69,9 @@ namespace Desire.Core.Calculos
             //Comprimento = Pontos em matéria
             ser.Comprimento = new ValorMag(Convert.ToString(ser.Materia.Pontos));
 
+            //Largura = Aleatorio entre largura min e largura max da especie dominante
+            ser.Largura = gerador.GeraValorMag(ser.Especies[0].LarguraMin, ser.Especies[0].LarguraMax);
+
             //TODO: Verificar a possibilidade de retirar espaço e deixar só volume
             //Volume = (Comprimento * Altura)
             //Espaço = (Comprimento * Altura)
@@ -77,8 +80,7 @@ namespace Desire.Core.Calculos
             ser.Volume = MultiplicaValorMag(ser.Volume, ser.Altura);
             ser.Espaco = ser.Volume;
 
-            //Largura = Aleatorio entre largura min e largura max da especie dominante
-            ser.Largura = gerador.GeraValorMag(ser.Especies[0].LarguraMin, ser.Especies[0].LarguraMax);
+
 
             //Massa = Volume * Densidade da Especie
             ser.Massa = MultiplicaValorMag(ser.Volume, ser.Especies[0].Densidade);
@@ -121,9 +123,9 @@ namespace Desire.Core.Calculos
             ser.Movimento = DivideValorMag(ser.Movimento, 3);
 
             //Precisao = (Forca*2 + Destreza) / 3
-            ser.Movimento = MultiplicaValorMag(ser.Destreza.Porcentagem, 2);
-            ser.Movimento = SomaValorMag(ser.Movimento, ser.Forca.Porcentagem);
-            ser.Movimento = DivideValorMag(ser.Movimento, 3);
+            ser.Precisao = MultiplicaValorMag(ser.Forca.Porcentagem, 2);
+            ser.Precisao = SomaValorMag(ser.Movimento, ser.Destreza.Porcentagem);
+            ser.Precisao = DivideValorMag(ser.Movimento, 3);
 
             //Essencia = todos os atributos / 7
             ser.Essencia = SomaValorMag(ser.Forca.Porcentagem, ser.Destreza.Porcentagem);
@@ -181,15 +183,15 @@ namespace Desire.Core.Calculos
             {
                 int magFinal = ((valorMag1.Magnitude - 2) - (valorMag2.Magnitude - 2)) + 2;
 
-                int valorFinal = (valorMag1.Valor / valorMag2.Valor);
+                double valorFinal = ((double)valorMag1.Valor / (double)valorMag2.Valor);
 
-                if (valorFinal < 10)
-                { 
+                while (valorFinal < 10)
+                {
                     valorFinal = valorFinal * 10;
                     magFinal = magFinal - 1;
                 }
 
-                return new ValorMag(valorFinal, magFinal);
+                return new ValorMag((int)Math.Floor(valorFinal), magFinal);
             }
         }
 
@@ -200,14 +202,17 @@ namespace Desire.Core.Calculos
             if (divisor == 1)
                 return valorMag1;
             else
-            {
                 return DivideValorMag(valorMag1, new ValorMag(Convert.ToString(divisor)));
-            }
         }
 
         public ValorMag MultiplicaValorMag(ValorMag valorMag1, int multiplicador)
         {
-            return null;
+            if (multiplicador == 1)
+                return valorMag1;
+            else if (valorMag1.ValorReal == "0" || multiplicador == 0)
+                return new ValorMag(0, 1);
+            else
+                return MultiplicaValorMag(valorMag1, new ValorMag(Convert.ToString(multiplicador)));
         }
 
         //Retorna a porcentagem de um determinado valor arredondado para baixo
@@ -290,7 +295,7 @@ namespace Desire.Core.Calculos
 
                 if (valorFinal > 99)
                 {
-                    valorFinal = valorFinal - 100;
+                    valorFinal = valorFinal / 10;
                     magnitudeFinal = magnitudeFinal + 1;
                 }
             }

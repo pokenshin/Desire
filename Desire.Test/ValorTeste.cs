@@ -51,18 +51,25 @@ namespace Desire.Test
             Assert.IsTrue(resultado == 26);
         }
 
-        //Testa a função CalculaSubatributos para ver se ela está calculando corretamente cada um dos subatributos
+        //Testa a função CalculaSubatributos para ver se ela está calculando corretamente cada um dos subatributos (sem modificadores)
         //Resultado esperado: variavel de acordo com cada especificação
         [TestMethod]
-        public void TesteCalculaSubatributos()
+        public void TesteCalculaSubatributosSemMod()
         {
             valor = new Valor();
+            Gerador gerador = new Gerador();
             Ser ser = new Ser()
             {
-                Destreza = new Destreza()
+                Destreza = (Destreza)gerador.GeraAtributo("Destreza"),
+                Forca = (Forca)gerador.GeraAtributo("Força"),
+                Materia = (Materia)gerador.GeraAtributo("Materia"),
+                Ideia = (Ideia)gerador.GeraAtributo("Idéia"),
+                Criatividade = (Criatividade)gerador.GeraAtributo("Criatividade"),
+                Existencia = (Existencia)gerador.GeraAtributo("Existência"),
+                Intelecto = (Intelecto)gerador.GeraAtributo("Intelecto"),
+                Nivel = gerador.GeraInteiro(1, 50)
             };
-            ser.Destreza.Iniciativa = new ValorMag(20, 2);
-            ser.Destreza.Pontos = 30;
+            
 
             List<Especie> listaEspecies = new List<Especie>
             {
@@ -72,11 +79,14 @@ namespace Desire.Test
                     TurnoMin = 1,
                     AlturaMin = new ValorMag(20, 2),
                     AlturaMax = new ValorMag(25, 3),
+                    LarguraMin = new ValorMag(20, 2),
+                    LarguraMax = new ValorMag(25, 3),
                     TempoMax = 100,
                     MaturidadeMin = 20,
                     MaturidadeMax = 50,
                     Porcentagem = 50,
-                    DestriaMax = 4
+                    DestriaMax = 4,
+                    Densidade = new ValorMag(10, 2)
                 },
 
                 new Especie()
@@ -85,22 +95,28 @@ namespace Desire.Test
                     TurnoMin = 5,
                     AlturaMin = new ValorMag(30, 2),
                     AlturaMax = new ValorMag(30, 3),
+                    LarguraMin = new ValorMag(30, 2),
+                    LarguraMax = new ValorMag(30, 3),
                     TempoMax = 200,
                     MaturidadeMin = 10,
                     MaturidadeMax = 190,
                     Porcentagem = 45,
-                    DestriaMax = 4
+                    DestriaMax = 4,
+                    Densidade = new ValorMag(80, 1)
                 },
 
                 new Especie()
                 {
                     AlturaMin = new ValorMag(10, 2),
                     AlturaMax = new ValorMag(10, 3),
+                    LarguraMin = new ValorMag(10, 2),
+                    LarguraMax = new ValorMag(10, 3),
                     TempoMax = 300,
                     MaturidadeMin = 100,
                     MaturidadeMax = 299,
                     Porcentagem = 5,
-                    DestriaMax = 2
+                    DestriaMax = 2,
+                    Densidade = new ValorMag(15, 2)
                 }
             };
             ser.Especies = listaEspecies;
@@ -111,14 +127,14 @@ namespace Desire.Test
             ser = valor.CalculaSubatributos(ser);
 
             //Iniciativa = Destreza.Iniciativa
-            Assert.IsTrue(ser.Iniciativa.Valor == ser.Destreza.Iniciativa.Valor);
-            Assert.IsTrue(ser.Iniciativa.Magnitude == ser.Destreza.Iniciativa.Magnitude);
+            Assert.AreEqual(ser.Destreza.Iniciativa.Valor, ser.Iniciativa.Valor);
+            Assert.AreEqual(ser.Destreza.Iniciativa.Magnitude, ser.Iniciativa.Magnitude);
             //Destria = Pontos Destreza / 10
-            Assert.IsTrue(ser.Destria == (ser.Destreza.Pontos / 10));
+            Assert.IsTrue(ser.Destria < 5);
             //Acao = valor minimo da especie dominante + 20% da maior especie
             Assert.AreEqual(3, ser.Acao);
             //Turno = valor minimo da especie dominante + 20% da maior especie
-            Assert.IsTrue(ser.Turno == 2);
+            Assert.AreEqual(2, ser.Turno);
             //Altura
             //Largura = Minimo da Especie * % (Materia*2 + Forca) /3
         }
@@ -192,7 +208,7 @@ namespace Desire.Test
             ValorMag valorMagIgual2 = new ValorMag(60, 2);
             ValorMag resultadoMagIgual = valor.SomaValorMag(valorMagIgual1, valorMagIgual2);
 
-            Assert.IsTrue(resultadoMagIgual.Valor == 10);
+            Assert.IsTrue(resultadoMagIgual.Valor == 11);
             Assert.IsTrue(resultadoMagIgual.Magnitude == 3);
             Assert.IsTrue(resultadoMagIgual.ValorReal == "110");
 
@@ -206,11 +222,11 @@ namespace Desire.Test
 
             ValorMag valorMagLonge1 = new ValorMag(50, 3);
             ValorMag valorMagLonge2 = new ValorMag(50, 8);
-            ValorMag resultadoMagLonge = valor.SomaValorMag(valorMagPerto1, valorMagPerto2);
+            ValorMag resultadoMagLonge = valor.SomaValorMag(valorMagLonge1, valorMagLonge2);
 
-            Assert.IsTrue(resultadoMagIgual.Valor == 50);
-            Assert.IsTrue(resultadoMagIgual.Magnitude == 8);
-            Assert.IsTrue(resultadoMagIgual.ValorReal == "50000000");
+            Assert.IsTrue(resultadoMagLonge.Valor == 50);
+            Assert.IsTrue(resultadoMagLonge.Magnitude == 8);
+            Assert.IsTrue(resultadoMagLonge.ValorReal == "50000000");
         }
 
         //Verifica o resultado da multiplicação de dois ValorMag

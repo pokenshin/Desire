@@ -12,14 +12,14 @@ namespace Desire.Test
     public class ConversorTestes
     {
         Conversor conversor;
-        //Testa a função ValorMagParaLong para ver se a está convertendo corretamente
+        //Testa a função ValorMagParaString para ver se a está convertendo corretamente
         //Resultado esperado: dado 25 em magnitude 10, retornar 2500000000
         [TestMethod]
-        public void TesteValorMagParaLong()
+        public void TesteValorMagParaString()
         {
             conversor = new Conversor();
 
-            Assert.AreEqual(2500000000, conversor.ValorMagParaString(25, 10));
+            Assert.AreEqual("2500000000", conversor.ValorMagParaString(25, 10));
         }
 
         //Testa a função LongParaValorMag para ver se está convertendo corretamente

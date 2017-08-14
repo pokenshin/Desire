@@ -51,7 +51,7 @@ namespace Desire.Core.Geradores
                 Nivel = GeraInteiro(0, 100000),
                 //Atributos
                 Forca = (Forca)GeraAtributo("Força"),
-                Materia = (Materia)GeraAtributo("Matéria"),
+                Materia = (Materia)GeraAtributo("Materia"),
                 Destreza = (Destreza)GeraAtributo("Destreza"),
                 Intelecto = (Intelecto)GeraAtributo("Intelecto"),
                 Criatividade = (Criatividade)GeraAtributo("Criatividade"),
@@ -522,6 +522,8 @@ namespace Desire.Core.Geradores
         {
             int[] resultado = new int[quantidadeNumeros];
             double soma = 0;
+            int novaSoma = 0;
+            int diferenca = 0;
 
             for (int i = 0; i < quantidadeNumeros; i++)
             {
@@ -532,13 +534,31 @@ namespace Desire.Core.Geradores
                     soma = resultado[i];
             }
 
-            double k = soma / 100;
+            double k = soma / somaTotal;
 
             for (int i = 0; i < quantidadeNumeros; i++)
             {
                 double numeroNovo = (double)resultado[i] / k;
+                novaSoma = novaSoma + Convert.ToInt32(numeroNovo);
                 resultado[i] = Convert.ToInt32(numeroNovo);
             }
+
+            if (novaSoma != somaTotal)
+            {
+                if (novaSoma > somaTotal)
+                {
+                    diferenca = Convert.ToInt32(novaSoma - somaTotal);
+                    resultado[resultado.Length - 1] = resultado[resultado.Length - 1] - diferenca;
+                }
+                else
+                {
+                    diferenca = Convert.ToInt32(somaTotal - novaSoma);
+                    resultado[resultado.Length - 1] = resultado[resultado.Length - 1] + diferenca;
+                }
+            }
+
+
+
 
             return resultado;
         }

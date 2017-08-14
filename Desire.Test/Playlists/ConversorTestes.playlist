@@ -1,1 +1,1 @@
-<Playlist Version="1.0"><Add Test="Desire.Test.ConversorTestes.TesteValorMagEmNumero" /><Add Test="Desire.Test.ConversorTestes.TesteLongParaValorMag" /></Playlist>
+<Playlist Version="1.0"><Add Test="Desire.Test.ConversorTestes.TesteValorMagEmNumero" /><Add Test="Desire.Test.ConversorTestes.TesteLongParaValorMag" /><Add Test="Desire.Test.ConversorTestes.TesteValorMagParaString" /></Playlist>
