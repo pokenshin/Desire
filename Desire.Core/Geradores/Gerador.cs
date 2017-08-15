@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Desire.Core;
 using System.Reflection;
 using Desire.Core.Itens;
-using Desire.Core.Calculos;
+using Desire.Core.Calculadores;
 
 
 namespace Desire.Core.Geradores
@@ -34,7 +34,7 @@ namespace Desire.Core.Geradores
         {
             //TODO: Pegar valores aleatórios do banco de dados ao invés de gera-los aleatoriamente
             //TODO: Restringir o tempo baseado nas restrições de tempo da espécie selecionada
-            Valor calculoValores = new Valor();
+            CalculadorSer calculador = new CalculadorSer();
             string primeiroNome = GeraNomeAleatorio(2, 6);
             string segundoNome = GeraNomeAleatorio(0, 9);
 
@@ -65,19 +65,22 @@ namespace Desire.Core.Geradores
             ser.Carisma = ser.Indole.Carisma;
             ser.Destino = ser.Indole.Destino;
             //Especial
-            ser.Especial = calculoValores.CalculaEspecial(ser);
+            ser.Especial = calculador.CalculaEspecial(ser);
 
             //Deslocamentos
-            ser.Deslocamentos = calculoValores.CriaListaDeslocamentosSer(ser);
+            ser.Deslocamentos = calculador.CriaListaDeslocamentosSer(ser);
 
             //Itens Equipados
             ser.ItensEquipados = GeraListaEquipamentos(ser.Especies[0].MaxItensEquipados, ser.Especies[0].MaxArmasEquipadas);
+
+            //Classes
+            //ser.Classes = 
             //Pericias
-            ser.Pericias = calculoValores.CriaListaPericiasSer(ser);
+            ser.Pericias = calculador.CriaListaPericiasSer(ser);
             ser.Pericias.Concat(GeraListaPericias(5));
             
             //Energias
-            ser.Energias = calculoValores.CriaListaEnergiasSer(ser);
+            ser.Energias = calculador.CriaListaEnergiasSer(ser);
 
             //Geradores
             //Identidade
@@ -86,13 +89,12 @@ namespace Desire.Core.Geradores
             else
                 ser.Nome = primeiroNome + " " + segundoNome;
 
-            //Calculos dos outros atributos
 
             //Subatributos
-            ser = calculoValores.CalculaSubatributos(ser);
+            ser = calculador.CalculaSubatributos(ser);
 
             //Energias
-            //Especial
+            
             //Defeitos
             //Dons
             //Habilidades
@@ -568,7 +570,7 @@ namespace Desire.Core.Geradores
 
         public Especie GeraEspecie()
         {
-            Valor valor = new Valor();
+            CalculadorSer calculador = new CalculadorSer();
             Especie especie = new Especie()
             {
                 ReinoTaxo = GeraNomeAleatorio(2, 8),
@@ -641,7 +643,8 @@ namespace Desire.Core.Geradores
                 TrabalhoMin = GeraLong(0, 1000),
                 Densidade = new ValorMag(Convert.ToString(GeraLong(1, 10))),
                 LarguraMin = new ValorMag(Convert.ToString(GeraLong(1, 100))),
-                LarguraMax = new ValorMag()
+                LarguraMax = new ValorMag(),
+                Especial = GeraInteiro(1, 70)
             };
             especie.MagnitudeMax = especie.MagnitudeMin + especie.MagnitudeMax;
             especie.ReiMax = especie.ReiMin + especie.ReiMax;
@@ -650,18 +653,18 @@ namespace Desire.Core.Geradores
             especie.DonsEspecie = GeraListaModificadores("Especie", especie.Id, '+');
             especie.VantagensEspecie = GeraListaModificadores("Especie", especie.Id, '+');
             especie.DefeitosEspecie = GeraListaModificadores("Especie", especie.Id, '-');
-            especie.ForcaVontadeMax = valor.SomaValorMag(especie.ForcaVontadeMin, especie.ForcaVontadeMax);
-            especie.IraMax = valor.SomaValorMag(especie.IraMin, especie.IraMin);
-            especie.PoderMaximoMax = valor.SomaValorMag(especie.PoderMaximoMin, especie.PoderMaximoMax);
+            especie.ForcaVontadeMax = calculador.SomaValorMag(especie.ForcaVontadeMin, especie.ForcaVontadeMax);
+            especie.IraMax = calculador.SomaValorMag(especie.IraMin, especie.IraMin);
+            especie.PoderMaximoMax = calculador.SomaValorMag(especie.PoderMaximoMin, especie.PoderMaximoMax);
             especie.FeMax = especie.FeMin + especie.FeMax;
             especie.KarmaMax = especie.KarmaMin + especie.KarmaMax;
             especie.AcaoMax = especie.AcaoMin + especie.AcaoMax;
-            especie.AlturaMax = valor.SomaValorMag(especie.AlturaMin, especie.AlturaMax);
+            especie.AlturaMax = calculador.SomaValorMag(especie.AlturaMin, especie.AlturaMax);
             especie.TurnoMax = especie.TurnoMin + especie.TurnoMax;
-            especie.MaturidadeMin = (int)valor.CalculaPorcentagem(GeraInteiro(1, 30), especie.TempoMax);
-            especie.MaturidadeMax = especie.MaturidadeMin + (int)valor.CalculaPorcentagem(GeraInteiro(60, 99), especie.TempoMax);
+            especie.MaturidadeMin = (int)calculador.CalculaPorcentagem(GeraInteiro(1, 30), especie.TempoMax);
+            especie.MaturidadeMax = especie.MaturidadeMin + (int)calculador.CalculaPorcentagem(GeraInteiro(60, 99), especie.TempoMax);
             especie.TrabalhoMax = especie.TrabalhoMin + GeraLong(0, 1000);
-            especie.LarguraMax = valor.SomaValorMag(especie.LarguraMin, new ValorMag(Convert.ToString(GeraLong(1, 100))));
+            especie.LarguraMax = calculador.SomaValorMag(especie.LarguraMin, new ValorMag(Convert.ToString(GeraLong(1, 100))));
 
             return especie;
         }
@@ -984,7 +987,7 @@ namespace Desire.Core.Geradores
                         Nexo = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15)),
                         Nivel = GeraInteiro(1, 6),
                         Pontos = GeraInteiro(1, 100),
-                        Porcentagem = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15))
+                        Porcentagem = new ValorMag(GeraInteiro(1, 100), GeraInteiro(1, 15)),
                         Evolucao = new Evolucao(GeraInteiro(1, 17), 16, GeraBoolean(50))
                     };
                     return ideia;

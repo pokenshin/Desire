@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Desire.Core.Calculos;
+using Desire.Core.Calculadores;
 using Desire.Core;
 
 

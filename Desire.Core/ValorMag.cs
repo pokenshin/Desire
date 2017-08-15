@@ -1,4 +1,4 @@
-﻿using Desire.Core.Calculos;
+﻿using Desire.Core.Calculadores;
 using System;
 using System.Collections.Generic;
 using System.Numerics;

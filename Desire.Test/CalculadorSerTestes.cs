@@ -5,23 +5,23 @@ using System.Diagnostics;
 using Desire.Core;
 using Desire.Core.Itens;
 using Desire.Core.Geradores;
-using Desire.Core.Calculos;
+using Desire.Core.Calculadores;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Desire.Test
 {
     [TestClass]
-    public class ValoresTeste
+    public class CalculadorSerTestes
     {
-        Valor valor;
+        CalculadorSer calculador;
 
         //Testa a função ExtraiValorListaEspecies para ver se ela está pegando o maior valor de uma lista de espécies
         //Resultado esperado: ela retornar o valor 90
         [TestMethod]
         public void TesteExtraiValorListaEspeciesMaiorValorKarmaMax()
         {
-            valor = new Valor();
+            calculador = new CalculadorSer();
             Gerador gerador = new Gerador();
             List<Especie> listaEspecies = new List<Especie>();
 
@@ -45,8 +45,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteCalculaPorcentagem()
         {
-            valor = new Valor();
-            long resultado = valor.CalculaPorcentagem(20, 133);
+            calculador = new CalculadorSer();
+            long resultado = calculador.CalculaPorcentagem(20, 133);
 
             Assert.IsTrue(resultado == 26);
         }
@@ -56,7 +56,7 @@ namespace Desire.Test
         [TestMethod]
         public void TesteCalculaSubatributosSemMod()
         {
-            valor = new Valor();
+            calculador = new CalculadorSer();
             Gerador gerador = new Gerador();
             Ser ser = new Ser()
             {
@@ -124,7 +124,7 @@ namespace Desire.Test
 
 
 
-            ser = valor.CalculaSubatributos(ser);
+            ser = calculador.CalculaSubatributos(ser);
 
             //Iniciativa = Destreza.Iniciativa
             Assert.AreEqual(ser.Destreza.Iniciativa.Valor, ser.Iniciativa.Valor);
@@ -144,11 +144,11 @@ namespace Desire.Test
         [TestMethod]
         public void TesteCalculaSubatributosAleatorio()
         {
-            valor = new Valor();
+            calculador = new CalculadorSer();
             Gerador gerador = new Gerador();
             Ser ser = gerador.GeraSerAleatorio();
 
-            ser = valor.CalculaSubatributos(ser);
+            ser = calculador.CalculaSubatributos(ser);
 
             Assert.IsNotNull(ser.Iniciativa);
             Assert.IsNotNull(ser.Destria);
@@ -178,7 +178,7 @@ namespace Desire.Test
         [TestMethod]
         public void TesteCalculaFatorIdadeEspecie()
         {
-            valor = new Valor();
+            calculador = new CalculadorSer();
             int novo = 10;
             int maduro = 30;
             int velho = 75;
@@ -190,9 +190,9 @@ namespace Desire.Test
                 MaturidadeMax = 50
             };
 
-            double resultadoNovo = valor.CalculaFatorMaturidade(novo, especie);
-            double resultadoMaduro = valor.CalculaFatorMaturidade(maduro, especie);
-            double resultadoVelho = valor.CalculaFatorMaturidade(velho, especie);
+            double resultadoNovo = calculador.CalculaFatorMaturidade(novo, especie);
+            double resultadoMaduro = calculador.CalculaFatorMaturidade(maduro, especie);
+            double resultadoVelho = calculador.CalculaFatorMaturidade(velho, especie);
 
             Assert.IsTrue(resultadoNovo == 0.5);
             Assert.IsTrue(resultadoMaduro == 1);
@@ -203,10 +203,10 @@ namespace Desire.Test
         [TestMethod]
         public void TesteSomaValorMag()
         {
-            valor = new Valor();
+            calculador = new CalculadorSer();
             ValorMag valorMagIgual1 = new ValorMag(50, 2);
             ValorMag valorMagIgual2 = new ValorMag(60, 2);
-            ValorMag resultadoMagIgual = valor.SomaValorMag(valorMagIgual1, valorMagIgual2);
+            ValorMag resultadoMagIgual = calculador.SomaValorMag(valorMagIgual1, valorMagIgual2);
 
             Assert.IsTrue(resultadoMagIgual.Valor == 11);
             Assert.IsTrue(resultadoMagIgual.Magnitude == 3);
@@ -214,7 +214,7 @@ namespace Desire.Test
 
             ValorMag valorMagPerto1 = new ValorMag(50, 4);
             ValorMag valorMagPerto2 = new ValorMag(50, 3);
-            ValorMag resultadoMagPerto = valor.SomaValorMag(valorMagPerto1, valorMagPerto2);
+            ValorMag resultadoMagPerto = calculador.SomaValorMag(valorMagPerto1, valorMagPerto2);
 
             Assert.IsTrue(resultadoMagPerto.Valor == 55);
             Assert.IsTrue(resultadoMagPerto.Magnitude == 4);
@@ -222,7 +222,7 @@ namespace Desire.Test
 
             ValorMag valorMagLonge1 = new ValorMag(50, 3);
             ValorMag valorMagLonge2 = new ValorMag(50, 8);
-            ValorMag resultadoMagLonge = valor.SomaValorMag(valorMagLonge1, valorMagLonge2);
+            ValorMag resultadoMagLonge = calculador.SomaValorMag(valorMagLonge1, valorMagLonge2);
 
             Assert.IsTrue(resultadoMagLonge.Valor == 50);
             Assert.IsTrue(resultadoMagLonge.Magnitude == 8);
@@ -233,10 +233,10 @@ namespace Desire.Test
         [TestMethod]
         public void TesteMultiplicaValorMagPorValorMag()
         {
-            valor = new Valor();
+            calculador = new CalculadorSer();
             ValorMag valorMag1 = new ValorMag(10, 3);
             ValorMag valorMag2 = new ValorMag(10, 5);
-            ValorMag resultado = valor.MultiplicaValorMag(valorMag1, valorMag2);
+            ValorMag resultado = calculador.MultiplicaValorMag(valorMag1, valorMag2);
 
             Assert.AreEqual(10, resultado.Valor);
             Assert.AreEqual(7, resultado.Magnitude);
@@ -247,10 +247,10 @@ namespace Desire.Test
         [TestMethod]
         public void TesteDivideValorMagPorValorMag()
         {
-            valor = new Valor();
+            calculador = new CalculadorSer();
             ValorMag valorMag1 = new ValorMag(10, 5);
             ValorMag valorMag2 = new ValorMag(10, 3);
-            ValorMag resultado = valor.DivideValorMag(valorMag1, valorMag2);
+            ValorMag resultado = calculador.DivideValorMag(valorMag1, valorMag2);
 
             Assert.AreEqual(10, resultado.Valor);
             Assert.AreEqual(3, resultado.Magnitude);

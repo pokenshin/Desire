@@ -6,9 +6,9 @@ using System.Numerics;
 using System.Reflection;
 using System.Text;
 
-namespace Desire.Core.Calculos
+namespace Desire.Core.Calculadores
 {
-    public class Valor
+    public class CalculadorSer
     {
         public List<Energia> CriaListaEnergiasSer(Ser ser)
         {
@@ -37,9 +37,7 @@ namespace Desire.Core.Calculos
         public int CalculaEspecial(Ser ser)
         {
             //TODO: Pegar todos os especiais da espécie do ser e pegar o maior número de especial
-            int especial = 0;
-
-            return especial;
+            return (int)(from e in ser.Especies select e.Especial).Max();
         }
 
         //Calcula subatributos BASE de um ser sem modificadores
