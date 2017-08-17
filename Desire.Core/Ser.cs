@@ -90,9 +90,9 @@ namespace Desire.Core
         public List<Modificador> Fraquezas { get; set; }
 
         //Experiencia
-        public int PontosGraduacao { get; set; }
-        public int PontosEvolucao { get; set; }
-        public int ExperienciaAtual { get; set; }
+        public double PontosGraduacao { get; set; }
+        public double PontosEvolucao { get; set; }
+        public double ExperienciaAtual { get; set; }
 
         //Equipamento
         public List<Item> ItensEquipados { get; set; }

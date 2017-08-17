@@ -40,17 +40,6 @@ namespace Desire.Test
             Assert.IsTrue(resultado == 90);
         }
 
-        //Testa a função CalculaPorcentagem para ver se ela retorna a porcentagem certa de um valor
-        //Resultado esperado: dado 20% de 133, retornar 26 (arredondado de 26.6)
-        [TestMethod]
-        public void TesteCalculaPorcentagem()
-        {
-            calculador = new CalculadorSer();
-            long resultado = calculador.CalculaPorcentagem(20, 133);
-
-            Assert.IsTrue(resultado == 26);
-        }
-
         //Testa a função CalculaSubatributos para ver se ela está calculando corretamente cada um dos subatributos (sem modificadores)
         //Resultado esperado: variavel de acordo com cada especificação
         [TestMethod]
@@ -199,63 +188,321 @@ namespace Desire.Test
             Assert.IsTrue(resultadoVelho == 0.5);
         }
 
-        //Verifica o resultado da soma de dois ValorMag
+        //Verifica o resultado da função CalculaKarma
         [TestMethod]
-        public void TesteSomaValorMag()
+        public void TesteCalculaKarma()
         {
             calculador = new CalculadorSer();
-            ValorMag valorMagIgual1 = new ValorMag(50, 2);
-            ValorMag valorMagIgual2 = new ValorMag(60, 2);
-            ValorMag resultadoMagIgual = calculador.SomaValorMag(valorMagIgual1, valorMagIgual2);
+            List<Especie> especies = new List<Especie>()
+            {
+                new Especie()
+                {
+                    KarmaMin = 1
+                },
+                new Especie()
+                {
+                    KarmaMin = 2
+                },
+                new Especie()
+                {
+                    KarmaMin = 3
+                },
+            };
 
-            Assert.IsTrue(resultadoMagIgual.Valor == 11);
-            Assert.IsTrue(resultadoMagIgual.Magnitude == 3);
-            Assert.IsTrue(resultadoMagIgual.ValorReal == "110");
+            Ser ser = new Ser();
 
-            ValorMag valorMagPerto1 = new ValorMag(50, 4);
-            ValorMag valorMagPerto2 = new ValorMag(50, 3);
-            ValorMag resultadoMagPerto = calculador.SomaValorMag(valorMagPerto1, valorMagPerto2);
+            ser.Especies = especies;
 
-            Assert.IsTrue(resultadoMagPerto.Valor == 55);
-            Assert.IsTrue(resultadoMagPerto.Magnitude == 4);
-            Assert.IsTrue(resultadoMagPerto.ValorReal == "5500");
+            ser.Karma = calculador.CalculaKarma(ser);
 
-            ValorMag valorMagLonge1 = new ValorMag(50, 3);
-            ValorMag valorMagLonge2 = new ValorMag(50, 8);
-            ValorMag resultadoMagLonge = calculador.SomaValorMag(valorMagLonge1, valorMagLonge2);
-
-            Assert.IsTrue(resultadoMagLonge.Valor == 50);
-            Assert.IsTrue(resultadoMagLonge.Magnitude == 8);
-            Assert.IsTrue(resultadoMagLonge.ValorReal == "50000000");
+            Assert.AreEqual(3, ser.Karma);
         }
 
-        //Verifica o resultado da multiplicação de dois ValorMag
+        //Testa o calculo da experiência de um ser
         [TestMethod]
-        public void TesteMultiplicaValorMagPorValorMag()
+        public void TesteCalculaExperiencia()
         {
             calculador = new CalculadorSer();
-            ValorMag valorMag1 = new ValorMag(10, 3);
-            ValorMag valorMag2 = new ValorMag(10, 5);
-            ValorMag resultado = calculador.MultiplicaValorMag(valorMag1, valorMag2);
 
-            Assert.AreEqual(10, resultado.Valor);
-            Assert.AreEqual(7, resultado.Magnitude);
-            Assert.AreEqual("1000000", resultado.ValorReal);
+            Ser ser = new Ser()
+            {
+                Magnitude = 2,
+                Nivel = 25
+            };
+
+            ser = calculador.CalculaExperiencia(ser);
+
+            Assert.AreEqual(100, ser.PontosGraduacao);
+            Assert.AreEqual(2500, ser.PontosEvolucao);
+            Assert.AreEqual(30000, ser.ExperienciaAtual);
         }
 
-        //Verifica o resultado da divisão de dois ValorMag
+        //Testa a geração de uma reação para um determinado ser sem modificadores
         [TestMethod]
-        public void TesteDivideValorMagPorValorMag()
+        public void TesteCalculaReacao()
         {
             calculador = new CalculadorSer();
-            ValorMag valorMag1 = new ValorMag(10, 5);
-            ValorMag valorMag2 = new ValorMag(10, 3);
-            ValorMag resultado = calculador.DivideValorMag(valorMag1, valorMag2);
 
-            Assert.AreEqual(10, resultado.Valor);
-            Assert.AreEqual(3, resultado.Magnitude);
-            Assert.AreEqual("100", resultado.ValorReal);
+            Ser ser = new Ser()
+            {
+                Especies = new List<Especie>
+                {
+                    new Especie()
+                    {
+                        ReacaoMin = new Reacao()
+                        {
+                            Bravura = new ValorMag(10, 5),
+                            Coragem = new ValorMag(15, 5),
+                            Desespero = new ValorMag(20, 5),
+                            Heroismo = new ValorMag(25, 8),
+                            Indiferenca = new ValorMag(30, 5),
+                            Medo = new ValorMag(35, 5),
+                            Panico = new ValorMag(40, 5),
+                        }
+                    },
+
+                    new Especie()
+                    {
+                        ReacaoMin = new Reacao()
+                        {
+                            Bravura = new ValorMag(10, 8),
+                            Coragem = new ValorMag(15, 7),
+                            Desespero = new ValorMag(20, 6),
+                            Heroismo = new ValorMag(25, 5),
+                            Indiferenca = new ValorMag(30, 4),
+                            Medo = new ValorMag(35, 3),
+                            Panico = new ValorMag(40, 2),
+                        }
+                    },
+
+                    new Especie()
+                    {
+                        ReacaoMin = new Reacao()
+                        {
+                            Bravura = new ValorMag(10, 2),
+                            Coragem = new ValorMag(15, 3),
+                            Desespero = new ValorMag(20, 4),
+                            Heroismo = new ValorMag(25, 5),
+                            Indiferenca = new ValorMag(30, 6),
+                            Medo = new ValorMag(35, 7),
+                            Panico = new ValorMag(40, 8),
+                        }
+                    }
+                }
+            };
+
+            ser.Reacao = calculador.CalculaReacao(ser);
+
+            Assert.AreEqual(10, ser.Reacao.Bravura.Valor);
+            Assert.AreEqual(8, ser.Reacao.Bravura.Magnitude);
+            Assert.AreEqual(15, ser.Reacao.Coragem.Valor);
+            Assert.AreEqual(7, ser.Reacao.Coragem.Magnitude);
+            Assert.AreEqual(20, ser.Reacao.Desespero.Valor);
+            Assert.AreEqual(6, ser.Reacao.Desespero.Magnitude);
+            Assert.AreEqual(25, ser.Reacao.Heroismo.Valor);
+            Assert.AreEqual(8, ser.Reacao.Heroismo.Magnitude);
+            Assert.AreEqual(30, ser.Reacao.Indiferenca.Valor);
+            Assert.AreEqual(6, ser.Reacao.Indiferenca.Magnitude);
+            Assert.AreEqual(35, ser.Reacao.Medo.Valor);
+            Assert.AreEqual(7, ser.Reacao.Medo.Magnitude);
+            Assert.AreEqual(40, ser.Reacao.Panico.Valor);
+            Assert.AreEqual(8, ser.Reacao.Panico.Magnitude);
         }
 
+        //Testa o método CriaListaHabilidades para ver se está pegando todas as habilidades da especie do ser
+        [TestMethod]
+        public void TesteCriaListaHabilidades()
+        {
+            Ser ser = new Ser()
+            {
+                Especies = new List<Especie>
+                {
+                    new Especie()
+                    {
+                        HabilidadesEspecie = new List<Habilidade>
+                        {
+                            new Habilidade()
+                            {
+                                Id = 1,
+                                Nome = "Habilidade 1 Especie 1"
+                            },
+
+                            new Habilidade()
+                            {
+                                Id = 2,
+                                Nome = "Habilidade 2 Especie 1"
+                            },
+
+                            new Habilidade()
+                            {
+                                Id = 3,
+                                Nome = "Habilidade 3 Especie 1"
+                            }
+                        }
+                    },
+
+                    new Especie()
+                    {
+                        HabilidadesEspecie = new List<Habilidade>
+                        {
+                            new Habilidade()
+                            {
+                                Id = 3,
+                                Nome = "Habilidade 3 Especie 2"
+                            },
+
+                            new Habilidade()
+                            {
+                                Id = 4,
+                                Nome = "Habilidade 4 Especie 2"
+                            },
+
+                            new Habilidade()
+                            {
+                                Id = 5,
+                                Nome = "Habilidade 5 Especie 2"
+                            }
+                        }
+                    },
+
+                    new Especie()
+                    {
+                        HabilidadesEspecie = new List<Habilidade>
+                        {
+                            new Habilidade()
+                            {
+                                Id = 1,
+                                Nome = "Habilidade 1 Especie 3"
+                            },
+
+                            new Habilidade()
+                            {
+                                Id = 2,
+                                Nome = "Habilidade 2 Especie 3"
+                            },
+
+                            new Habilidade()
+                            {
+                                Id = 6,
+                                Nome = "Habilidade 3 Especie 3"
+                            }
+                        }
+                    }
+                }
+            };
+
+            ser.Habilidades = calculador.CriaListaHabilidades(ser);
+
+            Assert.AreEqual(6, ser.Habilidades.Count);
+        }
+
+        //Testa o método CriaListaEnergias para ver se está pegando todas as energias da especie do ser
+        [TestMethod]
+        public void TesteCriaListaEnergias()
+        {
+            Ser ser = new Ser()
+            {
+                Especies = new List<Especie>
+                {
+                    new Especie()
+                    {
+                        Energias = new List<Energia>
+                        {
+                            new Energia()
+                            {
+                                Sigla = "HP"
+                            },
+                            new Energia()
+                            {
+                                Sigla = "MP"
+                            },
+                            new Energia()
+                            {
+                                Sigla = "AP"
+                            },
+                            new Energia()
+                            {
+                                Sigla = "SP"
+                            }
+                        }
+                    },
+
+                    new Especie()
+                    {
+                        Energias = new List<Energia>
+                        {
+                            new Energia()
+                            {
+                                Sigla = "DP"
+                            },
+                            new Energia()
+                            {
+                                Sigla = "SP"
+                            }
+                        }
+                    },
+
+                    new Especie()
+                    {
+                        Energias = new List<Energia>
+                        {
+                            new Energia()
+                            {
+                                Sigla = "MP"
+                            },
+                            new Energia()
+                            {
+                                Sigla = "SP"
+                            }
+                        }
+                    }
+                }
+            };
+
+            ser.Energias = calculador.CriaListaEnergias(ser);
+
+            Assert.AreEqual(5, ser.Habilidades.Count);
+        }
+
+        //Testa o cálculo do HP base de um ser
+        [TestMethod]
+        public void TesteCalculaValorBaseEnergiasHP()
+        {
+            calculador = new CalculadorSer();
+
+            Ser ser = new Ser()
+            {
+                Especies = new List<Especie>
+                {
+                    new Especie()
+                    {
+                        Energias = new List<Energia>
+                        {
+                            new Energia()
+                            {
+                                Sigla = "HP",
+                                Quantidade = 1200
+                            }
+                        }
+                    },
+
+                    new Especie()
+                    {
+                        Energias = new List<Energia>
+                        {
+                            new Energia()
+                            {
+                                Sigla = "HP",
+                                Quantidade = 200
+                            }
+                        }
+                    }
+                }
+            };
+
+
+
+
+        }
     }
 }

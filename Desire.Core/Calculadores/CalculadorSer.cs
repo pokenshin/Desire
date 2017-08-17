@@ -10,17 +10,178 @@ namespace Desire.Core.Calculadores
 {
     public class CalculadorSer
     {
-        public List<Energia> CriaListaEnergiasSer(Ser ser)
+        public Ser CalculaSer(Ser ser)
         {
-            //TODO: Juntar energias da espécie, perícias, dons, itens e rei
-            List<Energia> energias = new List<Energia>();
+            //Carisma e Destino - A partir da Índole escolhida
+            ser.Carisma = ser.Indole.Carisma;
+            ser.Destino = ser.Indole.Destino;
+            //Especial - O maior especial das raças do ser
+            ser.Especial = CalculaEspecial(ser.Especies);
+            //Deslocamentos
+            ser.Deslocamentos = CriaListaDeslocamentosSer(ser);
+            //Pericias
+            ser.Pericias = CriaListaPericiasSer(ser);
+            //Energias
+            ser.Energias = CriaListaEnergias(ser);
+            //Subatributos
+            ser = CalculaSubatributos(ser);
+            //Habilidades
+            ser.Habilidades = CriaListaHabilidades(ser);
+            //Reação
+            ser.Reacao = CalculaReacao(ser);
+            //Experiência
+            ser = CalculaExperiencia(ser);
+            //Cansaço
+            ser.Cansaco = CalculaCansaco(ser);
+            //Natureza
+            ser.Natureza = CalculaNatureza(ser);
+            //Fé e Karma
+            ser.Fe = CalculaFe(ser);
+            ser.Karma = CalculaKarma(ser);
+            //Subatributos
+            ser = CalculaSubatributos(ser);
+            //Modificadores
+            ser = CalculaModificadores(ser);
+            //Magnitude
+            ser.Magnitude = CalculaMagnitude(ser);
 
-            return energias;
+            return ser;
+        }
+
+        public int CalculaMagnitude(Ser ser)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Ser CalculaModificadores(Ser ser)
+        {
+            //TODO: Aplicar modificadores vindos de:
+            //Pericias
+            //Itens / Equips
+            //Dons
+            //Vantagens
+            //Defeitos
+            //Resistências
+            //Fraquezas
+            //Reis
+            throw new NotImplementedException();
+        }
+
+        public Natureza CalculaNatureza(Ser ser)
+        {
+            //Definido a partir da especie
+            Natureza resultado = new Natureza();
+            
+            resultado.Apresentacao = (int)(from e in ser.Especies select e.Natureza.Apresentacao).Max();
+            resultado.Concepcao = (int)(from e in ser.Especies select e.Natureza.Concepcao).Max();
+            resultado.Honra = (int)(from e in ser.Especies select e.Natureza.Honra).Max();
+            resultado.Moral = (int)(from e in ser.Especies select e.Natureza.Moral).Max();
+            resultado.Percepcao = (int)(from e in ser.Especies select e.Natureza.Percepcao).Max();
+            resultado.Personalidade = (int)(from e in ser.Especies select e.Natureza.Personalidade).Max();
+
+            return resultado;
+        }
+
+        public int CalculaKarma(Ser ser)
+        {
+            //Definido a partir da especie
+            return (int)(from e in ser.Especies select e.KarmaMin).Max();
+        }
+
+        public int CalculaFe(Ser ser)
+        {
+            //Definido a partir da espécie
+            return (int)(from e in ser.Especies select e.FeMin).Max();
+        }
+
+        public int CalculaCansaco(Ser ser)
+        {
+            //Definido a partir da especie
+            return (int)(from e in ser.Especies select e.CansacoMax).Max();
+        }
+
+        public Ser CalculaExperiencia(Ser ser)
+        {
+            //Pontos de Graduação (G) = 10^Magnitude do Personagem
+            //Pontos de Evolução (En) = Nivel * G
+            //Experiência Total (XPn) = (G*(nivel^2 - nivel)) / 2
+            ser.PontosGraduacao = Math.Floor(Math.Pow(10, ser.Magnitude));
+            ser.PontosEvolucao = Math.Floor(ser.Nivel * ser.PontosGraduacao);
+            ser.ExperienciaAtual = Math.Floor((ser.PontosGraduacao * (Math.Pow(ser.Nivel, 2) - ser.Nivel)) / 2);
+
+            return ser;
+        }
+
+        public Reacao CalculaReacao(Ser ser)
+        {
+            CalculadorNumero calculador = new CalculadorNumero();
+
+            Reacao reacao = new Reacao()
+            {
+                Bravura = calculador.RetornaMaiorValorMag((List<ValorMag>)(from e in ser.Especies select e.ReacaoMin.Bravura)),
+                Coragem = calculador.RetornaMaiorValorMag((List<ValorMag>)(from e in ser.Especies select e.ReacaoMin.Coragem)),
+                Desespero = calculador.RetornaMaiorValorMag((List<ValorMag>)(from e in ser.Especies select e.ReacaoMin.Desespero)),
+                Heroismo = calculador.RetornaMaiorValorMag((List<ValorMag>)(from e in ser.Especies select e.ReacaoMin.Heroismo)),
+                Indiferenca = calculador.RetornaMaiorValorMag((List<ValorMag>)(from e in ser.Especies select e.ReacaoMin.Indiferenca)),
+                Medo = calculador.RetornaMaiorValorMag((List<ValorMag>)(from e in ser.Especies select e.ReacaoMin.Medo)),
+                Panico = calculador.RetornaMaiorValorMag((List<ValorMag>)(from e in ser.Especies select e.ReacaoMin.Panico)),
+            };
+
+            return reacao;
+        }
+
+        public List<Habilidade> CriaListaHabilidades(Ser ser)
+        {
+            List<Habilidade> resultado = new List<Habilidade>();
+
+            foreach (Especie especie in ser.Especies)
+            {
+                foreach (Habilidade habilidade in especie.HabilidadesEspecie)
+                {
+                    //Só adiciona a habilidade se ela não for repetida (verificada pelo Id)
+                    List<int> ids = (List<int>)(from h in resultado select h.Id);
+                    if (!ids.Contains(habilidade.Id))
+                        resultado.Add(habilidade);
+                }
+            }
+
+            return resultado;
+        }
+
+        public List<Energia> CriaListaEnergias(Ser ser)
+        {
+            List<Energia> resultado = new List<Energia>();
+            List<string> siglas = new List<string>();
+
+            foreach (Especie especie in ser.Especies)
+            {
+                foreach (Energia energia in especie.Energias)
+                {
+                    //Só adiciona a energia se ela não for repetida (verificada pela sigla)
+                    siglas = (List<string>)(from e in resultado select e.Sigla);
+                    if (!siglas.Contains(energia.Sigla))
+                    { 
+                        resultado.Add(energia);
+                    }
+                }
+            }
+
+            ser = CalculaValorBaseEnergias(ser);
+
+            return resultado;
+        }
+
+        public Ser CalculaValorBaseEnergias(Ser ser)
+        {
+            //Energias: "AP", "CP", "EP", "HP", "MP", "QP", "SP", "PE", "PA", "WP";
+
+
+            throw new NotImplementedException();
         }
 
         public List<Pericia> CriaListaPericiasSer(Ser ser)
         {
-            //TODO:  Juntar pericias da Classe, da Espécie, Dom, Itens, Rei
+            //TODO:  Juntar pericias da Classe, da Espécie
             List<Pericia> pericias = new List<Pericia>();
 
             return pericias;
@@ -34,16 +195,17 @@ namespace Desire.Core.Calculadores
             return deslocamentos;
         }
 
-        public int CalculaEspecial(Ser ser)
+        public int CalculaEspecial(List<Especie> especies)
         {
-            //TODO: Pegar todos os especiais da espécie do ser e pegar o maior número de especial
-            return (int)(from e in ser.Especies select e.Especial).Max();
+            //Pega o maior Especial de todas as raças do ser
+            return (int)(from e in especies select e.Especial).Max();
         }
 
         //Calcula subatributos BASE de um ser sem modificadores
         public Ser CalculaSubatributos(Ser ser)
         {
             Gerador gerador = new Gerador();
+            CalculadorNumero calculador = new CalculadorNumero();
             //Iniciativa = Destreza.Iniciativa
             ser.Iniciativa = ser.Destreza.Iniciativa;
 
@@ -56,9 +218,9 @@ namespace Desire.Core.Calculadores
                 ser.Destria = ser.Destreza.Pontos / 10;
 
             //Acao = valor minimo da especie dominante + 20% da maior especie
-            ser.Acao = ser.Especies[0].AcaoMin + (int)CalculaPorcentagem(20, (long)(from e in ser.Especies select e.AcaoMin).Max());
+            ser.Acao = ser.Especies[0].AcaoMin + (int)calculador.CalculaPorcentagem(20, (long)(from e in ser.Especies select e.AcaoMin).Max());
             //Turno = valor minimo da especie dominante + 20% da maior especie
-            ser.Turno = ser.Especies[0].TurnoMin + (int)CalculaPorcentagem(20, (long)(from e in ser.Especies select e.TurnoMin).Max());
+            ser.Turno = ser.Especies[0].TurnoMin + (int)calculador.CalculaPorcentagem(20, (long)(from e in ser.Especies select e.TurnoMin).Max());
             //ser.Turno.Valor = (from e in ser.Especies select e.TurnoMin).Max();
 
             //Caracteristicas Fisicas
@@ -74,157 +236,68 @@ namespace Desire.Core.Calculadores
             //Volume = (Comprimento * Altura)
             //Espaço = (Comprimento * Altura)
             //ser.Volume = new ValorMag(ser.Largura.ValorReal * ser.Comprimento.ValorReal * ser.Altura.ValorReal);
-            ser.Volume = MultiplicaValorMag(ser.Largura, ser.Comprimento);
-            ser.Volume = MultiplicaValorMag(ser.Volume, ser.Altura);
+            ser.Volume = calculador.MultiplicaValorMag(ser.Largura, ser.Comprimento);
+            ser.Volume = calculador.MultiplicaValorMag(ser.Volume, ser.Altura);
             ser.Espaco = ser.Volume;
 
-
-
             //Massa = Volume * Densidade da Especie
-            ser.Massa = MultiplicaValorMag(ser.Volume, ser.Especies[0].Densidade);
+            ser.Massa = calculador.MultiplicaValorMag(ser.Volume, ser.Especies[0].Densidade);
 
             //Instinto = (Ideia + Destreza) / 2
-            ser.Instinto = SomaValorMag(ser.Ideia.Porcentagem, ser.Destreza.Porcentagem);
-            ser.Instinto = DivideValorMag(ser.Instinto, 2);
+            ser.Instinto = calculador.SomaValorMag(ser.Ideia.Porcentagem, ser.Destreza.Porcentagem);
+            ser.Instinto = calculador.DivideValorMag(ser.Instinto, 2);
 
             //Raciocinio = (Intelecto + Criatividade) / 2
-            ser.Raciocinio = SomaValorMag(ser.Intelecto.Porcentagem, ser.Criatividade.Porcentagem);
-            ser.Raciocinio = DivideValorMag(ser.Raciocinio, 2);
+            ser.Raciocinio = calculador.SomaValorMag(ser.Intelecto.Porcentagem, ser.Criatividade.Porcentagem);
+            ser.Raciocinio = calculador.DivideValorMag(ser.Raciocinio, 2);
 
             //Subconsciencia = (Existencia + Ideia) / 2
-            ser.Subconsciencia = SomaValorMag(ser.Existencia.Porcentagem, ser.Ideia.Porcentagem);
-            ser.Subconsciencia = DivideValorMag(ser.Subconsciencia, 2);
+            ser.Subconsciencia = calculador.SomaValorMag(ser.Existencia.Porcentagem, ser.Ideia.Porcentagem);
+            ser.Subconsciencia = calculador.DivideValorMag(ser.Subconsciencia, 2);
 
             //Autocontrole = (Intelecto + Existencia) / 2
-            ser.Autocontrole = SomaValorMag(ser.Intelecto.Porcentagem, ser.Existencia.Porcentagem);
-            ser.Autocontrole = DivideValorMag(ser.Subconsciencia, 2);
+            ser.Autocontrole = calculador.SomaValorMag(ser.Intelecto.Porcentagem, ser.Existencia.Porcentagem);
+            ser.Autocontrole = calculador.DivideValorMag(ser.Subconsciencia, 2);
 
             //Trabalho = PA onde r = (Pts Força + Pts Destreza + Pts Vitalidade) / 3 , n = nivel
             //Formula PA: An = A1 + (n - 1) * r
             int trabalhoRazao = (ser.Forca.Pontos + ser.Destreza.Pontos + ser.Materia.Pontos) / 3;
             int trabalhoN = ser.Nivel;
             decimal trabalhoA1 = ser.Especies[0].TrabalhoMin;
-            ser.Trabalho = Math.Floor(CalculaPA(trabalhoA1, trabalhoN, trabalhoRazao));
+            ser.Trabalho = Math.Floor(calculador.CalculaPA(trabalhoA1, trabalhoN, trabalhoRazao));
 
             //Anatomia = (Materia + Força + Destreza) /3
-            ser.Anatomia = SomaValorMag(ser.Materia.Porcentagem, ser.Forca.Porcentagem);
-            ser.Anatomia = SomaValorMag(ser.Anatomia, ser.Destreza.Porcentagem);
-            ser.Anatomia = DivideValorMag(ser.Anatomia, 3);
+            ser.Anatomia = calculador.SomaValorMag(ser.Materia.Porcentagem, ser.Forca.Porcentagem);
+            ser.Anatomia = calculador.SomaValorMag(ser.Anatomia, ser.Destreza.Porcentagem);
+            ser.Anatomia = calculador.DivideValorMag(ser.Anatomia, 3);
 
             //Animo = (Criatividade + Existencia)/2
-            ser.Animo = SomaValorMag(ser.Criatividade.Porcentagem, ser.Existencia.Porcentagem);
-            ser.Animo = DivideValorMag(ser.Animo, 2);
+            ser.Animo = calculador.SomaValorMag(ser.Criatividade.Porcentagem, ser.Existencia.Porcentagem);
+            ser.Animo = calculador.DivideValorMag(ser.Animo, 2);
 
             //Movimento = (Destreza + Forca*2) /3
-            ser.Movimento = MultiplicaValorMag(ser.Forca.Porcentagem, 2);
-            ser.Movimento = SomaValorMag(ser.Movimento, ser.Destreza.Porcentagem);
-            ser.Movimento = DivideValorMag(ser.Movimento, 3);
+            ser.Movimento = calculador.MultiplicaValorMag(ser.Forca.Porcentagem, 2);
+            ser.Movimento = calculador.SomaValorMag(ser.Movimento, ser.Destreza.Porcentagem);
+            ser.Movimento = calculador.DivideValorMag(ser.Movimento, 3);
 
             //Precisao = (Forca*2 + Destreza) / 3
-            ser.Precisao = MultiplicaValorMag(ser.Forca.Porcentagem, 2);
-            ser.Precisao = SomaValorMag(ser.Movimento, ser.Destreza.Porcentagem);
-            ser.Precisao = DivideValorMag(ser.Movimento, 3);
+            ser.Precisao = calculador.MultiplicaValorMag(ser.Forca.Porcentagem, 2);
+            ser.Precisao = calculador.SomaValorMag(ser.Movimento, ser.Destreza.Porcentagem);
+            ser.Precisao = calculador.DivideValorMag(ser.Movimento, 3);
 
             //Essencia = todos os atributos / 7
-            ser.Essencia = SomaValorMag(ser.Forca.Porcentagem, ser.Destreza.Porcentagem);
-            ser.Essencia = SomaValorMag(ser.Essencia, ser.Materia.Porcentagem);
-            ser.Essencia = SomaValorMag(ser.Essencia, ser.Intelecto.Porcentagem);
-            ser.Essencia = SomaValorMag(ser.Essencia, ser.Criatividade.Porcentagem);
-            ser.Essencia = SomaValorMag(ser.Essencia, ser.Ideia.Porcentagem);
-            ser.Essencia = SomaValorMag(ser.Essencia, ser.Existencia.Porcentagem);
-            ser.Essencia = DivideValorMag(ser.Essencia, 7);
+            ser.Essencia = calculador.SomaValorMag(ser.Forca.Porcentagem, ser.Destreza.Porcentagem);
+            ser.Essencia = calculador.SomaValorMag(ser.Essencia, ser.Materia.Porcentagem);
+            ser.Essencia = calculador.SomaValorMag(ser.Essencia, ser.Intelecto.Porcentagem);
+            ser.Essencia = calculador.SomaValorMag(ser.Essencia, ser.Criatividade.Porcentagem);
+            ser.Essencia = calculador.SomaValorMag(ser.Essencia, ser.Ideia.Porcentagem);
+            ser.Essencia = calculador.SomaValorMag(ser.Essencia, ser.Existencia.Porcentagem);
+            ser.Essencia = calculador.DivideValorMag(ser.Essencia, 7);
 
             return ser;
         }
 
-        private decimal CalculaPA(decimal a1, int n, int r)
-        {
-            decimal resultado = 0;
-
-            resultado = a1 + ((n - 1) * r);
-
-            return resultado;
-        }
-
-        public ValorMag MultiplicaValorMag(ValorMag valorMag1, ValorMag valorMag2)
-        {
-            if (valorMag1.ValorReal == "1")
-                return valorMag2;
-            else if (valorMag2.ValorReal == "1")
-                return valorMag1;
-            else if (valorMag1.ValorReal == "0" || valorMag2.ValorReal == "1")
-                return new ValorMag(0, 1);
-            else
-            {
-                int magFinal = (valorMag1.Magnitude + valorMag2.Magnitude) - 2;
-
-                int valorFinal = (valorMag1.Valor * valorMag2.Valor);
-                while (valorFinal > 99)
-                {
-                    valorFinal = valorFinal / 10;
-                    magFinal = magFinal + 1;
-                }
-
-                return new ValorMag(valorFinal, magFinal);
-            }
-        }
-
-        public ValorMag DivideValorMag(ValorMag valorMag1, ValorMag valorMag2)
-        {
-            if (valorMag1.ValorReal == "0")
-                return new ValorMag("0");
-            else if(valorMag2.ValorReal == "0")
-                return new ValorMag("0");
-            else if(valorMag2.ValorReal == "1")
-                return valorMag1;
-            else
-            {
-                int magFinal = ((valorMag1.Magnitude - 2) - (valorMag2.Magnitude - 2)) + 2;
-
-                double valorFinal = ((double)valorMag1.Valor / (double)valorMag2.Valor);
-
-                while (valorFinal < 10)
-                {
-                    valorFinal = valorFinal * 10;
-                    magFinal = magFinal - 1;
-                }
-
-                return new ValorMag((int)Math.Floor(valorFinal), magFinal);
-            }
-        }
-
-        public ValorMag DivideValorMag(ValorMag valorMag1, int divisor)
-        {
-            if (divisor == 0)
-                return new ValorMag("0");
-            if (divisor == 1)
-                return valorMag1;
-            else
-                return DivideValorMag(valorMag1, new ValorMag(Convert.ToString(divisor)));
-        }
-
-        public ValorMag MultiplicaValorMag(ValorMag valorMag1, int multiplicador)
-        {
-            if (multiplicador == 1)
-                return valorMag1;
-            else if (valorMag1.ValorReal == "0" || multiplicador == 0)
-                return new ValorMag(0, 1);
-            else
-                return MultiplicaValorMag(valorMag1, new ValorMag(Convert.ToString(multiplicador)));
-        }
-
-        //Retorna a porcentagem de um determinado valor arredondado para baixo
-        public long CalculaPorcentagem(int porcentagem, long valor)
-        {
-            double pct = (double)porcentagem / 100;
-            double resultado = (double)valor * pct;
-            return (int)Math.Floor(resultado);
-        }
-
-        public double CalculaPorcentagemDeTotal(long valor, long total )
-        {
-            return valor / total;
-        }
+        
 
         //Calcula uma faixa de altura para um determinado ser baseado nas especies dominantes e recessivas
         //Faixa de Altura Minima = Média ponderada de todas as raças
@@ -277,46 +350,6 @@ namespace Desire.Core.Calculadores
         }
 
         //Soma dois ValorMag
-        public ValorMag SomaValorMag(ValorMag valorMag1, ValorMag valorMag2)
-        {
-            int valorFinal = 0;
-            int magnitudeFinal = 0;
-            int valor1 = valorMag1.Valor;
-            int valor2 = valorMag2.Valor;
-            int mag1 = valorMag1.Magnitude;
-            int mag2 = valorMag2.Magnitude;
 
-            if (mag1 == mag2)
-            {
-                magnitudeFinal = mag1;
-                valorFinal = valor1 + valor2;
-
-                if (valorFinal > 99)
-                {
-                    valorFinal = valorFinal / 10;
-                    magnitudeFinal = magnitudeFinal + 1;
-                }
-            }
-            else if (mag1 - mag2 == 1 || mag1 - mag2 == -1)
-            {
-                magnitudeFinal = Math.Max(mag1, mag2);
-
-                if (magnitudeFinal == mag1)
-                    valorFinal = valor1 + (valor2/10);
-                else
-                    valorFinal = valor2 + (valor1/10);
-            }
-            else
-            {
-                magnitudeFinal = Math.Max(mag1, mag2);
-                if (magnitudeFinal == mag1)
-                    valorFinal = valor1;
-                else
-                    valorFinal = valor2;
-            }
-
-            ValorMag resultado = new ValorMag(valorFinal, magnitudeFinal);
-            return resultado;
-        }
     }
 }

@@ -426,5 +426,40 @@ namespace Desire.Test
             Assert.IsTrue(Convert.ToInt32(resultado.ValorReal)>= Convert.ToInt32(valorMag1.ValorReal));
             Assert.IsTrue(Convert.ToInt32(resultado.ValorReal) <= Convert.ToInt32(valorMag2.ValorReal));
         }
+
+        //Testa a geração de uma origem do poder válida
+        [TestMethod]
+        public void TesteGeraOrigemPoder()
+        {
+            gerador = new Gerador();
+
+            Assert.IsNotNull(gerador.GeraOrigemPoder());
+        }
+
+        //Testa a geração de uma Natureza válida
+        [TestMethod]
+        public void TesteGeraNatureza()
+        {
+            gerador = new Gerador();
+            Natureza natureza = gerador.GeraNatureza();
+
+            Assert.IsNotNull(natureza.Apresentacao);
+            Assert.IsNotNull(natureza.Concepcao);
+            Assert.IsNotNull(natureza.Honra);
+            Assert.IsNotNull(natureza.Moral);
+            Assert.IsNotNull(natureza.Percepcao);
+            Assert.IsNotNull(natureza.Personalidade);
+        }
+
+        //Testa a geração de uma Reação válida
+        [TestMethod]
+        public void TesteGeraReacao()
+        {
+            gerador = new Gerador();
+            Reacao reacao = gerador.GeraReacao();
+
+            Assert.IsNotNull(reacao);
+        }
+
     }
 }

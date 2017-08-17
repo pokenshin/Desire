@@ -2,12 +2,12 @@
 {
     public class Reacao
     {
-        public int Desespero { get; set; }
-        public int Panico { get; set; }
-        public int Medo { get; set; }
-        public int Indiferenca { get; set; }
-        public int Coragem { get; set; }
-        public int Bravura { get; set; }
-        public int Heroismo { get; set; }
+        public ValorMag Desespero { get; set; }
+        public ValorMag Panico { get; set; }
+        public ValorMag Medo { get; set; }
+        public ValorMag Indiferenca { get; set; }
+        public ValorMag Coragem { get; set; }
+        public ValorMag Bravura { get; set; }
+        public ValorMag Heroismo { get; set; }
     }
 }

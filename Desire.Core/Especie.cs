@@ -88,6 +88,9 @@ namespace Desire.Core
         public ValorMag Densidade { get; set; }
         public ValorMag LarguraMin { get; set; }
         public ValorMag LarguraMax { get; set; }
-        public int Especial { get; internal set; }
+        public int Especial { get; set; }
+        public Natureza Natureza { get; set; }
+        public Reacao ReacaoMin { get; set; }
+        public Reacao ReacaoMax { get; set; }
     }
 }
