@@ -1,11 +1,11 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DesireWebApp.Models;
 using System.Diagnostics;
 using Desire.Core;
 using Desire.Core.Itens;
-using Desire.Core.Geradores;
+using Desire.Core.Services;
 using System.Collections.Generic;
+using Desire.Core.Identidade;
 
 namespace Desire.Test
 {
@@ -451,14 +451,25 @@ namespace Desire.Test
             Assert.IsNotNull(natureza.Personalidade);
         }
 
-        //Testa a geração de uma Reação válida
+        //Testa a geração de uma Resposta válida
         [TestMethod]
-        public void TesteGeraReacao()
+        public void TesteGeraResposta()
         {
             gerador = new Gerador();
-            Reacao reacao = gerador.GeraReacao();
+            Resposta reacao = gerador.GeraResposta();
 
             Assert.IsNotNull(reacao);
+        }
+
+        //Testa a geração de uma lista de resistências aleatória
+        [TestMethod]
+        public void TesteGeraResistencias()
+        {
+            gerador = new Gerador();
+
+            List<Resistencia> lista = gerador.GeraListaResistencias();
+
+            Assert.IsTrue(lista.Count > 0);
         }
 
     }

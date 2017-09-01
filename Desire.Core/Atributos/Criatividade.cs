@@ -7,5 +7,16 @@
         public ValorMag Visualizacao { get; set; }
         public ValorMag Invencao { get; set; }
         public ValorMag Realidade { get; set; }
+        public ValorMag BonusMP { get; internal set; }
+
+        public Criatividade()
+        {
+            this.Singularidade = new ValorMag();
+            this.Tutor = new ValorMag();
+            this.Visualizacao = new ValorMag();
+            this.Invencao = new ValorMag();
+            this.Realidade = new ValorMag();
+            this.BonusMP = new ValorMag();
+        }
     }
 }

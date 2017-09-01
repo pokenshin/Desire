@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Desire.Core.Identidade;
 
 namespace Desire.Core
 {

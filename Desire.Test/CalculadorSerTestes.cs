@@ -1,13 +1,12 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DesireWebApp.Models;
 using System.Diagnostics;
 using Desire.Core;
 using Desire.Core.Itens;
-using Desire.Core.Geradores;
-using Desire.Core.Calculadores;
+using Desire.Core.Services;
 using System.Collections.Generic;
 using System.Linq;
+using Desire.Core.Identidade;
 
 namespace Desire.Test
 {
@@ -120,12 +119,10 @@ namespace Desire.Test
             Assert.AreEqual(ser.Destreza.Iniciativa.Magnitude, ser.Iniciativa.Magnitude);
             //Destria = Pontos Destreza / 10
             Assert.IsTrue(ser.Destria < 5);
-            //Acao = valor minimo da especie dominante + 20% da maior especie
-            Assert.AreEqual(3, ser.Acao);
+            //Acao = vigor + vitalidade * dinamica
+            Assert.IsNotNull(ser.Acao);
             //Turno = valor minimo da especie dominante + 20% da maior especie
             Assert.AreEqual(2, ser.Turno);
-            //Altura
-            //Largura = Minimo da Especie * % (Materia*2 + Forca) /3
         }
 
         //Calcula a geração de subatributos de um ser baseado em um ser gerado aleatóriamente
@@ -143,16 +140,13 @@ namespace Desire.Test
             Assert.IsNotNull(ser.Destria);
             Assert.IsNotNull(ser.Acao);
             Assert.IsNotNull(ser.Turno);
-            Assert.IsNotNull(ser.Espaco);
             Assert.IsNotNull(ser.Instinto);
             Assert.IsNotNull(ser.Raciocinio);
             Assert.IsNotNull(ser.Subconsciencia);
             Assert.IsNotNull(ser.Autocontrole);
-            Assert.IsNotNull(ser.Trabalho);
             Assert.IsNotNull(ser.Altura);
             Assert.IsNotNull(ser.Largura);
             Assert.IsNotNull(ser.Comprimento);
-            Assert.IsNotNull(ser.Volume);
             Assert.IsNotNull(ser.Anatomia);
             Assert.IsNotNull(ser.Animo);
             Assert.IsNotNull(ser.Movimento);
@@ -209,9 +203,10 @@ namespace Desire.Test
                 },
             };
 
-            Ser ser = new Ser();
-
-            ser.Especies = especies;
+            Ser ser = new Ser()
+            {
+                Especies = especies,
+            };
 
             ser.Karma = calculador.CalculaKarma(ser);
 
@@ -249,70 +244,64 @@ namespace Desire.Test
                 {
                     new Especie()
                     {
-                        ReacaoMin = new Reacao()
+                        RespostaMin = new Resposta()
                         {
-                            Bravura = new ValorMag(10, 5),
-                            Coragem = new ValorMag(15, 5),
-                            Desespero = new ValorMag(20, 5),
-                            Heroismo = new ValorMag(25, 8),
-                            Indiferenca = new ValorMag(30, 5),
-                            Medo = new ValorMag(35, 5),
-                            Panico = new ValorMag(40, 5),
+                            Bravura = 1,
+                            Coragem = 2,
+                            Desespero = 3,
+                            Heroismo = 4,
+                            Indiferenca = 5,
+                            Medo = 6,
+                            Panico = 7,
                         }
                     },
 
                     new Especie()
                     {
-                        ReacaoMin = new Reacao()
+                        RespostaMin = new Resposta()
                         {
-                            Bravura = new ValorMag(10, 8),
-                            Coragem = new ValorMag(15, 7),
-                            Desespero = new ValorMag(20, 6),
-                            Heroismo = new ValorMag(25, 5),
-                            Indiferenca = new ValorMag(30, 4),
-                            Medo = new ValorMag(35, 3),
-                            Panico = new ValorMag(40, 2),
+                            Bravura = 8,
+                            Coragem = 7,
+                            Desespero = 6,
+                            Heroismo = 5,
+                            Indiferenca = 4,
+                            Medo = 3,
+                            Panico = 2,
                         }
                     },
 
                     new Especie()
                     {
-                        ReacaoMin = new Reacao()
+                        RespostaMin = new Resposta()
                         {
-                            Bravura = new ValorMag(10, 2),
-                            Coragem = new ValorMag(15, 3),
-                            Desespero = new ValorMag(20, 4),
-                            Heroismo = new ValorMag(25, 5),
-                            Indiferenca = new ValorMag(30, 6),
-                            Medo = new ValorMag(35, 7),
-                            Panico = new ValorMag(40, 8),
+                            Bravura = 4,
+                            Coragem = 6,
+                            Desespero = 2,
+                            Heroismo = 1,
+                            Indiferenca = 8,
+                            Medo = 9,
+                            Panico = 2,
                         }
                     }
                 }
             };
 
-            ser.Reacao = calculador.CalculaReacao(ser);
+            ser.Resposta = calculador.CalculaResposta(ser);
 
-            Assert.AreEqual(10, ser.Reacao.Bravura.Valor);
-            Assert.AreEqual(8, ser.Reacao.Bravura.Magnitude);
-            Assert.AreEqual(15, ser.Reacao.Coragem.Valor);
-            Assert.AreEqual(7, ser.Reacao.Coragem.Magnitude);
-            Assert.AreEqual(20, ser.Reacao.Desespero.Valor);
-            Assert.AreEqual(6, ser.Reacao.Desespero.Magnitude);
-            Assert.AreEqual(25, ser.Reacao.Heroismo.Valor);
-            Assert.AreEqual(8, ser.Reacao.Heroismo.Magnitude);
-            Assert.AreEqual(30, ser.Reacao.Indiferenca.Valor);
-            Assert.AreEqual(6, ser.Reacao.Indiferenca.Magnitude);
-            Assert.AreEqual(35, ser.Reacao.Medo.Valor);
-            Assert.AreEqual(7, ser.Reacao.Medo.Magnitude);
-            Assert.AreEqual(40, ser.Reacao.Panico.Valor);
-            Assert.AreEqual(8, ser.Reacao.Panico.Magnitude);
+            Assert.AreEqual(8, ser.Resposta.Bravura);
+            Assert.AreEqual(7, ser.Resposta.Coragem);
+            Assert.AreEqual(6, ser.Resposta.Desespero);
+            Assert.AreEqual(5, ser.Resposta.Heroismo);
+            Assert.AreEqual(8, ser.Resposta.Indiferenca);
+            Assert.AreEqual(9, ser.Resposta.Medo);
+            Assert.AreEqual(7, ser.Resposta.Panico);
         }
 
         //Testa o método CriaListaHabilidades para ver se está pegando todas as habilidades da especie do ser
         [TestMethod]
         public void TesteCriaListaHabilidades()
         {
+            calculador = new CalculadorSer();
             Ser ser = new Ser()
             {
                 Especies = new List<Especie>
@@ -384,7 +373,7 @@ namespace Desire.Test
                             new Habilidade()
                             {
                                 Id = 6,
-                                Nome = "Habilidade 3 Especie 3"
+                                Nome = "Habilidade 6 Especie 3"
                             }
                         }
                     }
@@ -400,6 +389,7 @@ namespace Desire.Test
         [TestMethod]
         public void TesteCriaListaEnergias()
         {
+            calculador = new CalculadorSer();
             Ser ser = new Ser()
             {
                 Especies = new List<Especie>
@@ -410,19 +400,24 @@ namespace Desire.Test
                         {
                             new Energia()
                             {
-                                Sigla = "HP"
+                                Sigla = "HP",
+                                Quantidade = 1000
+
                             },
                             new Energia()
                             {
-                                Sigla = "MP"
+                                Sigla = "MP",
+                                Quantidade = 100
                             },
                             new Energia()
                             {
-                                Sigla = "AP"
+                                Sigla = "AP",
+                                Quantidade = 10
                             },
                             new Energia()
                             {
-                                Sigla = "SP"
+                                Sigla = "SP",
+                                Quantidade = 10000
                             }
                         }
                     },
@@ -433,11 +428,13 @@ namespace Desire.Test
                         {
                             new Energia()
                             {
-                                Sigla = "DP"
+                                Sigla = "DP",
+                                Quantidade = 10200
                             },
                             new Energia()
                             {
-                                Sigla = "SP"
+                                Sigla = "SP",
+                                Quantidade = 102
                             }
                         }
                     },
@@ -448,20 +445,27 @@ namespace Desire.Test
                         {
                             new Energia()
                             {
-                                Sigla = "MP"
+                                Sigla = "MP",
+                                Quantidade = 100012
                             },
                             new Energia()
                             {
-                                Sigla = "SP"
+                                Sigla = "SP",
+                                Quantidade = 10001
                             }
                         }
                     }
-                }
+                },
+                BonusAP = new ValorMag(10, 3),
+                BonusHP = new ValorMag(95, 5),
+                BonusMP = new ValorMag(19, 4),
+                BonusSP = 10,
+                Nivel = 3
             };
 
             ser.Energias = calculador.CriaListaEnergias(ser);
 
-            Assert.AreEqual(5, ser.Habilidades.Count);
+            Assert.AreEqual(5, ser.Energias.Count);
         }
 
         //Testa o cálculo do HP base de um ser
@@ -499,10 +503,71 @@ namespace Desire.Test
                     }
                 }
             };
+        }
 
+        [TestMethod]
+        public void TesteCalculaFugacidade()
+        {
+            calculador = new CalculadorSer();
 
+            Ser ser = new Ser()
+            {
+                Especies = new List<Especie>()
+                {
+                    new Especie()
+                    {
+                        Fugacidade = new List<Habilidade>()
+                        {
+                            new Habilidade()
+                            {
+                                Id = 0,
+                                Nome = "Habilidade 1",
+                                TipoHabilidade = "Movimento"
+                            },
+                            new Habilidade()
+                            {
+                                Id = 1,
+                                Nome = "Habilidade 2",
+                                TipoHabilidade = "Sbrubles"
+                            },
+                            new Habilidade()
+                            {
+                                Id = 2,
+                                Nome = "Habilidade 3",
+                                TipoHabilidade = "Movimento"
+                            }
+                        }
+                    },
+                    new Especie()
+                    {
+                        Fugacidade = new List<Habilidade>()
+                        {
+                            new Habilidade()
+                            {
+                                Id = 3,
+                                Nome = "Habilidade 4",
+                                TipoHabilidade = "Movimento"
+                            },
+                            new Habilidade()
+                            {
+                                Id = 4,
+                                Nome = "Habilidade 5",
+                                TipoHabilidade = "Movimento"
+                            },
+                            new Habilidade()
+                            {
+                                Id = 5,
+                                Nome = "Habilidade 6",
+                                TipoHabilidade = "Arcanidade"
 
+                            }
+                        }
+                    },
 
+                }
+            };
+
+            Assert.AreEqual(4, ser.Fugacidade.Count());
         }
     }
 }

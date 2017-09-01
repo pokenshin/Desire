@@ -1,13 +1,12 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DesireWebApp.Models;
 using System.Diagnostics;
 using Desire.Core;
 using Desire.Core.Itens;
-using Desire.Core.Geradores;
-using Desire.Core.Calculadores;
+using Desire.Core.Services;
 using System.Collections.Generic;
 using System.Linq;
+using Desire.Core.Identidade;
 
 namespace Desire.Test
 {

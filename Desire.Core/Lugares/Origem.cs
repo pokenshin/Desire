@@ -11,5 +11,11 @@
             this.Nome = nome;
             this.Plano = plano;
         }
+
+        public Origem()
+        {
+            this.Nome = "";
+            this.Plano = new Plano();
+        }
     }
 }

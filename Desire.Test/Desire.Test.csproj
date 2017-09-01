@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Desire.Core\Desire.Core.csproj" />
-    <ProjectReference Include="..\DesireWebApp\DesireWebApp.csproj" />
   </ItemGroup>
 
   <ItemGroup>

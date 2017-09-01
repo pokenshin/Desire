@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Desire.Core.Calculadores;
+using Desire.Core.Services;
 using Desire.Core;
+using Desire.Core.Identidade;
 
 
 namespace Desire.Test
