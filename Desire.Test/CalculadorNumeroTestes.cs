@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using Desire.Core;
 using Desire.Core.Itens;
-using Desire.Core.Services;
+using Desire.Core.Util;
 using System.Collections.Generic;
 using System.Linq;
 using Desire.Core.Identidade;

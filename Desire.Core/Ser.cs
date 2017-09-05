@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using Desire.Core.Itens;
-using Desire.Core.Services;
 using Desire.Core.Identidade;
+using Desire.Core.Ciencias;
 
 namespace Desire.Core
 {
@@ -102,7 +102,7 @@ namespace Desire.Core
         public decimal ExperienciaAtual { get; set; }
 
         //Equipamento
-        public List<Item> Equipamentos { get; set; }
+        public List<Equipamento> Equipamentos { get; set; }
         public List<Item> Posses { get; set; }
 
         //Cansaço / Natureza / Fé / Karma
@@ -190,7 +190,7 @@ namespace Desire.Core
             this.PontosGraduacao = 0;
             this.PontosEvolucao = 0;
             this.ExperienciaAtual = 0;
-            this.Equipamentos = new List<Item>();
+            this.Equipamentos = new List<Equipamento>();
             this.Posses = new List<Item>();
             this.CansacoAtual = 0;
             this.CansacoMax = 0;

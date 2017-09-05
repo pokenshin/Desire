@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Numerics;
 using Desire.Core.Identidade;
+using Desire.Core.Ciencias;
 
 namespace Desire.Core.Identidade
 {
@@ -52,8 +53,6 @@ namespace Desire.Core.Identidade
         //Origens do Poder / Virtudes / Dons / Vantagens / Defeitos / etc
         public string OrigemPoder { get; set; }
         public List<Modificador> VirtudesEspecie { get; set; }
-        public List<Modificador> DonsEspecie { get; set; }
-        public List<Modificador> VantagensEspecie { get; set; }
         public List<Modificador> DefeitosEspecie { get; set; }
         //Força de Vontade / Ira / Poder Máximo
         public ValorMag ForcaVontadeMin { get; set; }

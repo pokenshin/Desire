@@ -1,4 +1,4 @@
-﻿using Desire.Core.Services;
+﻿using Desire.Core.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,10 @@ using System.Reflection;
 using System.Text;
 using Desire.Core.Itens;
 using Desire.Core.Identidade;
+using Desire.Core.Ciencias;
+using Desire.Core.Util.Geradores;
 
-namespace Desire.Core.Services
+namespace Desire.Core.Util
 {
     public class CalculadorSer
     {
@@ -307,7 +309,7 @@ namespace Desire.Core.Services
         //Calcula subatributos BASE de um ser sem modificadores
         public Ser CalculaSubatributos(Ser ser)
         {
-            Gerador gerador = new Gerador();
+            GeradorValorMag genValorMag = new GeradorValorMag();
             CalculadorNumero calculador = new CalculadorNumero();
             //Iniciativa = Destreza.Iniciativa
             ser.Iniciativa = ser.Destreza.Iniciativa;
@@ -329,13 +331,13 @@ namespace Desire.Core.Services
             ser.Turno = ser.Especies[0].TurnoMin + (int)calculador.CalculaPorcentagem(20, (long)(from e in ser.Especies select e.TurnoMin).Max());
 
             //Altura = aleatorio a partir da especie dominante
-            ser.Altura = gerador.GeraValorMag(ser.Especies[0].AlturaMin, ser.Especies[0].AlturaMax);
+            ser.Altura = genValorMag.GerarEntre(ser.Especies[0].AlturaMin, ser.Especies[0].AlturaMax);
 
             //Comprimento = Pontos em matéria
             ser.Comprimento = new ValorMag(Convert.ToString(ser.Materia.Pontos));
 
             //Largura = Aleatorio entre largura min e largura max da especie dominante
-            ser.Largura = gerador.GeraValorMag(ser.Especies[0].LarguraMin, ser.Especies[0].LarguraMax);
+            ser.Largura = genValorMag.GerarEntre(ser.Especies[0].LarguraMin, ser.Especies[0].LarguraMax);
 
             //Massa = Volume * Densidade da Especie
             ValorMag volume = calculador.MultiplicaValorMag(ser.Altura, ser.Comprimento);

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Desire.Core.Identidade
+namespace Desire.Core.Ciencias
 {
     public class Pericia
     {

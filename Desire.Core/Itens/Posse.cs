@@ -4,8 +4,7 @@ using System.Text;
 
 namespace Desire.Core.Itens
 {
-    public abstract class Equipamento : Item
+    public class Posse : Item
     {
-        public int Slot { get; set; }
     }
 }

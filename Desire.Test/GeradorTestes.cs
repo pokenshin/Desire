@@ -3,23 +3,22 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using Desire.Core;
 using Desire.Core.Itens;
-using Desire.Core.Services;
+using Desire.Core.Util;
 using System.Collections.Generic;
 using Desire.Core.Identidade;
+using Desire.Core.Util.Geradores();
 
 namespace Desire.Test
 {
     [TestClass]
     public class GeradorTestes
     {
-        Gerador gerador;
-        
         //Vê se o método GeraNomeAleatorio está retornando strings do tamanho adequado
         //Resultado esperado: qualquer string maior que 9 caracteres e menor que 28
         [TestMethod]
         public void TesteGeraNomeAleatorio()
         {
-            gerador = new Gerador();
+            GeradorString gerador = new Gerador();
             string resultado = gerador.GeraNomeAleatorio(3, 10);
 
             Assert.IsTrue(resultado.Length >= 3 && resultado.Length <= 10);
@@ -181,7 +180,7 @@ namespace Desire.Test
         public void TesteGeraAreaCientifica()
         {
             gerador = new Gerador();
-            Area area = gerador.GeraAreaCientifica();
+            AreaCientifica area = gerador.GeraAreaCientifica();
 
             Assert.IsNotNull(area);
         }

@@ -5,7 +5,7 @@ using Desire.Core.Identidade;
 
 namespace Desire.Core
 {
-    public class Atributo
+    public abstract class Atributo
     {
         public char Classe { get; set; }
         public int Nivel { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Desire.Core.Itens
 {
-    public class Item
+    public abstract class Item
     {
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -14,11 +14,9 @@ namespace Desire.Core.Itens
         public ValorMag Massa { get; set; }
         public int Essencia { get; set; }
         public int Energia { get; set; }
-        public int Valor { get; set; }
+        public long Valor { get; set; }
         public int Tipo { get; set; }
         public Material MaterialBase { get; set; }
-        public bool Equipavel { get; set; }
-        public int Quantidade { get; set; }
         public ValorMag Comprimento { get; set; }
         public ValorMag Largura { get; set; }
         public ValorMag Peso { get; set; }

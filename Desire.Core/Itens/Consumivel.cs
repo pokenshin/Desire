@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Desire.Core.Efeitos;
 
 namespace Desire.Core.Itens
 {
-    public abstract class Equipamento : Item
+    public class Consumivel : Item
     {
-        public int Slot { get; set; }
+        public List<IEfeito> Efeitos { get; set; }
     }
 }

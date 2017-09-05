@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Text;
 using System.Numerics;
 
-namespace Desire.Core.Services
+namespace Desire.Core.Util
 {
     public class Conversor
     {

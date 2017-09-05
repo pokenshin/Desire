@@ -1,4 +1,4 @@
-﻿using Desire.Core.Services;
+﻿using Desire.Core.Util;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
@@ -34,6 +34,11 @@ namespace Desire.Core
             this.ValorReal = valorReal;
             this.Valor = valor.Valor;
             this.Magnitude = valor.Magnitude; 
+        }
+
+        public override string ToString()
+        {
+            return this.Valor + "m" + this.Magnitude;
         }
     }
 }

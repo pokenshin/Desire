@@ -1,6 +1,6 @@
-﻿namespace Desire.Core
+﻿namespace Desire.Core.Ciencias
 {
-    public class Area
+    public class AreaCientifica
     {
         public int Id { get; set; }
         public string Nome { get; set; }

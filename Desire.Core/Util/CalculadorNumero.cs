@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Desire.Core.Services
+namespace Desire.Core.Util
 {
     public class CalculadorNumero
     {

@@ -1,4 +1,4 @@
-﻿namespace Desire.Core.Identidade
+﻿namespace Desire.Core
 {
     public class Energia
     {

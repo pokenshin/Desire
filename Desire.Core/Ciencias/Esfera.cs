@@ -1,4 +1,4 @@
-﻿namespace Desire.Core
+﻿namespace Desire.Core.Ciencias
 {
     public class Esfera
     {

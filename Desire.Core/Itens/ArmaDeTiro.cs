@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Desire.Core.Itens
 {
-    public class ArmaDeFogo : Arma
+    public class ArmaDeTiro : Arma
     {
         public int TirosPorCarga { get; set; }
         public int TirosPorAcao { get; set; }

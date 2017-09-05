@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 using Desire.Core;
 using Desire.Core.Itens;
-using Desire.Core.Services;
+using Desire.Core.Util;
 using System.Collections.Generic;
 using System.Linq;
 using Desire.Core.Identidade;
@@ -522,19 +522,19 @@ namespace Desire.Test
                             {
                                 Id = 0,
                                 Nome = "Habilidade 1",
-                                TipoHabilidade = "Movimento"
+                                Ciencia = "Movimento"
                             },
                             new Habilidade()
                             {
                                 Id = 1,
                                 Nome = "Habilidade 2",
-                                TipoHabilidade = "Sbrubles"
+                                Ciencia = "Sbrubles"
                             },
                             new Habilidade()
                             {
                                 Id = 2,
                                 Nome = "Habilidade 3",
-                                TipoHabilidade = "Movimento"
+                                Ciencia = "Movimento"
                             }
                         }
                     },
@@ -546,19 +546,19 @@ namespace Desire.Test
                             {
                                 Id = 3,
                                 Nome = "Habilidade 4",
-                                TipoHabilidade = "Movimento"
+                                Ciencia = "Movimento"
                             },
                             new Habilidade()
                             {
                                 Id = 4,
                                 Nome = "Habilidade 5",
-                                TipoHabilidade = "Movimento"
+                                Ciencia = "Movimento"
                             },
                             new Habilidade()
                             {
                                 Id = 5,
                                 Nome = "Habilidade 6",
-                                TipoHabilidade = "Arcanidade"
+                                Ciencia = "Arcanidade"
 
                             }
                         }
