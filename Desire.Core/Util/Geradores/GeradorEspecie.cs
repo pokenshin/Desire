@@ -6,12 +6,12 @@ using System.Linq;
 
 namespace Desire.Core.Util.Geradores
 {
-    class GeradorEspecie : IGerador<Especie>
+    public class GeradorEspecie : IGerador<Especie>
     {
         GeradorInteiro rng = new GeradorInteiro();
         GeradorString rsg = new GeradorString();
 
-        public Especie Gerar()
+        public Especie Gerar(Random rnd)
         {
             GeradorOrigem genOrigem = new GeradorOrigem();
             GeradorCriatividade genCriatividade = new GeradorCriatividade();
@@ -35,78 +35,78 @@ namespace Desire.Core.Util.Geradores
 
             Especie especie = new Especie()
             {
-                ReinoTaxo = rsg.GerarTamanhoEspecifico(2, 8),
-                FiloTaxo = rsg.GerarTamanhoEspecifico(2, 9),
-                ClasseTaxo = rsg.GerarTamanhoEspecifico(2, 8),
-                OrdemTaxo = rsg.GerarTamanhoEspecifico(2, 8),
-                FamiliaTaxo = rsg.GerarTamanhoEspecifico(2, 8),
-                GeneroTaxo = rsg.GerarTamanhoEspecifico(2, 8),
-                NomeCientifico = rsg.GerarTamanhoEspecifico(2, 8),
-                NomePopular = rsg.GerarTamanhoEspecifico(2, 8),
-                OrigemEspecie = genOrigem.Gerar(),
-                MagnitudeMin = rng.GerarEntre(0, 15),
-                MagnitudeMax = rng.GerarEntre(0, 15),
-                ReiMin = rng.GerarEntre(0, 50),
-                ReiMax = rng.GerarEntre(1, 50),
-                KiMin = rng.GerarEntre(0, 1000),
-                KiMax = rng.GerarEntre(1, 1000),
-                NivelMin = rng.GerarEntre(0, 10000),
-                TempoMax = rng.GerarEntre(1, 10000),
-                Energias = genEnergia.GerarLista(rng.GerarEntre(1, 5)),
-                ForcaMin = genForca.Gerar(),
-                ForcaMax = genForca.Gerar(),
-                MateriaMin = genMateria.Gerar(),
-                MateriaMax = genMateria.Gerar(),
-                DestrezaMin = genDestreza.Gerar(),
-                DestrezaMax = genDestreza.Gerar(),
-                NivelMax = rng.GerarEntre(1, 100000),
-                IntelectoMin = genIntelecto.Gerar(),
-                IntelectoMax = genIntelecto.Gerar(),
-                CriatividadeMin = genCriatividade.Gerar(),
-                CriatividadeMax = genCriatividade.Gerar(),
-                ExistenciaMin = genExistencia.Gerar(),
-                ExistenciaMax = genExistencia.Gerar(),
-                IdeiaMin = genIdeia.Gerar(),
-                IdeiaMax = genIdeia.Gerar(),
-                PericiasEspecie = genPericia.GerarLista(rng.GerarEntre(1,10)),
-                HabilidadesEspecie = genHabilidade.GerarLista(rng.GerarEntre(1, 3)),
-                OrigemPoder = rsg.GerarTamanhoEspecifico(4, 10),
-                VirtudesEspecie = genModificador.GerarListaComOrigem("Virtudes", 0, rng.GerarEntre(1, 10), '+'),
-                DefeitosEspecie = genModificador.GerarListaComOrigem("Defeitos", 0, rng.GerarEntre(1, 10), '-'),
-                ForcaVontadeMin = genValorMag.GerarEntre(new ValorMag(1,0), new ValorMag(99,15)),
-                ForcaVontadeMax = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15)),
-                IraMin = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15)),
-                IraMax = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15)),
-                PoderMaximoMin = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15)),
-                PoderMaximoMax = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15)),
-                FatorProgressao = rng.GerarEntre(1, 10),
-                CansacoMax = rng.GerarEntre(0, 1000),
-                FeMin = rng.GerarEntre(0, 1000),
-                FeMax = rng.GerarEntre(0, 1000),
-                KarmaMin = rng.GerarEntre(0, 1000),
-                KarmaMax = rng.GerarEntre(0, 1000),
-                MaxItensEquipados = rng.GerarEntre(1, 10),
-                AcaoMin = rng.GerarEntre(1, 1000),
-                AcaoMax = rng.GerarEntre(0, 1000),
-                AlturaMin = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15)),
-                AlturaMax = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15)),
-                Id = rng.GerarEntre(1, 1000),
-                MaxArmasEquipadas = rng.GerarEntre(1, 10),
+                ReinoTaxo = rsg.GerarTamanhoEspecifico(2, 8, rnd),
+                FiloTaxo = rsg.GerarTamanhoEspecifico(2, 9, rnd),
+                ClasseTaxo = rsg.GerarTamanhoEspecifico(2, 8, rnd),
+                OrdemTaxo = rsg.GerarTamanhoEspecifico(2, 8, rnd),
+                FamiliaTaxo = rsg.GerarTamanhoEspecifico(2, 8, rnd),
+                GeneroTaxo = rsg.GerarTamanhoEspecifico(2, 8, rnd),
+                NomeCientifico = rsg.GerarTamanhoEspecifico(2, 8, rnd),
+                NomePopular = rsg.GerarTamanhoEspecifico(2, 8, rnd),
+                OrigemEspecie = genOrigem.Gerar(rnd),
+                MagnitudeMin = rng.GerarEntre(0, 15, rnd),
+                MagnitudeMax = rng.GerarEntre(0, 15, rnd),
+                ReiMin = rng.GerarEntre(0, 50, rnd),
+                ReiMax = rng.GerarEntre(1, 50, rnd),
+                KiMin = rng.GerarEntre(0, 1000, rnd),
+                KiMax = rng.GerarEntre(1, 1000, rnd),
+                NivelMin = rng.GerarEntre(0, 10000, rnd),
+                TempoMax = rng.GerarEntre(1, 10000, rnd),
+                Energias = genEnergia.GerarLista(rng.GerarEntre(1, 5, rnd), rnd),
+                ForcaMin = genForca.Gerar(rnd),
+                ForcaMax = genForca.Gerar(rnd),
+                MateriaMin = genMateria.Gerar(rnd),
+                MateriaMax = genMateria.Gerar(rnd),
+                DestrezaMin = genDestreza.Gerar(rnd),
+                DestrezaMax = genDestreza.Gerar(rnd),
+                NivelMax = rng.GerarEntre(1, 100000, rnd),
+                IntelectoMin = genIntelecto.Gerar(rnd),
+                IntelectoMax = genIntelecto.Gerar(rnd),
+                CriatividadeMin = genCriatividade.Gerar(rnd),
+                CriatividadeMax = genCriatividade.Gerar(rnd),
+                ExistenciaMin = genExistencia.Gerar(rnd),
+                ExistenciaMax = genExistencia.Gerar(rnd),
+                IdeiaMin = genIdeia.Gerar(rnd),
+                IdeiaMax = genIdeia.Gerar(rnd),
+                PericiasEspecie = genPericia.GerarLista(rng.GerarEntre(1,10, rnd), rnd),
+                HabilidadesEspecie = genHabilidade.GerarLista(rng.GerarEntre(1, 3, rnd), rnd),
+                OrigemPoder = rsg.GerarTamanhoEspecifico(4, 10, rnd),
+                VirtudesEspecie = genModificador.GerarListaComOrigem("Virtudes", 0, rng.GerarEntre(1, 10, rnd), rnd, '+'),
+                DefeitosEspecie = genModificador.GerarListaComOrigem("Defeitos", 0, rng.GerarEntre(1, 10, rnd), rnd, '-'),
+                ForcaVontadeMin = genValorMag.GerarEntre(new ValorMag(1,0), new ValorMag(99,15), rnd),
+                ForcaVontadeMax = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
+                IraMin = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
+                IraMax = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
+                PoderMaximoMin = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
+                PoderMaximoMax = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
+                FatorProgressao = rng.GerarEntre(1, 10, rnd),
+                CansacoMax = rng.GerarEntre(0, 1000, rnd),
+                FeMin = rng.GerarEntre(0, 1000, rnd),
+                FeMax = rng.GerarEntre(0, 1000, rnd),
+                KarmaMin = rng.GerarEntre(0, 1000, rnd),
+                KarmaMax = rng.GerarEntre(0, 1000, rnd),
+                MaxItensEquipados = rng.GerarEntre(1, 10, rnd),
+                AcaoMin = rng.GerarEntre(1, 1000, rnd),
+                AcaoMax = rng.GerarEntre(0, 1000, rnd),
+                AlturaMin = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
+                AlturaMax = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
+                Id = rng.GerarEntre(1, 1000, rnd),
+                MaxArmasEquipadas = rng.GerarEntre(1, 10, rnd),
                 //TODO: Subclassificacoes = GeraSubclassificacoes(),
-                TurnoMin = rng.GerarEntre(1, 1000),
-                TurnoMax = rng.GerarEntre(1, 1000),
+                TurnoMin = rng.GerarEntre(1, 1000, rnd),
+                TurnoMax = rng.GerarEntre(1, 1000, rnd),
                 MaturidadeMin = 0,
                 MaturidadeMax = 0,
-                DestriaMax = rng.GerarEntre(1, 10),
+                DestriaMax = rng.GerarEntre(1, 10, rnd),
                 DestriaMin = 1,
                 Porcentagem = 0,
-                TrabalhoMin = rng.GerarEntre(0, 1000),
-                Densidade = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15)),
-                LarguraMin = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15)),
-                LarguraMax = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15)),
-                Especial = rng.GerarEntre(1, 70),
-                Natureza = genNatureza.Gerar(),
-                RespostaMin = genResposta.Gerar()
+                TrabalhoMin = rng.GerarEntre(0, 1000, rnd),
+                Densidade = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
+                LarguraMin = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
+                LarguraMax = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
+                Especial = rng.GerarEntre(1, 70, rnd),
+                Natureza = genNatureza.Gerar(rnd),
+                RespostaMin = genResposta.Gerar(rnd)
             };
             especie.MagnitudeMax = especie.MagnitudeMin + especie.MagnitudeMax;
             especie.ReiMax = especie.ReiMin + especie.ReiMax;
@@ -119,35 +119,35 @@ namespace Desire.Core.Util.Geradores
             especie.AcaoMax = especie.AcaoMin + especie.AcaoMax;
             especie.AlturaMax = calculadorNum.SomaValorMag(especie.AlturaMin, especie.AlturaMax);
             especie.TurnoMax = especie.TurnoMin + especie.TurnoMax;
-            especie.MaturidadeMin = (int)calculadorNum.CalculaPorcentagem(rng.GerarEntre(1, 30), especie.TempoMax);
-            especie.MaturidadeMax = especie.MaturidadeMin + (int)calculadorNum.CalculaPorcentagem(rng.GerarEntre(60, 99), especie.TempoMax);
-            especie.TrabalhoMax = especie.TrabalhoMin + rng.GerarEntre(0, 1000);
+            especie.MaturidadeMin = (int)calculadorNum.CalculaPorcentagem(rng.GerarEntre(1, 30, rnd), especie.TempoMax);
+            especie.MaturidadeMax = especie.MaturidadeMin + (int)calculadorNum.CalculaPorcentagem(rng.GerarEntre(60, 99, rnd), especie.TempoMax);
+            especie.TrabalhoMax = especie.TrabalhoMin + rng.GerarEntre(0, 1000, rnd);
             especie.LarguraMax = calculadorNum.SomaValorMag(especie.LarguraMin, especie.LarguraMax);
             especie.RespostaMax = new Resposta()
             {
-                Bravura = especie.RespostaMin.Bravura + rng.GerarEntre(1, 1000),
-                Coragem = especie.RespostaMin.Coragem + rng.GerarEntre(1, 1000),
-                Desespero = especie.RespostaMin.Desespero + rng.GerarEntre(1, 1000),
-                Heroismo = especie.RespostaMin.Heroismo + rng.GerarEntre(1, 1000),
-                Indiferenca = especie.RespostaMin.Indiferenca + rng.GerarEntre(1, 1000),
-                Medo = especie.RespostaMin.Medo + rng.GerarEntre(1, 1000),
-                Panico = especie.RespostaMin.Panico + rng.GerarEntre(1, 1000)
+                Bravura = especie.RespostaMin.Bravura + rng.GerarEntre(1, 1000, rnd),
+                Coragem = especie.RespostaMin.Coragem + rng.GerarEntre(1, 1000, rnd),
+                Desespero = especie.RespostaMin.Desespero + rng.GerarEntre(1, 1000, rnd),
+                Heroismo = especie.RespostaMin.Heroismo + rng.GerarEntre(1, 1000, rnd),
+                Indiferenca = especie.RespostaMin.Indiferenca + rng.GerarEntre(1, 1000, rnd),
+                Medo = especie.RespostaMin.Medo + rng.GerarEntre(1, 1000, rnd),
+                Panico = especie.RespostaMin.Panico + rng.GerarEntre(1, 1000, rnd)
             };
             return especie;
         }
 
-        public List<Especie> GerarLista(int quantidade)
+        public List<Especie> GerarLista(int quantidade, Random rnd)
         {
             {
                 List<Especie> resultado = new List<Especie>();
                 if (quantidade == 0)
-                    quantidade = rng.GerarEntre(1, 5);
+                    quantidade = rng.GerarEntre(1, 5, rnd);
 
-                int[] porcentagens = rng.GerarInteirosQueSomam(quantidade, 100);
+                int[] porcentagens = rng.GerarInteirosQueSomam(quantidade, 100, rnd);
 
                 for (int i = 0; i < quantidade-1; i++)
                 {
-                    Especie especie = Gerar();
+                    Especie especie = Gerar(rnd);
                     especie.Porcentagem = porcentagens[i];
                     resultado.Add(especie);
                 }

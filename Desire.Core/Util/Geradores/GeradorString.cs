@@ -19,12 +19,12 @@ namespace Desire.Core.Util.Geradores
         static string consoantes = "bcdfghjklmnpqrstvwxyz";
         static string vogais = "aeiou";
 
-        public string Gerar()
+        public string Gerar(Random rnd)
         {
-            int min = rng.GerarEntre(1, 10);
-            int max = min + rng.GerarEntre(1, 10);
+            int min = rng.GerarEntre(1, 10, rnd);
+            int max = min + rng.GerarEntre(1, 10, rnd);
 
-            return GerarTamanhoEspecifico(min, max);
+            return GerarTamanhoEspecifico(min, max, rnd);
         }
 
         ///<summary>
@@ -32,17 +32,17 @@ namespace Desire.Core.Util.Geradores
         ///</summary>
         /// <param name="min">Tamanho mínimo da string</param>
         /// <param name="max">Tamanho máximo da string</param>
-        public string GerarTamanhoEspecifico(int min, int max)
+        public string GerarTamanhoEspecifico(int min, int max, Random rnd)
         {
             GeradorBoolean geradorBoolean = new GeradorBoolean();
             string nome = "";
-            int tamanhoNome = rng.GerarEntre(min, max);
+            int tamanhoNome = rng.GerarEntre(min, max, rnd);
 
             while (nome.Length < tamanhoNome)
             {
                 if (nome.Length == 0)
                 {
-                    if (geradorBoolean.GeraComChance(50))
+                    if (geradorBoolean.GeraComChance(50, rnd))
                         nome = Convert.ToString(consoantes[rnd.Next(0, consoantes.Length)]).ToUpper();
                     else
                         nome = Convert.ToString(vogais[rnd.Next(0, vogais.Length)]).ToUpper();
@@ -82,7 +82,7 @@ namespace Desire.Core.Util.Geradores
                             chanceVogal = 30;
                     }
 
-                    if (geradorBoolean.GeraComChance(chanceVogal))
+                    if (geradorBoolean.GeraComChance(chanceVogal, rnd))
                         nome = nome + Convert.ToString(vogais[rnd.Next(0, vogais.Length)]);
                     else
                         nome = nome + Convert.ToString(consoantes[rnd.Next(0, consoantes.Length)]);
@@ -92,12 +92,12 @@ namespace Desire.Core.Util.Geradores
             return nome;
         }
 
-        public List<string> GerarLista(int quantidade)
+        public List<string> GerarLista(int quantidade, Random rnd)
         {
             List<string> resultado = new List<string>();
-            for (int i = 0; i < quantidade - 1; i++)
+            for (int i = 0; i < quantidade; i++)
             {
-                resultado.Add(Gerar());
+                resultado.Add(Gerar(rnd));
             }
 
             return resultado;

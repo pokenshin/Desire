@@ -12,63 +12,63 @@ namespace Desire.Core.Util.Geradores
         ///</summary>
         /// <param name="origem">De onde o modificador está vindo.</param>
         /// <param name="id">Qual a ID da origem do modificador.</param>
-        T GerarComOrigem(string origem, int id, char tipo = 'R');
+        T GerarComOrigem(string origem, int id, Random rnd, char tipo = 'R');
         ///<summary>
         ///Gera uma lista de modificadores de origem específica na quantidade especifícada.
         ///</summary>
         /// <param name="origem">De onde o modificador está vindo.</param>
         /// <param name="id">Qual a ID da origem do modificador.</param>
         /// <param name="quantidade">Número de itens da lista.</param>
-        List<T> GerarListaComOrigem(string origem, int id, int quantidade, char tipo = 'R');
+        List<T> GerarListaComOrigem(string origem, int id, int quantidade, Random rnd, char tipo = 'R');
     }
 
     public class GeradorModificador : IGerador<Modificador>, IGeradorModificador<Modificador>
     {
-        GeradorInteiro rng = new GeradorInteiro();
         char[] tiposModificadores = new char[] { '+', '*', '-', '/' };
 
-        public Modificador Gerar()
+        public Modificador Gerar(Random rnd)
         {
-            return GerarComOrigem("Gerado Aleatoriamente", 0);
+            return GerarComOrigem("Gerado Aleatoriamente", 0, rnd);
         }
 
-        public List<Modificador> GerarLista(int quantidade)
+        public List<Modificador> GerarLista(int quantidade, Random rnd)
         {
             List<Modificador> lista = new List<Modificador>();
 
             for (int i = 0; i < quantidade-1; i++)
             {
-                lista.Add(Gerar());
+                lista.Add(Gerar(rnd));
             }
 
             return lista;
         }
 
-        public List<Modificador> GerarListaComOrigem(string origem, int id, int quantidade, char tipo = 'R')
+        public List<Modificador> GerarListaComOrigem(string origem, int id, int quantidade, Random rnd, char tipo = 'R')
         {
             List<Modificador> lista = new List<Modificador>();
 
-            for (int i = 0; i < quantidade - 1; i++)
+            for (int i = 0; i < quantidade; i++)
             {
-                lista.Add(GerarComOrigem(origem, id, tipo));
+                lista.Add(GerarComOrigem(origem, id, rnd, tipo));
             }
 
             return lista;
         }
 
-        public Modificador GerarComOrigem(string origem, int id, char tipo = 'R')
+        public Modificador GerarComOrigem(string origem, int id, Random rnd, char tipo = 'R')
         {
             //TODO: Gerar modifiadores menos random e com mais sentido
             //TODO: Melhorar nome do modificador
             //TODO: Tratamento especial para modificadores de classe
             //TODO: Criar magnitude do modificador para limitar sua apelação e direcionar uso
+            GeradorInteiro rng = new GeradorInteiro();
             GeradorValorMag genValorMag = new GeradorValorMag();
             PropertyInfo[] propriedades = typeof(Ser).GetProperties().Where(p => p.PropertyType == typeof(int)).ToArray<PropertyInfo>();
-            string nomePropriedade = propriedades[rng.GerarEntre(0, propriedades.Count() - 1)].Name;
+            string nomePropriedade = propriedades[rng.GerarEntre(0, propriedades.Count() - 1, rnd)].Name;
             PropertyInfo alvo = typeof(Ser).GetProperty(nomePropriedade);
-            ValorMag valor = genValorMag.Gerar();
+            ValorMag valor = genValorMag.Gerar(rnd);
             if (tipo == 'R')
-                tipo = tiposModificadores[rng.GerarEntre(0, tiposModificadores.Count() - 1)];
+                tipo = tiposModificadores[rng.GerarEntre(0, tiposModificadores.Count() - 1, rnd)];
 
             string nome = nomePropriedade + tipo + valor;
 

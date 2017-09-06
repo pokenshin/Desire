@@ -7,6 +7,9 @@ using Desire.Core.Util;
 using System.Collections.Generic;
 using System.Linq;
 using Desire.Core.Identidade;
+using Desire.Core.Ciencias;
+using Desire.Core.Util.Geradores;
+using Desire.Core.Energias;
 
 namespace Desire.Test
 {
@@ -21,7 +24,6 @@ namespace Desire.Test
         public void TesteExtraiValorListaEspeciesMaiorValorKarmaMax()
         {
             calculador = new CalculadorSer();
-            Gerador gerador = new Gerador();
             List<Especie> listaEspecies = new List<Especie>();
 
             for (int i = 0; i < 10; i++)
@@ -45,17 +47,26 @@ namespace Desire.Test
         public void TesteCalculaSubatributosSemMod()
         {
             calculador = new CalculadorSer();
-            Gerador gerador = new Gerador();
+            Random rnd = new Random();
+            GeradorForca genForca = new GeradorForca();
+            GeradorMateria genMateria = new GeradorMateria();
+            GeradorDestreza genDestreza = new GeradorDestreza();
+            GeradorIdeia genIdeia = new GeradorIdeia();
+            GeradorCriatividade genCriatividade = new GeradorCriatividade();
+            GeradorExistencia genExistencia = new GeradorExistencia();
+            GeradorIntelecto genIntelecto = new GeradorIntelecto();
+            GeradorInteiro rng = new GeradorInteiro();
+
             Ser ser = new Ser()
             {
-                Destreza = (Destreza)gerador.GeraAtributo("Destreza"),
-                Forca = (Forca)gerador.GeraAtributo("Força"),
-                Materia = (Materia)gerador.GeraAtributo("Materia"),
-                Ideia = (Ideia)gerador.GeraAtributo("Idéia"),
-                Criatividade = (Criatividade)gerador.GeraAtributo("Criatividade"),
-                Existencia = (Existencia)gerador.GeraAtributo("Existência"),
-                Intelecto = (Intelecto)gerador.GeraAtributo("Intelecto"),
-                Nivel = gerador.GeraInteiro(1, 50)
+                Destreza = genDestreza.Gerar(rnd),
+                Forca = genForca.Gerar(rnd),
+                Materia = genMateria.Gerar(rnd),
+                Ideia = genIdeia.Gerar(rnd),
+                Criatividade = genCriatividade.Gerar(rnd),
+                Existencia = genExistencia.Gerar(rnd),
+                Intelecto = genIntelecto.Gerar(rnd),
+                Nivel = rng.GerarEntre(1, 100, rnd)
             };
             
 
@@ -130,9 +141,10 @@ namespace Desire.Test
         [TestMethod]
         public void TesteCalculaSubatributosAleatorio()
         {
+            Random rnd = new Random();
             calculador = new CalculadorSer();
-            Gerador gerador = new Gerador();
-            Ser ser = gerador.GeraSerAleatorio();
+            GeradorSer gerador = new GeradorSer();
+            Ser ser = gerador.Gerar(rnd);
 
             ser = calculador.CalculaSubatributos(ser);
 
@@ -466,108 +478,6 @@ namespace Desire.Test
             ser.Energias = calculador.CriaListaEnergias(ser);
 
             Assert.AreEqual(5, ser.Energias.Count);
-        }
-
-        //Testa o cálculo do HP base de um ser
-        [TestMethod]
-        public void TesteCalculaValorBaseEnergiasHP()
-        {
-            calculador = new CalculadorSer();
-
-            Ser ser = new Ser()
-            {
-                Especies = new List<Especie>
-                {
-                    new Especie()
-                    {
-                        Energias = new List<Energia>
-                        {
-                            new Energia()
-                            {
-                                Sigla = "HP",
-                                Quantidade = 1200
-                            }
-                        }
-                    },
-
-                    new Especie()
-                    {
-                        Energias = new List<Energia>
-                        {
-                            new Energia()
-                            {
-                                Sigla = "HP",
-                                Quantidade = 200
-                            }
-                        }
-                    }
-                }
-            };
-        }
-
-        [TestMethod]
-        public void TesteCalculaFugacidade()
-        {
-            calculador = new CalculadorSer();
-
-            Ser ser = new Ser()
-            {
-                Especies = new List<Especie>()
-                {
-                    new Especie()
-                    {
-                        Fugacidade = new List<Habilidade>()
-                        {
-                            new Habilidade()
-                            {
-                                Id = 0,
-                                Nome = "Habilidade 1",
-                                Ciencia = "Movimento"
-                            },
-                            new Habilidade()
-                            {
-                                Id = 1,
-                                Nome = "Habilidade 2",
-                                Ciencia = "Sbrubles"
-                            },
-                            new Habilidade()
-                            {
-                                Id = 2,
-                                Nome = "Habilidade 3",
-                                Ciencia = "Movimento"
-                            }
-                        }
-                    },
-                    new Especie()
-                    {
-                        Fugacidade = new List<Habilidade>()
-                        {
-                            new Habilidade()
-                            {
-                                Id = 3,
-                                Nome = "Habilidade 4",
-                                Ciencia = "Movimento"
-                            },
-                            new Habilidade()
-                            {
-                                Id = 4,
-                                Nome = "Habilidade 5",
-                                Ciencia = "Movimento"
-                            },
-                            new Habilidade()
-                            {
-                                Id = 5,
-                                Nome = "Habilidade 6",
-                                Ciencia = "Arcanidade"
-
-                            }
-                        }
-                    },
-
-                }
-            };
-
-            Assert.AreEqual(4, ser.Fugacidade.Count());
         }
     }
 }

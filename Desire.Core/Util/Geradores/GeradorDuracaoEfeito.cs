@@ -6,7 +6,7 @@ namespace Desire.Core.Util.Geradores
 {
     public class GeradorDuracaoEfeito : IGerador<DuracaoEfeito>
     {
-        public DuracaoEfeito Gerar()
+        public DuracaoEfeito Gerar(Random rnd)
         {
             GeradorInteiro rng = new GeradorInteiro();
             
@@ -37,25 +37,25 @@ namespace Desire.Core.Util.Geradores
 
             DuracaoEfeito resultado = new DuracaoEfeito()
             {
-                TipoDuracao = tiposDuracao[rng.GerarEntre(0, tiposDuracao.Count - 1)],
+                TipoDuracao = tiposDuracao[rng.GerarEntre(0, tiposDuracao.Count - 1, rnd)],
 
             };
             if (resultado.TipoDuracao == "Limitado")
             {
                 GeradorValorMag genValorMag = new GeradorValorMag();
-                resultado.UnidadeDuracao = unidadesDuracao[rng.GerarEntre(0, unidadesDuracao.Count - 1)];
-                resultado.ValorDuracao = genValorMag.Gerar();
+                resultado.UnidadeDuracao = unidadesDuracao[rng.GerarEntre(0, unidadesDuracao.Count - 1, rnd)];
+                resultado.ValorDuracao = genValorMag.Gerar(rnd);
             }
             return resultado;
         }
 
-        public List<DuracaoEfeito> GerarLista(int quantidade)
+        public List<DuracaoEfeito> GerarLista(int quantidade, Random rnd)
         {
             List<DuracaoEfeito> resultado = new List<DuracaoEfeito>();
 
             for (int i = 0; i < quantidade-1; i++)
             {
-                resultado.Add(Gerar());
+                resultado.Add(Gerar(rnd));
             }
             return resultado;
         }

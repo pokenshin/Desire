@@ -1,4 +1,4 @@
-﻿namespace Desire.Core
+﻿namespace Desire.Core.Energias
 {
     public class Energia
     {

@@ -6,30 +6,30 @@ namespace Desire.Core.Util.Geradores
 {
     public class GeradorResposta : IGerador<Resposta>
     {
-        public Resposta Gerar()
+        public Resposta Gerar(Random rnd)
         {
             GeradorInteiro rng = new GeradorInteiro();
             Resposta resposta = new Resposta()
             {
-                Bravura = rng.GerarEntre(1, 1000),
-                Coragem = rng.GerarEntre(1, 1000),
-                Desespero = rng.GerarEntre(1, 1000),
-                Heroismo = rng.GerarEntre(1, 1000),
-                Indiferenca = rng.GerarEntre(1, 1000),
-                Medo = rng.GerarEntre(1, 1000),
-                Panico = rng.GerarEntre(1, 1000)
+                Bravura = rng.GerarEntre(1, 1000, rnd),
+                Coragem = rng.GerarEntre(1, 1000, rnd),
+                Desespero = rng.GerarEntre(1, 1000, rnd),
+                Heroismo = rng.GerarEntre(1, 1000, rnd),
+                Indiferenca = rng.GerarEntre(1, 1000, rnd),
+                Medo = rng.GerarEntre(1, 1000, rnd),
+                Panico = rng.GerarEntre(1, 1000, rnd)
             };
 
             return resposta;
         }
 
-        public List<Resposta> GerarLista(int quantidade)
+        public List<Resposta> GerarLista(int quantidade, Random rnd)
         {
             List<Resposta> resultado = new List<Resposta>();
 
-            for (int i = 0; i < quantidade - 1; i++)
+            for (int i = 0; i < quantidade; i++)
             {
-                resultado.Add(Gerar());
+                resultado.Add(Gerar(rnd));
             }
 
             return resultado;

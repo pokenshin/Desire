@@ -4,11 +4,9 @@ using System.Text;
 
 namespace Desire.Core.Util.Geradores
 {
-    class GeradorBoolean: IGerador<bool>
+    public class GeradorBoolean: IGerador<bool>
     {
-        Random rnd = new Random();
-
-        public bool GeraComChance(int chanceTrue)
+        public bool GeraComChance(int chanceTrue, Random rnd)
         {
             int resultado = rnd.Next(1, 101);
 
@@ -18,14 +16,14 @@ namespace Desire.Core.Util.Geradores
                 return false;
         }
 
-        public bool Gerar()
+        public bool Gerar(Random rnd)
         {
             int resultado = rnd.Next(0, 2);
 
             return (resultado == 1);
         }
 
-        public List<bool> GerarLista(int quantidade)
+        public List<bool> GerarLista(int quantidade, Random rnd)
         {
             List <bool> resultado = new List<bool>();
 

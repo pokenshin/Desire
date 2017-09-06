@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Desire.Core.Ciencias;
+using Desire.Core.Energias;
 
 namespace Desire.Core
 {

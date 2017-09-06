@@ -4,6 +4,7 @@ using System.Text;
 using Desire.Core.Itens;
 using Desire.Core.Identidade;
 using Desire.Core.Ciencias;
+using Desire.Core.Energias;
 
 namespace Desire.Core
 {

@@ -9,6 +9,7 @@ using Desire.Core.Itens;
 using Desire.Core.Identidade;
 using Desire.Core.Ciencias;
 using Desire.Core.Util.Geradores;
+using Desire.Core.Energias;
 
 namespace Desire.Core.Util
 {
@@ -311,6 +312,7 @@ namespace Desire.Core.Util
         {
             GeradorValorMag genValorMag = new GeradorValorMag();
             CalculadorNumero calculador = new CalculadorNumero();
+            Random rnd = new Random();
             //Iniciativa = Destreza.Iniciativa
             ser.Iniciativa = ser.Destreza.Iniciativa;
 
@@ -331,13 +333,13 @@ namespace Desire.Core.Util
             ser.Turno = ser.Especies[0].TurnoMin + (int)calculador.CalculaPorcentagem(20, (long)(from e in ser.Especies select e.TurnoMin).Max());
 
             //Altura = aleatorio a partir da especie dominante
-            ser.Altura = genValorMag.GerarEntre(ser.Especies[0].AlturaMin, ser.Especies[0].AlturaMax);
+            ser.Altura = genValorMag.GerarEntre(ser.Especies[0].AlturaMin, ser.Especies[0].AlturaMax, rnd);
 
             //Comprimento = Pontos em matéria
             ser.Comprimento = new ValorMag(Convert.ToString(ser.Materia.Pontos));
 
             //Largura = Aleatorio entre largura min e largura max da especie dominante
-            ser.Largura = genValorMag.GerarEntre(ser.Especies[0].LarguraMin, ser.Especies[0].LarguraMax);
+            ser.Largura = genValorMag.GerarEntre(ser.Especies[0].LarguraMin, ser.Especies[0].LarguraMax, rnd);
 
             //Massa = Volume * Densidade da Especie
             ValorMag volume = calculador.MultiplicaValorMag(ser.Altura, ser.Comprimento);

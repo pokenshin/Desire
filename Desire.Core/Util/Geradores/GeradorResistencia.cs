@@ -4,9 +4,9 @@ using Desire.Core.Identidade;
 
 namespace Desire.Core.Util.Geradores
 {
-    internal class GeradorResistencia : IGerador<Resistencia>
+    public class GeradorResistencia : IGerador<Resistencia>
     {
-        public Resistencia Gerar()
+        public Resistencia Gerar(Random rnd)
         {
             GeradorInteiro rng = new GeradorInteiro();
             GeradorValorMag genValorMag = new GeradorValorMag();
@@ -14,38 +14,38 @@ namespace Desire.Core.Util.Geradores
             GeradorString genString = new GeradorString();
             CalculadorNumero calculador = new CalculadorNumero();
             Resistencia resultado = new Resistencia();
-            ValorMag min = genValorMag.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 10));
-            ValorMag max = calculador.SomaValorMag(min, genValorMag.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 10)));
+            ValorMag min = genValorMag.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 10), rnd);
+            ValorMag max = calculador.SomaValorMag(min, genValorMag.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 10), rnd));
 
             char tipo;
-            if (genBoolean.GeraComChance(50))
+            if (genBoolean.GeraComChance(50, rnd))
                     tipo = '+';
                 else
                     tipo = '-';
 
-            resultado.Nome = genString.GerarTamanhoEspecifico(3, 10);
+            resultado.Nome = genString.GerarTamanhoEspecifico(3, 10, rnd);
 
             if (tipo == '+')
             {
-                resultado.Positiva = genValorMag.GerarEntre(min, max);
+                resultado.Positiva = genValorMag.GerarEntre(min, max, rnd);
                 resultado.Negativa = new ValorMag();
             }
             else
             {
                 resultado.Positiva = new ValorMag();
-                resultado.Negativa = genValorMag.GerarEntre(min, max);
+                resultado.Negativa = genValorMag.GerarEntre(min, max, rnd);
             }
 
             return resultado;
         }
 
-        public List<Resistencia> GerarLista(int quantidade)
+        public List<Resistencia> GerarLista(int quantidade, Random rnd)
         {
             List<Resistencia> resultado = new List<Resistencia>();
 
-            for (int i = 0; i < quantidade - 1; i++)
+            for (int i = 0; i < quantidade; i++)
             {
-                resultado.Add(Gerar());
+                resultado.Add(Gerar(rnd));
             }
 
             return resultado;

@@ -6,25 +6,25 @@ namespace Desire.Core.Util.Geradores
 {
     public class GeradorCarisma : IGerador<Carisma>
     {
-        public Carisma Gerar()
+        public Carisma Gerar(Random rnd)
         {
             GeradorInteiro rng = new GeradorInteiro();
             Carisma carisma = new Carisma()
             {
-                Negativo = rng.GerarEntre(0, 100),
-                Neutro = rng.GerarEntre(0, 100),
-                Positivo = rng.GerarEntre(0, 100)
+                Negativo = rng.GerarEntre(0, 100, rnd),
+                Neutro = rng.GerarEntre(0, 100, rnd),
+                Positivo = rng.GerarEntre(0, 100, rnd)
             };
             return carisma;
         }
 
-        public List<Carisma> GerarLista(int quantidade)
+        public List<Carisma> GerarLista(int quantidade, Random rnd)
         {
             List<Carisma> resultado = new List<Carisma>();
 
-            for (int i = 0; i < quantidade - 1; i++)
+            for (int i = 0; i < quantidade; i++)
             {
-                resultado.Add(Gerar());
+                resultado.Add(Gerar(rnd));
             }
 
             return resultado;

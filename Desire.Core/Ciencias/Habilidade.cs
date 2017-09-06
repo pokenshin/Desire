@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Desire.Core.Efeitos;
-using Desire.Core.Ciencias;
+using Desire.Core.Energias;
 
 namespace Desire.Core.Ciencias
 {
@@ -10,6 +10,7 @@ namespace Desire.Core.Ciencias
         public string Nome { get; set; }
         public int Magnitude { get; set; }
         public string Caracteristicas { get; set; }
+        public TipoHabilidade Tipo { get; set; }
         public Energia Energia { get; set; }
         public Pericia PericiaAssociada { get; set; }
         public AreaCientifica AreaCientifica { get; set; }

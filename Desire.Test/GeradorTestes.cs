@@ -6,20 +6,23 @@ using Desire.Core.Itens;
 using Desire.Core.Util;
 using System.Collections.Generic;
 using Desire.Core.Identidade;
-using Desire.Core.Util.Geradores();
+using Desire.Core.Util.Geradores;
+using Desire.Core.Energias;
+using Desire.Core.Ciencias;
 
 namespace Desire.Test
 {
     [TestClass]
     public class GeradorTestes
     {
+        Random rnd = new Random();
         //Vê se o método GeraNomeAleatorio está retornando strings do tamanho adequado
         //Resultado esperado: qualquer string maior que 9 caracteres e menor que 28
         [TestMethod]
         public void TesteGeraNomeAleatorio()
         {
-            GeradorString gerador = new Gerador();
-            string resultado = gerador.GeraNomeAleatorio(3, 10);
+            GeradorString genString = new GeradorString();
+            string resultado = genString.GerarTamanhoEspecifico(3, 10, rnd);
 
             Assert.IsTrue(resultado.Length >= 3 && resultado.Length <= 10);
         }
@@ -29,7 +32,7 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraInteiro()
         {
-            gerador = new Gerador();
+            GeradorInteiro rng = new GeradorInteiro();
             Random rnd = new Random();
             int resultado;
             for (int i = 0; i < 10; i++)
@@ -37,7 +40,7 @@ namespace Desire.Test
                 int min = rnd.Next(0, 100);
                 int max = min + rnd.Next(1, 100);
 
-                resultado = gerador.GeraInteiro(min, max);
+                resultado = rng.GerarEntre(min, max, rnd);
                 Assert.IsTrue(resultado >= min && resultado <= max);
             }
         }
@@ -47,11 +50,11 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraInteiroAleatorio()
         {
-            gerador = new Gerador();
+            GeradorInteiro rng = new GeradorInteiro();
             int resultado1;
             int resultado2;
-            resultado1 = gerador.GeraInteiro(1, 1000);
-            resultado2 = gerador.GeraInteiro(1, 1000);
+            resultado1 = rng.GerarEntre(1, 1000, rnd);
+            resultado2 = rng.GerarEntre(1, 1000, rnd);
             Assert.AreNotEqual(resultado1, resultado2);
         }
 
@@ -60,12 +63,12 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraBoolean()
         {
-            gerador = new Gerador();
+            GeradorBoolean gerador = new GeradorBoolean();
             int verdadeiros = 0;
 
             for (int i = 0; i < 100; i++)
             {
-                if (gerador.GeraBoolean(70))
+                if (gerador.GeraComChance(70, rnd))
                     verdadeiros = ++verdadeiros;
             }
 
@@ -77,8 +80,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteNomesGeraSerAleatorio()
         {
-            gerador = new Gerador();
-            Ser ser = gerador.GeraSerAleatorio();
+            GeradorSer gerador = new GeradorSer();
+            Ser ser = gerador.Gerar(rnd);
 
             Assert.IsTrue(ser.Nome.Length > 2);
         }
@@ -88,8 +91,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteNomesGeraOrigem()
         {
-            gerador = new Gerador();
-            Origem origem = gerador.GeraOrigem();
+            GeradorOrigem gerador = new GeradorOrigem();
+            Origem origem = gerador.Gerar(rnd);
 
             Assert.IsTrue(origem.Nome.Length > 0);
             Assert.IsTrue(origem.Plano.Nome.Length > 0);
@@ -101,8 +104,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteQuantidadeGeraListaEnergias()
         {
-            gerador = new Gerador();
-            List<Energia> lista = gerador.GeraListaEnergias();
+            GeradorEnergia gerador = new GeradorEnergia();
+            List<Energia> lista = gerador.GerarLista(5, rnd);
 
             Assert.IsTrue(lista.Count > 0 && lista.Count < 9);
         }
@@ -112,8 +115,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraAtributo()
         {
-            gerador = new Gerador();
-            Forca forca = (Forca)gerador.GeraAtributo("Força");
+            GeradorForca gerador = new GeradorForca();
+            Forca forca = gerador.Gerar(rnd);
 
             Assert.IsNotNull(forca);
         }
@@ -123,8 +126,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraModificadorInt()
         {
-            gerador = new Gerador();
-            Modificador modificador = gerador.GeraModificadorInt("Teste", 0, '+');
+            GeradorModificador gerador = new GeradorModificador();
+            Modificador modificador = gerador.Gerar(rnd);
 
             Assert.IsNotNull(modificador);
         }
@@ -134,8 +137,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraListaModificadores()
         {
-            gerador = new Gerador();
-            List<Modificador> lista = gerador.GeraListaModificadores("Teste", 0);
+            GeradorModificador gerador = new GeradorModificador();
+            List<Modificador> lista = gerador.GerarLista(10, rnd);
 
             Assert.IsTrue(lista.Count > 0);
         }
@@ -145,8 +148,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraPericia()
         {
-            gerador = new Gerador();
-            Pericia pericia = gerador.GeraPericia();
+            GeradorPericia gerador = new GeradorPericia();
+            Pericia pericia = gerador.Gerar(rnd);
 
             Assert.IsNotNull(pericia);
         }
@@ -156,10 +159,10 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraListaPericias()
         {
-            gerador = new Gerador();
-            List <Pericia> pericias = gerador.GeraListaPericias();
+            GeradorPericia gerador = new GeradorPericia();
+            List <Pericia> pericias = gerador.GerarLista(10, rnd);
 
-            Assert.IsTrue(pericias.Count > 0);
+            Assert.IsTrue(pericias.Count == 10);
         }
 
         //Teste a geração de uma Habilidade usando a função GeraHabilidade
@@ -167,8 +170,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraHabilidade()
         {
-            gerador = new Gerador();
-            Habilidade habilidade = gerador.GeraHabilidade();
+            GeradorHabilidade gerador = new GeradorHabilidade();
+            Habilidade habilidade = gerador.Gerar(rnd);
 
             Assert.IsNotNull(habilidade);
         
@@ -179,8 +182,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraAreaCientifica()
         {
-            gerador = new Gerador();
-            AreaCientifica area = gerador.GeraAreaCientifica();
+            GeradorAreaCientifica gerador = new GeradorAreaCientifica();
+            AreaCientifica area = gerador.Gerar(rnd);
 
             Assert.IsNotNull(area);
         }
@@ -190,8 +193,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraCiencia()
         {
-            gerador = new Gerador();
-            Ciencia ciencia = gerador.GeraCiencia();
+            GeradorCiencia gerador = new GeradorCiencia();
+            Ciencia ciencia = gerador.Gerar(rnd);
 
             Assert.IsNotNull(ciencia);
         }
@@ -201,8 +204,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraEsferaCientifica()
         {
-            gerador = new Gerador();
-            Esfera esfera = gerador.GeraEsferaCientifica();
+            GeradorEsfera gerador = new GeradorEsfera();
+            Esfera esfera = gerador.Gerar(rnd);
 
             Assert.IsNotNull(esfera);
         }
@@ -212,8 +215,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraListaHabilidades()
         {
-            gerador = new Gerador();
-            List<Habilidade> habilidades = gerador.GeraListaHabilidades(1, 10);
+            GeradorHabilidade gerador = new GeradorHabilidade();
+            List<Habilidade> habilidades = gerador.GerarLista(10, rnd);
 
             Assert.IsTrue(habilidades.Count > 0);
         }
@@ -223,8 +226,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraOrigem()
         {
-            gerador = new Gerador();
-            Origem origem = gerador.GeraOrigem();
+            GeradorOrigem gerador = new GeradorOrigem();
+            Origem origem = gerador.Gerar(rnd);
 
             Assert.IsNotNull(origem);
         }
@@ -235,8 +238,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraListaEnergias()
         {
-            gerador = new Gerador();
-            List<Energia> energias = gerador.GeraListaEnergias();
+            GeradorEnergia gerador = new GeradorEnergia();
+            List<Energia> energias = gerador.GerarLista(10, rnd);
 
             Assert.IsTrue(energias.Count > 0);
         }
@@ -246,8 +249,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraEspecie()
         {
-            gerador = new Gerador();
-            Especie especie = gerador.GeraEspecie();
+            GeradorEspecie gerador = new GeradorEspecie();
+            Especie especie = gerador.Gerar(rnd);
 
             Assert.IsNotNull(especie);
 
@@ -258,8 +261,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraClasse()
         {
-            gerador = new Gerador();
-            Classe classe = gerador.GeraClasse();
+            GeradorClasse gerador = new GeradorClasse();
+            Classe classe = gerador.Gerar(rnd);
 
             Assert.IsNotNull(classe);
         }
@@ -269,10 +272,10 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraListaClasses()
         {
-            gerador = new Gerador();
-            List<Classe> classes = gerador.GeraListaClasses();
+            GeradorClasse gerador = new GeradorClasse();
+            List<Classe> classes = gerador.GerarLista(10, rnd);
 
-            Assert.IsTrue(classes.Count > 0);
+            Assert.IsTrue(classes.Count == 10);
         }
 
         //Testa a geração de um material aleatório utilizando a função GeraMaterial
@@ -280,8 +283,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraMaterial()
         {
-            gerador = new Gerador();
-            Material material = gerador.GeraMaterial();
+            GeradorMaterial gerador = new GeradorMaterial();
+            Material material = gerador.Gerar(rnd);
 
             Assert.IsNotNull(material);
         }
@@ -291,8 +294,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraItemArmaBranca()
         {
-            gerador = new Gerador();
-            ArmaBranca armaBranca = (ArmaBranca)gerador.GeraItem("ArmaBranca");
+            GeradorArmaBranca gerador = new GeradorArmaBranca();
+            ArmaBranca armaBranca = gerador.Gerar(rnd);
 
             Assert.IsNotNull(armaBranca);
         }
@@ -302,8 +305,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraItem()
         {
-            gerador = new Gerador();
-            Item item = gerador.GeraItem();
+            GeradorItem gerador = new GeradorItem();
+            Item item = gerador.Gerar(rnd);
 
             Assert.IsNotNull(item);
         }
@@ -313,8 +316,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraMunicao()
         {
-            gerador = new Gerador();
-            Municao municao = gerador.GeraMunicao();
+            GeradorMunicao gerador = new GeradorMunicao();
+            Municao municao = gerador.Gerar(rnd);
 
             Assert.IsNotNull(municao);
         }
@@ -324,8 +327,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraListaEquipamentos()
         {
-            gerador = new Gerador();
-            List<Item> lista = gerador.GeraListaEquipamentos(5, 5);
+            GeradorEquipamento gerador = new GeradorEquipamento();
+            List<Equipamento> lista = gerador.GerarLista(10, rnd);
 
             Assert.IsTrue(lista.Count > 0);
         }
@@ -335,22 +338,10 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraListaItens()
         {
-            gerador = new Gerador();
-            List<Item> lista = gerador.GeraListaItens(gerador.GeraInteiro(1, 10));
+            GeradorItem gerador = new GeradorItem();
+            List<Item> lista = gerador.GerarLista(10, rnd);
 
             Assert.IsTrue(lista.Count > 0);
-        }
-
-        //Testa a geração de uma cor aleatória a partir da função GeraCor()
-        //Resultado esperado: uma cor aleatória a partir da lista definida dentro da classe Gerador
-        [TestMethod]
-        public void TesteGeraCor()
-        {
-            gerador = new Gerador();
-            string cor = gerador.GeraCor();
-
-            Assert.IsNotNull(cor);
-            Assert.IsTrue(cor != "");
         }
 
         //Testa a geração de um rei aleatório utilizando a função GeraRei()
@@ -358,8 +349,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraRei()
         {
-            gerador = new Gerador();
-            Rei rei = gerador.GeraRei();
+            GeradorRei gerador = new GeradorRei();
+            Rei rei = gerador.Gerar(rnd);
 
             Assert.IsNotNull(rei);
         }
@@ -369,8 +360,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraListaReis()
         {
-            gerador = new Gerador();
-            List<Rei> lista = gerador.GeraListaReis();
+            GeradorRei gerador = new GeradorRei();
+            List<Rei> lista = gerador.GerarLista(10, rnd);
 
             Assert.IsNotNull(lista);
             Assert.IsTrue(lista.Count > 0);
@@ -381,8 +372,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraInteirosQueSomam()
         {
-            gerador = new Gerador();
-            int[] resultado = gerador.GeraInteirosQueSomam(5, 100);
+            GeradorInteiro gerador = new GeradorInteiro();
+            int[] resultado = gerador.GerarInteirosQueSomam(5, 100, rnd);
             int soma = resultado[0] + resultado[1] + resultado[2] + resultado[3] + resultado[4];
 
             Assert.IsTrue(soma == 100);
@@ -393,8 +384,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraListaEspecies()
         {
-            gerador = new Gerador();
-            List<Especie> lista = gerador.GeraListaEspecies();
+            GeradorEspecie gerador = new GeradorEspecie();
+            List<Especie> lista = gerador.GerarLista(10, rnd);
 
             Assert.IsTrue(lista.Count > 0);
 
@@ -405,8 +396,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraLong()
         {
-            gerador = new Gerador();
-            long resultado = gerador.GeraLong(1000000000, 10000000000);
+            GeradorLong gerador = new GeradorLong();
+            long resultado = gerador.GerarEntre(1000000000, 10000000000, rnd);
 
             Assert.IsTrue(resultado >= 1000000000);
             Assert.IsTrue(resultado <= 10000000000);
@@ -417,30 +408,21 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraValorMag()
         {
-            gerador = new Gerador();
+            GeradorValorMag gerador = new GeradorValorMag();
             ValorMag valorMag1 = new ValorMag(10, 3);
             ValorMag valorMag2 = new ValorMag(10, 5);
-            ValorMag resultado = gerador.GeraValorMag(valorMag1, valorMag2);
+            ValorMag resultado = gerador.GerarEntre(valorMag1, valorMag2, rnd);
 
             Assert.IsTrue(Convert.ToInt32(resultado.ValorReal)>= Convert.ToInt32(valorMag1.ValorReal));
             Assert.IsTrue(Convert.ToInt32(resultado.ValorReal) <= Convert.ToInt32(valorMag2.ValorReal));
-        }
-
-        //Testa a geração de uma origem do poder válida
-        [TestMethod]
-        public void TesteGeraOrigemPoder()
-        {
-            gerador = new Gerador();
-
-            Assert.IsNotNull(gerador.GeraOrigemPoder());
         }
 
         //Testa a geração de uma Natureza válida
         [TestMethod]
         public void TesteGeraNatureza()
         {
-            gerador = new Gerador();
-            Natureza natureza = gerador.GeraNatureza();
+            GeradorNatureza gerador = new GeradorNatureza();
+            Natureza natureza = gerador.Gerar(rnd);
 
             Assert.IsNotNull(natureza.Apresentacao);
             Assert.IsNotNull(natureza.Concepcao);
@@ -454,8 +436,8 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraResposta()
         {
-            gerador = new Gerador();
-            Resposta reacao = gerador.GeraResposta();
+            GeradorResposta gerador = new GeradorResposta();
+            Resposta reacao = gerador.Gerar(rnd);
 
             Assert.IsNotNull(reacao);
         }
@@ -464,9 +446,9 @@ namespace Desire.Test
         [TestMethod]
         public void TesteGeraResistencias()
         {
-            gerador = new Gerador();
+            GeradorResistencia gerador = new GeradorResistencia();
 
-            List<Resistencia> lista = gerador.GeraListaResistencias();
+            List<Resistencia> lista = gerador.GerarLista(10, rnd);
 
             Assert.IsTrue(lista.Count > 0);
         }

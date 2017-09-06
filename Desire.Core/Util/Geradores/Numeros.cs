@@ -10,14 +10,14 @@ namespace Desire.Core.Util.Geradores
         ///</summary>
         /// <param name="min">Valor Mínimo do número aleatório (inclusivo)</param>
         /// <param name="max">Valor Máximo do número aleatório (inclusivo)</param>
-        T GerarEntre(T min, T max);
+        T GerarEntre(T min, T max, Random rnd);
         ///<summary>
         ///Gera uma lista de numeros no range e na quantidade especificados.
         ///</summary>
         /// <param name="min">Valor Mínimo do número aleatório (inclusivo)</param>
         /// <param name="max">Valor Máximo do número aleatório (inclusivo)</param>
         /// <param name="quantidade">Quantidade máxima de itens na lista</param>
-        List<T> GeraListaRange(T min, T max, int quantidade);
+        List<T> GeraListaRange(T min, T max, int quantidade, Random rnd);
     }
 
     ///<summary>
@@ -25,35 +25,33 @@ namespace Desire.Core.Util.Geradores
     ///</summary>
     public class GeradorInteiro: IGerador<int>, IGeradorNumero<int>
     {
-        Random rnd = new Random();
-
-        public int Gerar()
+        public int Gerar(Random rnd)
         {
             return rnd.Next(int.MinValue, int.MaxValue);
         }
 
-        public List<int> GerarLista(int quantidade)
+        public List<int> GerarLista(int quantidade, Random rnd)
         {
-            return GeraListaRange(int.MinValue, int.MaxValue, quantidade);
+            return GeraListaRange(int.MinValue, int.MaxValue, quantidade, rnd);
         }
 
-        public int GerarEntre(int min, int max)
+        public int GerarEntre(int min, int max, Random rnd)
         {
             return rnd.Next(min, max + 1);
         }
 
-        public List<int> GeraListaRange(int min, int max, int quantidade)
+        public List<int> GeraListaRange(int min, int max, int quantidade, Random rnd)
         {
             List<int> resultado = new List<int>();
-            for (int i = 0; i < quantidade - 1; i++)
+            for (int i = 0; i < quantidade; i++)
             {
-                resultado.Add(GerarEntre(min, max));
+                resultado.Add(GerarEntre(min, max, rnd));
             }
 
             return resultado;
         }
 
-        public int[] GerarInteirosQueSomam(int quantidadeNumeros, int somaTotal)
+        public int[] GerarInteirosQueSomam(int quantidadeNumeros, int somaTotal, Random rnd)
         {
             int[] resultado = new int[quantidadeNumeros];
             double soma = 0;
@@ -62,7 +60,7 @@ namespace Desire.Core.Util.Geradores
 
             for (int i = 0; i < quantidadeNumeros; i++)
             {
-                resultado[i] = GerarEntre(1, 100);
+                resultado[i] = GerarEntre(1, 100, rnd);
                 if (i > 0)
                     soma = soma + resultado[i];
                 else
@@ -101,15 +99,13 @@ namespace Desire.Core.Util.Geradores
     ///</summary>
     public class GeradorValorMag : IGerador<ValorMag>, IGeradorNumero<ValorMag>
     {
-        GeradorInteiro rng = new GeradorInteiro();
-
-        public List<ValorMag> GeraListaRange(ValorMag min, ValorMag max, int quantidade)
+        public List<ValorMag> GeraListaRange(ValorMag min, ValorMag max, int quantidade, Random rnd)
         {
             List<ValorMag> resultado = new List<ValorMag>();
 
-            for (int i = 0; i < quantidade - 1; i++)
+            for (int i = 0; i < quantidade; i++)
             {
-                resultado.Add(GerarEntre(min, max));
+                resultado.Add(GerarEntre(min, max, rnd));
             }
 
             return resultado;
@@ -119,29 +115,31 @@ namespace Desire.Core.Util.Geradores
         ///<summary>
         ///Gera um ValorMag aleatório entre 10m0 e 99m20
         ///</summary>
-        public ValorMag Gerar()
+        public ValorMag Gerar(Random rnd)
         {
-            int valor = rng.GerarEntre(10, 99);
-            int mag = rng.GerarEntre(0, 20);
-            return new ValorMag();
+            GeradorInteiro rng = new GeradorInteiro();
+            int valor = rng.GerarEntre(10, 99, rnd);
+            int mag = rng.GerarEntre(0, 20, rnd);
+            return new ValorMag(valor, mag);
         }
 
-        public ValorMag GerarEntre(ValorMag min, ValorMag max)
+        public ValorMag GerarEntre(ValorMag min, ValorMag max, Random rnd)
         {
+            GeradorInteiro rng = new GeradorInteiro();
             int valor = 1;
-            int mag = rng.GerarEntre(min.Magnitude, max.Magnitude);
+            int mag = rng.GerarEntre(min.Magnitude, max.Magnitude, rnd);
 
             if (mag == min.Magnitude)
             {
                 if (mag == max.Magnitude)
-                    valor = rng.GerarEntre(min.Valor, max.Valor);
+                    valor = rng.GerarEntre(min.Valor, max.Valor, rnd);
                 else
-                    valor = rng.GerarEntre(min.Valor, 99);
+                    valor = rng.GerarEntre(min.Valor, 99, rnd);
             }
             else if (mag == max.Magnitude)
-                valor = rng.GerarEntre(10, max.Valor);
+                valor = rng.GerarEntre(10, max.Valor, rnd);
             else
-                valor = rng.GerarEntre(10, 99);
+                valor = rng.GerarEntre(10, 99, rnd);
 
             ValorMag resultado = new ValorMag(valor, mag);
 
@@ -152,13 +150,13 @@ namespace Desire.Core.Util.Geradores
         ///Gera uma lista de ValorMag aleatórios entre 10m0 e 99m20
         ///</summary>
         ///<param name="quantidade">Quantidade máxima de itens na lista</param>
-        public List<ValorMag> GerarLista(int quantidade)
+        public List<ValorMag> GerarLista(int quantidade, Random rnd)
         {
             List<ValorMag> resultado = new List<ValorMag>();
 
-            for (int i = 0; i < quantidade - 1; i++)
+            for (int i = 0; i < quantidade; i++)
             {
-                resultado.Add(Gerar());
+                resultado.Add(Gerar(rnd));
             }
 
             return resultado;
@@ -172,26 +170,26 @@ namespace Desire.Core.Util.Geradores
     {
         Random rnd = new Random();
 
-        public List<long> GeraListaRange(long min, long max, int quantidade)
+        public List<long> GeraListaRange(long min, long max, int quantidade, Random rnd)
         {
             List<long> resultado = new List<long>();
 
-            for (int i = 0; i < quantidade - 1; i++)
+            for (int i = 0; i < quantidade; i++)
             {
-                resultado.Add(GerarEntre(min, max));
+                resultado.Add(GerarEntre(min, max, rnd));
             }
 
             return resultado;
         }
 
-        public long Gerar()
+        public long Gerar(Random rnd)
         {
             byte[] buffer = new byte[8];
             rnd.NextBytes(buffer);
             return BitConverter.ToInt64(buffer, 0);
         }
 
-        public long GerarEntre(long min, long max)
+        public long GerarEntre(long min, long max, Random rnd)
         {
             byte[] buf = new byte[8];
             rnd.NextBytes(buf);
@@ -200,13 +198,13 @@ namespace Desire.Core.Util.Geradores
             return (Math.Abs(longRand % (max - min)) + min);
         }
 
-        public List<long> GerarLista(int quantidade)
+        public List<long> GerarLista(int quantidade, Random rnd)
         {
             List<long> resultado = new List<long>();
 
-            for (int i = 0; i < quantidade - 1; i++)
+            for (int i = 0; i < quantidade; i++)
             {
-                resultado.Add(Gerar());
+                resultado.Add(Gerar(rnd));
             }
 
             return resultado;

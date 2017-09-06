@@ -2,6 +2,7 @@
 using System.Numerics;
 using Desire.Core.Identidade;
 using Desire.Core.Ciencias;
+using Desire.Core.Energias;
 
 namespace Desire.Core.Identidade
 {

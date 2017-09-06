@@ -6,23 +6,23 @@ namespace Desire.Core.Util.Geradores
 {
     public class GeradorOrigem : IGerador<Origem>
     {
-        public Origem Gerar()
+        public Origem Gerar(Random rnd)
         {
             GeradorString rsg = new GeradorString();
             //TODO: pegar uma origem aleatoria do banco de dados.
-            Realidade realidade = new Realidade(rsg.GerarTamanhoEspecifico(2, 8));
-            Plano plano = new Plano(rsg.GerarTamanhoEspecifico(2, 8), realidade);
-            Origem origem = new Origem(rsg.GerarTamanhoEspecifico(4, 10), plano);
+            Realidade realidade = new Realidade(rsg.GerarTamanhoEspecifico(2, 8, rnd));
+            Plano plano = new Plano(rsg.GerarTamanhoEspecifico(2, 8, rnd), realidade);
+            Origem origem = new Origem(rsg.GerarTamanhoEspecifico(4, 10, rnd), plano);
 
             return origem;
         }
 
-        public List<Origem> GerarLista(int quantidade)
+        public List<Origem> GerarLista(int quantidade, Random rnd)
         {
             List<Origem> lista = new List<Origem>();
             for (int i = 0; i < quantidade-1; i++)
             {
-                lista.Add(Gerar());
+                lista.Add(Gerar(rnd));
             }
             return lista;
         }

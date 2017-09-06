@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Desire.Core.Util.Geradores
 {
-    class GeradorSer : IGerador<Ser>
+    public class GeradorSer : IGerador<Ser>
     {
-        public Ser Gerar()
+        public Ser Gerar(Random rnd)
         {
             //TODO: Pegar valores aleatórios do banco de dados ao invés de gera-los aleatoriamente
             //TODO: Restringir o tempo baseado nas restrições de tempo da espécie selecionada
@@ -32,43 +32,43 @@ namespace Desire.Core.Util.Geradores
             GeradorEquipamento genEquipamento = new GeradorEquipamento();
             CalculadorSer calculador = new CalculadorSer();
 
-            string primeiroNome = genString.GerarTamanhoEspecifico(2, 6);
-            string segundoNome = genString.GerarTamanhoEspecifico(0, 9);
+            string primeiroNome = genString.GerarTamanhoEspecifico(2, 6, rnd);
+            string segundoNome = genString.GerarTamanhoEspecifico(0, 9, rnd);
 
             Ser ser = new Ser()
             {
-                Origem = genOrigem.Gerar(),
-                Tempo = rng.GerarEntre(1, 1000),
-                Especies = genEspecie.GerarLista(rng.GerarEntre(1, 3)),
-                Classes = genClasse.GerarLista(rng.GerarEntre(1, 3)),
-                Indole = genIndole.Gerar(),
-                Reis = genRei.GerarLista(rng.GerarEntre(0, 5)),
-                Ki = rng.GerarEntre(0, 1000),
-                Nivel = rng.GerarEntre(0, 100000),
+                Origem = genOrigem.Gerar(rnd),
+                Tempo = rng.GerarEntre(1, 1000, rnd),
+                Especies = genEspecie.GerarLista(rng.GerarEntre(1, 3, rnd), rnd),
+                Classes = genClasse.GerarLista(rng.GerarEntre(1, 3, rnd), rnd),
+                Indole = genIndole.Gerar(rnd),
+                Reis = genRei.GerarLista(rng.GerarEntre(0, 5, rnd), rnd),
+                Ki = rng.GerarEntre(0, 1000, rnd),
+                Nivel = rng.GerarEntre(0, 100000, rnd),
                 //Atributos
-                Forca = genForca.Gerar(),
-                Materia = genMateria.Gerar(),
-                Destreza = genDestreza.Gerar(),
-                Intelecto = genIntelecto.Gerar(),
-                Criatividade = genCriatividade.Gerar(),
-                Existencia = genExistencia.Gerar(),
-                Ideia = genIdeia.Gerar(),
+                Forca = genForca.Gerar(rnd),
+                Materia = genMateria.Gerar(rnd),
+                Destreza = genDestreza.Gerar(rnd),
+                Intelecto = genIntelecto.Gerar(rnd),
+                Criatividade = genCriatividade.Gerar(rnd),
+                Existencia = genExistencia.Gerar(rnd),
+                Ideia = genIdeia.Gerar(rnd),
                 //Perícias
-                Pericias = genPericia.GerarLista(rng.GerarEntre(1, 20)),
+                Pericias = genPericia.GerarLista(rng.GerarEntre(1, 20, rnd), rnd),
                 //Itens e Equips
-                Posses = genItem.GerarLista(rng.GerarEntre(1, 20)),
+                Posses = genItem.GerarLista(rng.GerarEntre(1, 20, rnd), rnd),
                 //Origem do Poder
-                OrigemPoder = genString.GerarTamanhoEspecifico(2, 20),
+                OrigemPoder = genString.GerarTamanhoEspecifico(2, 20, rnd),
                 //Virtudes
-                Virtudes = genModificador.GerarListaComOrigem("Virtudes", 3, '+'),
+                Virtudes = genModificador.GerarListaComOrigem("Virtudes", 3, rng.GerarEntre(1, 5, rnd), rnd, '+'),
                 //Defeitos
-                Defeitos = genModificador.GerarListaComOrigem("Defeitos", 6, '-'),
+                Defeitos = genModificador.GerarListaComOrigem("Defeitos", 6, rng.GerarEntre(1,5, rnd), rnd, '-'),
                 //Resistências
-                Resistencias = genResistencia.GerarLista(rng.GerarEntre(0, 10)),
+                Resistencias = genResistencia.GerarLista(rng.GerarEntre(0, 10, rnd), rnd),
                 //Gênese
-                Genese = rng.GerarEntre(1, 5),
+                Genese = rng.GerarEntre(1, 5, rnd),
                 //Geração
-                Geracao = rng.GerarEntre(1, 10),
+                Geracao = rng.GerarEntre(1, 10, rnd),
                 //Trajetória
                 Trajetoria = "Trajetória Gerada Aleatóriamente",
                 //Elo Divino
@@ -76,13 +76,13 @@ namespace Desire.Core.Util.Geradores
                 //Idumentária
                 Idumentaria = "Idumentária gerada aleatoriamente",
                 //Subatributo Subatributos Extra
-                SubatributoExtraNome1 = genString.GerarTamanhoEspecifico(3, 10),
-                SubatributoExtraValor1 = genValorMag.Gerar(),
-                SubatributoExtraNome2 = genString.GerarTamanhoEspecifico(3, 10),
-                SubatributoExtraValor2 = genValorMag.Gerar()
+                SubatributoExtraNome1 = genString.GerarTamanhoEspecifico(3, 10, rnd),
+                SubatributoExtraValor1 = genValorMag.Gerar(rnd),
+                SubatributoExtraNome2 = genString.GerarTamanhoEspecifico(3, 10, rnd),
+                SubatributoExtraValor2 = genValorMag.Gerar(rnd)
             };
             //Itens Equipados
-            ser.Equipamentos = genEquipamento.GerarLista(ser.Especies[0].MaxItensEquipados);
+            ser.Equipamentos = genEquipamento.GerarLista(ser.Especies[0].MaxItensEquipados, rnd);
 
             //Geradores
             //Identidade
@@ -97,13 +97,13 @@ namespace Desire.Core.Util.Geradores
             return ser;
         }
 
-        public List<Ser> GerarLista(int quantidade)
+        public List<Ser> GerarLista(int quantidade, Random rnd)
         {
             List<Ser> resultado = new List<Ser>();
 
-            for (int i = 0; i < quantidade - 1; i++)
+            for (int i = 0; i < quantidade; i++)
             {
-                resultado.Add(Gerar());
+                resultado.Add(Gerar(rnd));
             }
 
             return resultado;

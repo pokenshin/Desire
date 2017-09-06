@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Desire.Core.Ciencias;
+using Desire.Core.Energias;
 
 namespace Desire.Core.Efeitos
 {

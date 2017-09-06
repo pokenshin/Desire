@@ -4,32 +4,32 @@ using Desire.Core.Identidade;
 
 namespace Desire.Core.Util.Geradores
 {
-    internal class GeradorNatureza : IGerador<Natureza>
+    public class GeradorNatureza : IGerador<Natureza>
     {
-        public Natureza Gerar()
+        public Natureza Gerar(Random rnd)
         {
             GeradorInteiro rng = new GeradorInteiro();
 
             Natureza resultado = new Natureza()
             {
-                Apresentacao = rng.GerarEntre(1, 26),
-                Concepcao = rng.GerarEntre(1, 26),
-                Honra = rng.GerarEntre(1, 26),
-                Moral = rng.GerarEntre(1, 26),
-                Percepcao = rng.GerarEntre(1, 26),
-                Personalidade = rng.GerarEntre(1, 26)
+                Apresentacao = rng.GerarEntre(1, 26, rnd),
+                Concepcao = rng.GerarEntre(1, 26, rnd),
+                Honra = rng.GerarEntre(1, 26, rnd),
+                Moral = rng.GerarEntre(1, 26, rnd),
+                Percepcao = rng.GerarEntre(1, 26, rnd),
+                Personalidade = rng.GerarEntre(1, 26, rnd)
             };
 
             return resultado;
         }
 
-        public List<Natureza> GerarLista(int quantidade)
+        public List<Natureza> GerarLista(int quantidade, Random rnd)
         {
             List<Natureza> resultado = new List<Natureza>();
 
-            for (int i = 0; i < quantidade - 1; i++)
+            for (int i = 0; i < quantidade; i++)
             {
-                resultado.Add(Gerar());
+                resultado.Add(Gerar(rnd));
             }
 
             return resultado;
