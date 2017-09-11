@@ -27,7 +27,7 @@ namespace Desire.Core.Util.Geradores
         {
             List <bool> resultado = new List<bool>();
 
-            for (int i = 0; i < quantidade-1; i++)
+            for (int i = 0; i < quantidade; i++)
             {
                 int item = rnd.Next(0, 2);
 

@@ -22,6 +22,7 @@ namespace Desire.Core.Util.Geradores
             GeradorAreaCientifica genAreaCientifica = new GeradorAreaCientifica();
             GeradorTipoDeAlvo genTipoDeAlvo = new GeradorTipoDeAlvo();
             GeradorEfeito genEfeito = new GeradorEfeito();
+            GeradorTipoDeHabilidade genTipoDeHabilidade = new GeradorTipoDeHabilidade();
 
             Habilidade habilidade = new Habilidade()
             {
@@ -31,7 +32,8 @@ namespace Desire.Core.Util.Geradores
                 PericiaAssociada = genPericia.Gerar(rnd),
                 Energia = genEnergia.Gerar(rnd),
                 AreaCientifica = genAreaCientifica.Gerar(rnd),
-                Efeitos = genEfeito.GerarLista(rng.GerarEntre(1,3, rnd), rnd)
+                Efeitos = genEfeito.GerarLista(rng.GerarEntre(1, 3, rnd), rnd),
+                Tipo = genTipoDeHabilidade.Gerar(rnd)
             };
             habilidade.Caracteristicas = "Habilidade gerada automaticamente.";
 
@@ -42,7 +44,7 @@ namespace Desire.Core.Util.Geradores
         {
             List<Habilidade> resultado = new List<Habilidade>();
 
-            for (int i = 0; i < quantidade-1; i++)
+            for (int i = 0; i < quantidade; i++)
             {
                 resultado.Add(Gerar(rnd));
             }

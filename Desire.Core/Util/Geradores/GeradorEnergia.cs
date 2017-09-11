@@ -25,7 +25,7 @@ namespace Desire.Core.Util.Geradores
         {
             List<Energia> resultado = new List<Energia>();
 
-            for (int i = 0; i < quantidade-1; i++)
+            for (int i = 0; i < quantidade; i++)
             {
                 resultado.Add(Gerar(rnd));
             }

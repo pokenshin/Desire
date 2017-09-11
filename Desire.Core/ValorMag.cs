@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Desire.Core
 {
-    public class ValorMag
+    public class ValorMag: IComparable
     {
         public int Valor { get; set; }
         public int Magnitude { get; set; }
@@ -39,6 +39,30 @@ namespace Desire.Core
         public override string ToString()
         {
             return this.Valor + "m" + this.Magnitude;
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj == null)
+                return 1;
+
+            ValorMag outroValorMag = obj as ValorMag;
+
+            if (this.Magnitude == outroValorMag.Magnitude)
+            {
+                if (this.Valor == outroValorMag.Valor)
+                    return 0;
+                else if (this.Valor > outroValorMag.Valor)
+                    return 1;
+                else if (this.Valor < outroValorMag.Valor)
+                    return -1;
+            }
+            if (this.Magnitude > outroValorMag.Magnitude)
+                return 1;
+            if (this.Magnitude < outroValorMag.Magnitude)
+                return -1;
+
+            return 0;
         }
     }
 }

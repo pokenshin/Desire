@@ -20,7 +20,7 @@ namespace Desire.Core.Util.Geradores
         public List<Origem> GerarLista(int quantidade, Random rnd)
         {
             List<Origem> lista = new List<Origem>();
-            for (int i = 0; i < quantidade-1; i++)
+            for (int i = 0; i < quantidade; i++)
             {
                 lista.Add(Gerar(rnd));
             }

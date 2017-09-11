@@ -106,7 +106,13 @@ namespace Desire.Core.Util.Geradores
                 LarguraMax = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
                 Especial = rng.GerarEntre(1, 70, rnd),
                 Natureza = genNatureza.Gerar(rnd),
-                RespostaMin = genResposta.Gerar(rnd)
+                RespostaMin = genResposta.Gerar(rnd),
+                DeslocamentoSoloMin = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
+                DeslocamentoSoloMax = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
+                DeslocamentoArMin = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
+                DeslocamentoArMax = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
+                DeslocamentoMarMin = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
+                DeslocamentoMarMax = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd)
             };
             especie.MagnitudeMax = especie.MagnitudeMin + especie.MagnitudeMax;
             especie.ReiMax = especie.ReiMin + especie.ReiMax;
@@ -123,6 +129,10 @@ namespace Desire.Core.Util.Geradores
             especie.MaturidadeMax = especie.MaturidadeMin + (int)calculadorNum.CalculaPorcentagem(rng.GerarEntre(60, 99, rnd), especie.TempoMax);
             especie.TrabalhoMax = especie.TrabalhoMin + rng.GerarEntre(0, 1000, rnd);
             especie.LarguraMax = calculadorNum.SomaValorMag(especie.LarguraMin, especie.LarguraMax);
+            especie.DeslocamentoSoloMax = calculadorNum.SomaValorMag(especie.DeslocamentoSoloMin, especie.DeslocamentoSoloMax);
+            especie.DeslocamentoArMax = calculadorNum.SomaValorMag(especie.DeslocamentoArMin, especie.DeslocamentoArMax);
+            especie.DeslocamentoMarMax = calculadorNum.SomaValorMag(especie.DeslocamentoMarMin, especie.DeslocamentoMarMax);
+
             especie.RespostaMax = new Resposta()
             {
                 Bravura = especie.RespostaMin.Bravura + rng.GerarEntre(1, 1000, rnd),
@@ -145,7 +155,7 @@ namespace Desire.Core.Util.Geradores
 
                 int[] porcentagens = rng.GerarInteirosQueSomam(quantidade, 100, rnd);
 
-                for (int i = 0; i < quantidade-1; i++)
+                for (int i = 0; i < quantidade; i++)
                 {
                     Especie especie = Gerar(rnd);
                     especie.Porcentagem = porcentagens[i];

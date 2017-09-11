@@ -82,6 +82,22 @@ namespace Desire.Core.Util
                 return MultiplicaValorMag(valorMag1, new ValorMag(Convert.ToString(multiplicador)));
         }
 
+        public ValorMag MultiplicaValorMag(ValorMag numero, double multiplicador)
+        {
+            
+            double valorFinal = numero.Valor * multiplicador;
+            int magFinal = numero.Magnitude;
+
+            if (valorFinal < 10)
+            { 
+                magFinal = magFinal - 1;
+                valorFinal = valorFinal * 10;
+            }
+
+            ValorMag resultado = new ValorMag((int)Math.Floor(valorFinal), magFinal);
+            return resultado;
+        }
+        
         //Retorna a porcentagem de um determinado valor arredondado para baixo
         public long CalculaPorcentagem(int porcentagem, long valor)
         {
@@ -195,7 +211,7 @@ namespace Desire.Core.Util
                 ValorMag resultado = lista[0];
                 foreach (ValorMag item in lista)
                 {
-                    resultado = RetornaMaiorValorMag(resultado, item);
+                    resultado = RetornaMenorValorMag(resultado, item);
                 }
                 return resultado;
             }

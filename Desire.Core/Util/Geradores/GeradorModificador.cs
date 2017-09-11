@@ -35,7 +35,7 @@ namespace Desire.Core.Util.Geradores
         {
             List<Modificador> lista = new List<Modificador>();
 
-            for (int i = 0; i < quantidade-1; i++)
+            for (int i = 0; i < quantidade; i++)
             {
                 lista.Add(Gerar(rnd));
             }

@@ -10,7 +10,8 @@ using Desire.Core.Identidade;
 
 namespace Desire.Test
 {
-    class CalculadorNumeroTestes
+    [TestClass]
+    public class CalculadorNumeroTestes
     {
         CalculadorNumero calculador;
         
@@ -155,6 +156,21 @@ namespace Desire.Test
             Assert.AreEqual(99, resultado.Valor);
             Assert.AreEqual(2, resultado.Magnitude);
             Assert.AreEqual("99", resultado.ValorReal);
+        }
+
+        //Verifica se a função MultiplicaValorMag está calculando corretamente quando o multiplicador é double
+        [TestMethod]
+        public void TesteMultiplicaValorMagDouble()
+        {
+            calculador = new CalculadorNumero();
+
+            ValorMag numero = new ValorMag(82, 6);
+            double multiplicador = 0.12;
+
+            ValorMag resultado = calculador.MultiplicaValorMag(numero, multiplicador);
+
+            Assert.AreEqual(98, resultado.Valor);
+            Assert.AreEqual(5, resultado.Magnitude);
         }
     }
 }

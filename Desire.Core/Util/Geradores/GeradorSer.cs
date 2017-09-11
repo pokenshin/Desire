@@ -30,6 +30,7 @@ namespace Desire.Core.Util.Geradores
             GeradorModificador genModificador = new GeradorModificador();
             GeradorResistencia genResistencia = new GeradorResistencia();
             GeradorEquipamento genEquipamento = new GeradorEquipamento();
+            GeradorHabilidade genHabilidade = new GeradorHabilidade();
             CalculadorSer calculador = new CalculadorSer();
 
             string primeiroNome = genString.GerarTamanhoEspecifico(2, 6, rnd);
@@ -62,7 +63,7 @@ namespace Desire.Core.Util.Geradores
                 //Virtudes
                 Virtudes = genModificador.GerarListaComOrigem("Virtudes", 3, rng.GerarEntre(1, 5, rnd), rnd, '+'),
                 //Defeitos
-                Defeitos = genModificador.GerarListaComOrigem("Defeitos", 6, rng.GerarEntre(1,5, rnd), rnd, '-'),
+                Defeitos = genModificador.GerarListaComOrigem("Defeitos", 6, rng.GerarEntre(1, 5, rnd), rnd, '-'),
                 //Resistências
                 Resistencias = genResistencia.GerarLista(rng.GerarEntre(0, 10, rnd), rnd),
                 //Gênese
@@ -79,7 +80,9 @@ namespace Desire.Core.Util.Geradores
                 SubatributoExtraNome1 = genString.GerarTamanhoEspecifico(3, 10, rnd),
                 SubatributoExtraValor1 = genValorMag.Gerar(rnd),
                 SubatributoExtraNome2 = genString.GerarTamanhoEspecifico(3, 10, rnd),
-                SubatributoExtraValor2 = genValorMag.Gerar(rnd)
+                SubatributoExtraValor2 = genValorMag.Gerar(rnd),
+                //Habilidades
+                Habilidades = genHabilidade.GerarLista(rng.GerarEntre(2, 10, rnd), rnd)
             };
             //Itens Equipados
             ser.Equipamentos = genEquipamento.GerarLista(ser.Especies[0].MaxItensEquipados, rnd);
