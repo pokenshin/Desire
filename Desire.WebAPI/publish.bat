@@ -1,0 +1,1 @@
+dotnet publish "E:\Code\DotNet\Core\Desire\Desire.WebAPI\Desire.WebAPI.csproj" -c Release -r win10-x64 --output "E:\Code\Publish\Desire\Desire.WebAPI"

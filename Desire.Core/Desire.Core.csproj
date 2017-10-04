@@ -11,6 +11,7 @@
     <AssemblyFileVersionSettings>None.None.Increment.None</AssemblyFileVersionSettings>
     <AssemblyInfoVersionSettings>None.None.Increment.None</AssemblyInfoVersionSettings>
     <PrimaryVersionType>AssemblyFileVersionAttribute</PrimaryVersionType>
+    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
   </PropertyGroup>
 
 </Project>

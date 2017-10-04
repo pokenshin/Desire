@@ -10,6 +10,7 @@
     <AssemblyVersionSettings>None.None.Increment.None</AssemblyVersionSettings>    
     <AssemblyFileVersionSettings>None.None.Increment.None</AssemblyFileVersionSettings>    
     <AssemblyInfoVersionSettings>None.None.Increment.None</AssemblyInfoVersionSettings>
+    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
   </PropertyGroup>
 
   <ItemGroup>

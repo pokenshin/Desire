@@ -1,0 +1,1 @@
+dotnet restore -v Minimal -r win10-x64
