@@ -94,11 +94,6 @@ namespace Desire.Core.Identidade
         public Resposta RespostaMin { get; set; }
         public Resposta RespostaMax { get; set; }
         public List<Habilidade> Fugacidade { get; set; }
-        public ValorMag DeslocamentoSoloMin { get; set; }
-        public ValorMag DeslocamentoSoloMax { get; set; }
-        public ValorMag DeslocamentoArMin { get; set; }
-        public ValorMag DeslocamentoMarMin { get; set; }
-        public ValorMag DeslocamentoArMax { get; set; }
-        public ValorMag DeslocamentoMarMax { get; set; }
+        public List<Deslocamento> DeslocamentosMedios { get; set; }
     }
 }

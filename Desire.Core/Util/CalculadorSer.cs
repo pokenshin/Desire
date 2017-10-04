@@ -25,7 +25,7 @@ namespace Desire.Core.Util
             //Especial - O maior especial das raças do ser
             ser.Especial = CalculaEspecial(ser.Especies);
             //Deslocamentos
-            ser.Deslocamentos = CriaListaDeslocamentosSer(ser);
+            ser.Deslocamentos = CalculaDeslocamentosBase(ser);
             //Pericias
             ser.Pericias = CriaListaPericiasSer(ser);
             //Subatributos
@@ -85,19 +85,23 @@ namespace Desire.Core.Util
         private Deslocamento CalculaDesolocamentoEspaco(Ser ser)
         {
             Deslocamento resultado = new Deslocamento("Espaço");
-            CalculadorNumero calc = new CalculadorNumero();
-            int especieDexMin = ser.Especies[0].DestrezaMin.Pontos;
-            int especieForMin = ser.Especies[0].ForcaMin.Pontos;
-            int serDex = ser.Destreza.Pontos;
-            int serFor = ser.Forca.Pontos;
-            //Retorna as porcentagens a mais (ou a menos) que os atributos atuais têm sobre a espécie
-            double fatorDex = 10 * serDex / especieDexMin;
-            double fatorFor = 10 * serFor / especieForMin;
-            //Média dos dois valores para multiplicar com o minimo da espécie
-            double fatorTotal = (fatorDex + fatorFor) / 2;
+            Deslocamento desEspEspecie = ser.Especies[0].DeslocamentosMedios.FirstOrDefault(d => d.Tipo == "Espaço");
+            if (desEspEspecie != null)
+            { 
+                CalculadorNumero calc = new CalculadorNumero();
+                int especieDexMin = ser.Especies[0].DestrezaMin.Pontos;
+                int especieForMin = ser.Especies[0].ForcaMin.Pontos;
+                int serDex = ser.Destreza.Pontos;
+                int serFor = ser.Forca.Pontos;
+                //Retorna as porcentagens a mais (ou a menos) que os atributos atuais têm sobre a espécie
+                double fatorDex = 10 * serDex / especieDexMin;
+                double fatorFor = 10 * serFor / especieForMin;
+                //Média dos dois valores para multiplicar com o minimo da espécie
+                double fatorTotal = (fatorDex + fatorFor) / 2;
 
-            resultado.Valor = calc.MultiplicaValorMag(ser.Especies[0].DeslocamentoSoloMin, fatorTotal);
-            resultado.Valor = calc.MultiplicaValorMag(resultado.Valor, 2);
+                resultado.Valor = calc.MultiplicaValorMag(desEspEspecie.Valor, fatorTotal);
+                resultado.Valor = calc.MultiplicaValorMag(resultado.Valor, 2);
+            }
 
             return resultado;
         }
@@ -107,20 +111,23 @@ namespace Desire.Core.Util
         private Deslocamento CalculaDesolocamentoMar(Ser ser)
         {
             Deslocamento resultado = new Deslocamento("Mar");
-            CalculadorNumero calc = new CalculadorNumero();
-            int especieDexMin = ser.Especies[0].DestrezaMin.Pontos;
-            int especieForMin = ser.Especies[0].ForcaMin.Pontos;
-            int serDex = ser.Destreza.Pontos;
-            int serFor = ser.Forca.Pontos;
-            //Retorna as porcentagens a mais (ou a menos) que os atributos atuais têm sobre a espécie
-            double fatorDex = 10 * serDex / especieDexMin;
-            double fatorFor = 10 * serFor / especieForMin;
-            //Média dos dois valores para multiplicar com o minimo da espécie
-            double fatorTotal = (fatorDex + fatorFor) / 2;
+            Deslocamento desMarEspecie = ser.Especies[0].DeslocamentosMedios.FirstOrDefault(d => d.Tipo == "Mar");
+            if (desMarEspecie != null)
+            {
+                CalculadorNumero calc = new CalculadorNumero();
+                int especieDexMin = ser.Especies[0].DestrezaMin.Pontos;
+                int especieForMin = ser.Especies[0].ForcaMin.Pontos;
+                int serDex = ser.Destreza.Pontos;
+                int serFor = ser.Forca.Pontos;
+                //Retorna as porcentagens a mais (ou a menos) que os atributos atuais têm sobre a espécie
+                double fatorDex = 10 * serDex / especieDexMin;
+                double fatorFor = 10 * serFor / especieForMin;
+                //Média dos dois valores para multiplicar com o minimo da espécie
+                double fatorTotal = (fatorDex + fatorFor) / 2;
 
-            resultado.Valor = calc.MultiplicaValorMag(ser.Especies[0].DeslocamentoSoloMin, fatorTotal);
-            resultado.Valor = calc.DivideValorMag(resultado.Valor, 3);
-
+                resultado.Valor = calc.MultiplicaValorMag(desMarEspecie.Valor, fatorTotal);
+                resultado.Valor = calc.DivideValorMag(resultado.Valor, 3);
+            }
             return resultado;
         }
 
@@ -130,19 +137,23 @@ namespace Desire.Core.Util
         private Deslocamento CalculaDesolocamentoAr(Ser ser)
         {
             Deslocamento resultado = new Deslocamento("Ar");
-            CalculadorNumero calc = new CalculadorNumero();
-            int especieDexMin = ser.Especies[0].DestrezaMin.Pontos;
-            int especieForMin = ser.Especies[0].ForcaMin.Pontos;
-            int serDex = ser.Destreza.Pontos;
-            int serFor = ser.Forca.Pontos;
-            //Retorna as porcentagens a mais (ou a menos) que os atributos atuais têm sobre a espécie
-            double fatorDex = 10 * serDex / especieDexMin;
-            double fatorFor = 10 * serFor / especieForMin;
-            //Média dos dois valores para multiplicar com o minimo da espécie
-            double fatorTotal = (fatorDex + fatorFor) / 2;
+            Deslocamento desArEspecie = ser.Especies[0].DeslocamentosMedios.FirstOrDefault(d => d.Tipo == "Ar");
+            if (desArEspecie != null)
+            {
+                CalculadorNumero calc = new CalculadorNumero();
+                int especieDexMin = ser.Especies[0].DestrezaMin.Pontos;
+                int especieForMin = ser.Especies[0].ForcaMin.Pontos;
+                int serDex = ser.Destreza.Pontos;
+                int serFor = ser.Forca.Pontos;
+                //Retorna as porcentagens a mais (ou a menos) que os atributos atuais têm sobre a espécie
+                double fatorDex = 10 * serDex / especieDexMin;
+                double fatorFor = 10 * serFor / especieForMin;
+                //Média dos dois valores para multiplicar com o minimo da espécie
+                double fatorTotal = (fatorDex + fatorFor) / 2;
 
-            resultado.Valor = calc.MultiplicaValorMag(ser.Especies[0].DeslocamentoSoloMin, fatorTotal);
-            resultado.Valor = calc.DivideValorMag(resultado.Valor, 2);
+                resultado.Valor = calc.MultiplicaValorMag(desArEspecie.Valor, fatorTotal);
+                resultado.Valor = calc.DivideValorMag(resultado.Valor, 2);
+            }
 
             return resultado;
         }
@@ -152,18 +163,21 @@ namespace Desire.Core.Util
         private Deslocamento CalculaDesolocamentoSolo(Ser ser)
         {
             Deslocamento resultado = new Deslocamento("Solo");
-            CalculadorNumero calc = new CalculadorNumero();
-            int especieDexMin = ser.Especies[0].DestrezaMin.Pontos;
-            int especieForMin = ser.Especies[0].ForcaMin.Pontos;
-            int serDex = ser.Destreza.Pontos;
-            int serFor = ser.Forca.Pontos;
-            //Retorna as porcentagens a mais (ou a menos) que os atributos atuais têm sobre a espécie
-            double fatorDex = 10 * serDex / especieDexMin;
-            double fatorFor = 10 * serFor / especieForMin;
-            //Média dos dois valores para multiplicar com o minimo da espécie
-            double fatorTotal = (fatorDex + fatorFor) / 2;
-
-            resultado.Valor = calc.MultiplicaValorMag(ser.Especies[0].DeslocamentoSoloMin, fatorTotal);
+            Deslocamento desSoloEspecie = ser.Especies[0].DeslocamentosMedios.FirstOrDefault(d => d.Tipo == "Solo");
+            if (desSoloEspecie != null)
+            { 
+                CalculadorNumero calc = new CalculadorNumero();
+                int especieDexMin = ser.Especies[0].DestrezaMin.Pontos;
+                int especieForMin = ser.Especies[0].ForcaMin.Pontos;
+                int serDex = ser.Destreza.Pontos;
+                int serFor = ser.Forca.Pontos;
+                //Retorna as porcentagens a mais (ou a menos) que os atributos atuais têm sobre a espécie
+                double fatorDex = 10 * serDex / especieDexMin;
+                double fatorFor = 10 * serFor / especieForMin;
+                //Média dos dois valores para multiplicar com o minimo da espécie
+                double fatorTotal = (fatorDex + fatorFor) / 2;
+                resultado.Valor = calc.MultiplicaValorMag(desSoloEspecie.Valor, fatorTotal);
+            }
 
             return resultado;
         }
@@ -180,15 +194,6 @@ namespace Desire.Core.Util
             int magTotal = ser.Forca.Porcentagem.Magnitude + ser.Destreza.Porcentagem.Magnitude + ser.Materia.Porcentagem.Magnitude + ser.Intelecto.Porcentagem.Magnitude + ser.Criatividade.Porcentagem.Magnitude + ser.Ideia.Porcentagem.Magnitude + ser.Existencia.Porcentagem.Magnitude;
             magTotal = magTotal / 7;
             
-            if (ser.Reis.Count > 1)
-            {
-                int maiorMagRei = (from r in ser.Reis select r.Magnitude).Max();
-
-                if (maiorMagRei > magTotal)
-                    return maiorMagRei;
-                
-            }
-
             return magTotal;
         }
 
@@ -390,14 +395,6 @@ namespace Desire.Core.Util
             }
 
             return pericias;
-        }
-
-        public List<Deslocamento> CriaListaDeslocamentosSer(Ser ser)
-        {
-            //TODO: Calcular lista de deslocamentos e valores baseado na espécie do ser
-            List<Deslocamento> deslocamentos = new List<Deslocamento>();
-
-            return deslocamentos;
         }
 
         public int CalculaEspecial(List<Especie> especies)

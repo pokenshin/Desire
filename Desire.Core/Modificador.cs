@@ -15,7 +15,7 @@ namespace Desire.Core
         //"R" = Remove Pericia / Habilidade / Energia
 
         public string Nome { get; set; }
-        public PropertyInfo Alvo { get; set; }
+        public string Alvo { get; set; }
         public ValorMag Valor { get; set; }
         public char Tipo { get; set; }
         public string Origem { get; set; } //Pericia, Rei, Dom, Item, etc
@@ -26,7 +26,7 @@ namespace Desire.Core
 
         public override string ToString()
         {
-            return this.Alvo.Name + this.Tipo + Valor.ToString();
+            return this.Alvo + this.Tipo + Valor.ToString();
         }
     }
 }

@@ -28,10 +28,10 @@ namespace Desire.Core.Util.Geradores
             GeradorHabilidade genHabilidade = new GeradorHabilidade();
             GeradorNatureza genNatureza = new GeradorNatureza();
             GeradorResposta genResposta = new GeradorResposta();
-
-
+            GeradorBoolean genBool = new GeradorBoolean();
             CalculadorSer calculadorSer = new CalculadorSer();
             CalculadorNumero calculadorNum = new CalculadorNumero();
+            
 
             Especie especie = new Especie()
             {
@@ -107,12 +107,6 @@ namespace Desire.Core.Util.Geradores
                 Especial = rng.GerarEntre(1, 70, rnd),
                 Natureza = genNatureza.Gerar(rnd),
                 RespostaMin = genResposta.Gerar(rnd),
-                DeslocamentoSoloMin = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
-                DeslocamentoSoloMax = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
-                DeslocamentoArMin = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
-                DeslocamentoArMax = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
-                DeslocamentoMarMin = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd),
-                DeslocamentoMarMax = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd)
             };
             especie.MagnitudeMax = especie.MagnitudeMin + especie.MagnitudeMax;
             especie.ReiMax = especie.ReiMin + especie.ReiMax;
@@ -129,9 +123,46 @@ namespace Desire.Core.Util.Geradores
             especie.MaturidadeMax = especie.MaturidadeMin + (int)calculadorNum.CalculaPorcentagem(rng.GerarEntre(60, 99, rnd), especie.TempoMax);
             especie.TrabalhoMax = especie.TrabalhoMin + rng.GerarEntre(0, 1000, rnd);
             especie.LarguraMax = calculadorNum.SomaValorMag(especie.LarguraMin, especie.LarguraMax);
-            especie.DeslocamentoSoloMax = calculadorNum.SomaValorMag(especie.DeslocamentoSoloMin, especie.DeslocamentoSoloMax);
-            especie.DeslocamentoArMax = calculadorNum.SomaValorMag(especie.DeslocamentoArMin, especie.DeslocamentoArMax);
-            especie.DeslocamentoMarMax = calculadorNum.SomaValorMag(especie.DeslocamentoMarMin, especie.DeslocamentoMarMax);
+
+            especie.DeslocamentosMedios = new List<Deslocamento>()
+            { 
+            };
+
+            if (genBool.GeraComChance(90, rnd))
+            {
+                especie.DeslocamentosMedios.Add(new Deslocamento()
+                {
+                    Tipo = "Solo",
+                    Valor = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd)
+                });
+            }
+
+            if (genBool.GeraComChance(70, rnd))
+            {
+                especie.DeslocamentosMedios.Add(new Deslocamento()
+                {
+                    Tipo = "Mar",
+                    Valor = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd)
+                });
+            }
+
+            if (genBool.GeraComChance(40, rnd))
+            {
+                especie.DeslocamentosMedios.Add(new Deslocamento()
+                {
+                    Tipo = "Ar",
+                    Valor = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd)
+                });
+            }
+
+            if (genBool.GeraComChance(10, rnd))
+            {
+                Deslocamento desMar = new Deslocamento()
+                {
+                    Tipo = "Espaço",
+                    Valor = genValorMag.GerarEntre(new ValorMag(1, 0), new ValorMag(99, 15), rnd)
+                };
+            }
 
             especie.RespostaMax = new Resposta()
             {

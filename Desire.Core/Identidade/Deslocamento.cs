@@ -16,7 +16,10 @@ namespace Desire.Core.Identidade
         public Deslocamento(string tipo)
         {
             this.Tipo = tipo;
+            Valor = new ValorMag();
         }
+
+        public Deslocamento() { }
 
     }
 }

@@ -65,7 +65,7 @@ namespace Desire.Core.Util.Geradores
             GeradorValorMag genValorMag = new GeradorValorMag();
             PropertyInfo[] propriedades = typeof(Ser).GetProperties().Where(p => p.PropertyType == typeof(int)).ToArray<PropertyInfo>();
             string nomePropriedade = propriedades[rng.GerarEntre(0, propriedades.Count() - 1, rnd)].Name;
-            PropertyInfo alvo = typeof(Ser).GetProperty(nomePropriedade);
+            string alvo = typeof(Ser).GetProperty(nomePropriedade).Name;
             ValorMag valor = genValorMag.Gerar(rnd);
             if (tipo == 'R')
                 tipo = tiposModificadores[rng.GerarEntre(0, tiposModificadores.Count() - 1, rnd)];
