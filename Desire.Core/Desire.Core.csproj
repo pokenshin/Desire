@@ -14,4 +14,8 @@
     <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Geradores\Util\" />
+  </ItemGroup>
+
 </Project>

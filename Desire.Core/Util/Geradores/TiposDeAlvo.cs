@@ -80,10 +80,7 @@ namespace Desire.Core.Util.Geradores
     {
         public AlvoPonto Gerar(Random rnd)
         {
-            AlvoPonto resultado = new AlvoPonto()
-            {
-                Alvo = new Ser() 
-            };
+            AlvoPonto resultado = new AlvoPonto();
 
             return resultado;
         }
@@ -107,7 +104,6 @@ namespace Desire.Core.Util.Geradores
             GeradorValorMag genValorMag = new GeradorValorMag();
             AlvoLinha resultado = new AlvoLinha()
             {
-                Alvo = new Ser(),
                 DistanciaMaxima = genValorMag.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
                 Velocidade = genValorMag.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd)
             };
@@ -202,10 +198,7 @@ namespace Desire.Core.Util.Geradores
     {
         public AlvoTriangulo Gerar(Random rnd)
         {
-            AlvoTriangulo resultado = new AlvoTriangulo()
-            {
-                AlvoDeclarado = new Ser()
-            };
+            AlvoTriangulo resultado = new AlvoTriangulo();
             return resultado;
         }
 
