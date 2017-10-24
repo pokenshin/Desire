@@ -53,16 +53,16 @@ namespace Desire.Core.Util.Geradores
                     int chanceVogal = 50; //Inicializa chance da proxima letra ser vogal
 
                     //Caso a ultima letra seja consoante
-                    if (consoantes.Contains(ultimaLetra))
+                    if (consoantes.Contains(Convert.ToString(ultimaLetra)))
                     {
                         if (nome.Length > 1) //Caso o nome tenha mais de 1 letra
                         {
                             if (nome.Length > 2) //Caso o nome tenha mais de 2 letras
                             {
-                                if (consoantes.Contains(nome[nome.Length - 3]))
+                                if (consoantes.Contains(Convert.ToString(nome[nome.Length - 3])))
                                     chanceVogal = 100; //Evita com que nomes tenham mais de 3 consoantes seguidas
                             }
-                            else if (consoantes.Contains(nome[nome.Length - 2]))
+                            else if (consoantes.Contains(Convert.ToString(nome[nome.Length - 2])))
                                 chanceVogal = 90;
                         }
                         else
@@ -73,7 +73,7 @@ namespace Desire.Core.Util.Geradores
                     {
                         if (nome.Length > 1)
                         {
-                            if (vogais.Contains(nome[nome.Length - 2]))
+                            if (vogais.Contains(Convert.ToString(nome[nome.Length - 2])))
                                 chanceVogal = 1;
                             else
                                 chanceVogal = 10;

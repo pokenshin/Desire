@@ -63,14 +63,14 @@ namespace Desire.Core.Util.Geradores
             //TODO: Criar magnitude do modificador para limitar sua apelação e direcionar uso
             GeradorInteiro rng = new GeradorInteiro();
             GeradorValorMag genValorMag = new GeradorValorMag();
-            PropertyInfo[] propriedades = typeof(Ser).GetProperties().Where(p => p.PropertyType == typeof(int)).ToArray<PropertyInfo>();
-            string nomePropriedade = propriedades[rng.GerarEntre(0, propriedades.Count() - 1, rnd)].Name;
-            string alvo = typeof(Ser).GetProperty(nomePropriedade).Name;
+            //PropertyInfo[] propriedades = typeof(Ser).GetProperties().Where(p => p.PropertyType == typeof(int)).ToArray<PropertyInfo>();
+            PropertyInfo[] propriedades = typeof(Ser).GetTypeInfo().DeclaredProperties.Where(p => p.PropertyType == typeof(int)).ToArray<PropertyInfo>();
+            string alvo = propriedades[rng.GerarEntre(0, propriedades.Count() - 1, rnd)].Name;
             ValorMag valor = genValorMag.Gerar(rnd);
             if (tipo == 'R')
                 tipo = tiposModificadores[rng.GerarEntre(0, tiposModificadores.Count() - 1, rnd)];
 
-            string nome = nomePropriedade + tipo + valor;
+            string nome = alvo + tipo + valor;
 
             Modificador modificador = new Modificador()
             {
