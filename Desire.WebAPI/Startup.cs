@@ -36,8 +36,8 @@ namespace Desire.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MySQLContext>(options =>
-                options.UseMySQL(Configuration.GetConnectionString("MySqlProviderDESENV")));
+            // services.AddDbContext<MySQLContext>(options =>
+            //    options.UseMySQL(Configuration.GetConnectionString("MySqlProviderDESENV")));
 
             // Add framework services.
             services.AddMvc(options =>
@@ -50,6 +50,7 @@ namespace Desire.WebAPI
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 options.SerializerSettings.Formatting = Formatting.Indented;
             });
+            services.AddEntityFrameworkSqlite().AddDbContext<SQLiteContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

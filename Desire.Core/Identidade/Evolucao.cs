@@ -7,6 +7,7 @@
         public bool ChakraAberto { get; set; }
         public string ChakraNome { get; set; }
         public int ChakraMag { get; set; }
+        public int EvolucaoId { get; set; }
 
         public Evolucao(int pontos, int multi, bool chakraAberto)
         {

@@ -11,11 +11,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Desire.WebAPI.Controllers
 {
-    public class DatabaseController : Controller
+    public class AtributosController : Controller
     {
-        // GET api/db/atributos/forca
+        // GET api/database/atributos/forca
         // Pega uma lista de atributos de força
-        [HttpGet("api/mysql/atributos/forca")]
+        [HttpGet("api/database/atributos/forca")]
         [Produces("application/json", "application/xml")]
         public List<ForcaModel> ListForcas()
         {

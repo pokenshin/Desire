@@ -7,7 +7,7 @@
         public ValorMag Dureza { get; set; }
         public ValorMag Vigor { get; set; }
         public ValorMag Sustentacao { get; set; }
-        public ValorMag BonusAP { get; internal set; }
+        public ValorMag BonusAP { get; set; }
 
         public Forca()
         {

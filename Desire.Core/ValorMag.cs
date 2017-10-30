@@ -27,13 +27,17 @@ namespace Desire.Core
             this.ValorReal = conversor.ValorMagParaString(valor, magnitude);
         }
 
-        public ValorMag(string valorReal)
+        public ValorMag(string valorMag)
         {
             Conversor conversor = new Conversor();
-            ValorMag valor = conversor.StringParaValorMag(valorReal);
-            this.ValorReal = valorReal;
-            this.Valor = valor.Valor;
-            this.Magnitude = valor.Magnitude; 
+            //ValorMag valor = conversor.StringParaValorMag(valorReal);
+            //this.ValorReal = valorReal;
+            //this.Valor = valor.Valor;
+            //this.Magnitude = valor.Magnitude; 
+            string[] matriz = valorMag.Split('m');
+            this.Valor = Convert.ToInt32(matriz[0]);
+            this.Magnitude = Convert.ToInt32(matriz[1]);
+            this.ValorReal = conversor.ValorMagParaString(Convert.ToInt32(matriz[0]), Convert.ToInt32(matriz[1]));
         }
 
         public override string ToString()
