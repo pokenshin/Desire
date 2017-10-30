@@ -31,6 +31,15 @@ namespace Desire.Core
         public Existencia Existencia { get; set; }
         public Ideia Ideia { get; set; }
 
+        //Evolução dos Atributos
+        public Evolucao EvolucaoForca { get; set; }
+        public Evolucao EvolucaoMateria { get; set; }
+        public Evolucao EvolucaoDestreza { get; set; }
+        public Evolucao EvolucaoIntelecto { get; set; }
+        public Evolucao EvolucaoCriatividade { get; set; }
+        public Evolucao EvolucaoExistencia { get; set; }
+        public Evolucao EvolucaoIdeia { get; set; }
+
         //Energias
         public List<Energia> Energias { get; set; }
 

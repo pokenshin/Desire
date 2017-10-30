@@ -31,7 +31,9 @@ namespace Desire.Core.Util.Geradores
             GeradorResistencia genResistencia = new GeradorResistencia();
             GeradorEquipamento genEquipamento = new GeradorEquipamento();
             GeradorHabilidade genHabilidade = new GeradorHabilidade();
+            GeradorEvolucao genEvolucao = new GeradorEvolucao();
             CalculadorSer calculador = new CalculadorSer();
+
 
             string primeiroNome = genString.GerarTamanhoEspecifico(2, 6, rnd);
             string segundoNome = genString.GerarTamanhoEspecifico(0, 9, rnd);
@@ -54,6 +56,14 @@ namespace Desire.Core.Util.Geradores
                 Criatividade = genCriatividade.Gerar(rnd),
                 Existencia = genExistencia.Gerar(rnd),
                 Ideia = genIdeia.Gerar(rnd),
+                //Evolução
+                EvolucaoCriatividade = genEvolucao.Gerar(rnd),
+                EvolucaoDestreza = genEvolucao.Gerar(rnd),
+                EvolucaoExistencia = genEvolucao.Gerar(rnd),
+                EvolucaoForca = genEvolucao.Gerar(rnd),
+                EvolucaoIdeia = genEvolucao.Gerar(rnd),
+                EvolucaoIntelecto = genEvolucao.Gerar(rnd),
+                EvolucaoMateria = genEvolucao.Gerar(rnd),
                 //Perícias
                 Pericias = genPericia.GerarLista(rng.GerarEntre(1, 20, rnd), rnd),
                 //Itens e Equips

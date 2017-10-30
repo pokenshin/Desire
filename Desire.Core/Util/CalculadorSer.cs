@@ -503,13 +503,13 @@ namespace Desire.Core.Util
 
             resultado = ser.Forca.Pontos + ser.Materia.Pontos + ser.Destreza.Pontos + ser.Criatividade.Pontos + ser.Existencia.Pontos + ser.Ideia.Pontos + ser.Intelecto.Pontos;
             resultado = (resultado - 7)*105;
-            resultado = resultado + ser.Criatividade.Evolucao.PontosAtuais;
-            resultado = resultado + ser.Destreza.Evolucao.PontosAtuais;
-            resultado = resultado + ser.Existencia.Evolucao.PontosAtuais;
-            resultado = resultado + ser.Forca.Evolucao.PontosAtuais;
-            resultado = resultado + ser.Ideia.Evolucao.PontosAtuais;
-            resultado = resultado + ser.Intelecto.Evolucao.PontosAtuais;
-            resultado = resultado + ser.Materia.Evolucao.PontosAtuais;
+            resultado = resultado + ser.EvolucaoCriatividade.PontosAtuais;
+            resultado = resultado + ser.EvolucaoDestreza.PontosAtuais;
+            resultado = resultado + ser.EvolucaoExistencia.PontosAtuais;
+            resultado = resultado + ser.EvolucaoForca.PontosAtuais;
+            resultado = resultado + ser.EvolucaoIdeia.PontosAtuais;
+            resultado = resultado + ser.EvolucaoIntelecto.PontosAtuais;
+            resultado = resultado + ser.EvolucaoMateria.PontosAtuais;
 
             return resultado;
         }

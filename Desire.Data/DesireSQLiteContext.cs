@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Desire.Core;
 using Desire.Core.Identidade;
+using Desire.Data.Configuradores;
 
 namespace Desire.Data
 {
@@ -25,21 +26,12 @@ namespace Desire.Data
             new TypeConfigurator(modelBuilder.Entity<Forca>());
 
             ConfiguraForca(modelBuilder);
-            ConfiguraEvolucao(modelBuilder);
-        }
-
-        private void ConfiguraEvolucao(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Evolucao>()
-                .HasKey(e => e.EvolucaoId);
         }
 
         private void ConfiguraForca(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new ConfiguradorForca());
 
-
-            modelBuilder.Entity<Forca>()
-                .HasKey(e => e.Pontos);
         }
     }
 }

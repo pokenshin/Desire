@@ -25,7 +25,6 @@ namespace Desire.Core.Util.Geradores
                 Porcentagem = rvmg.Gerar(rnd),
                 Potencia = rvmg.Gerar(rnd),
                 Vigor = rvmg.Gerar(rnd),
-                Evolucao = new Evolucao(rng.GerarEntre(1, 17, rnd), 16, rbg.GeraComChance(10, rnd)),
                 BonusAP = rvmg.Gerar(rnd)
             };
             return atributo;
@@ -63,7 +62,6 @@ namespace Desire.Core.Util.Geradores
                 Singularidade = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
                 Tutor = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
                 Visualizacao = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
-                Evolucao = new Evolucao(rng.GerarEntre(1, 17, rnd), 16, rbg.GeraComChance(10, rnd)),
                 BonusMP = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd)
             };
             return atributo;
@@ -101,7 +99,6 @@ namespace Desire.Core.Util.Geradores
                 Porcentagem = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
                 Dinamica = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
                 Reflexo = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
-                Evolucao = new Evolucao(rng.GerarEntre(1, 17, rnd), 16, rbg.GeraComChance(10, rnd)),
                 BonusAP = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd)
             };
             return atributo;
@@ -139,7 +136,6 @@ namespace Desire.Core.Util.Geradores
                 Pontos = rng.GerarEntre(1, 100, rnd),
                 Plano = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
                 Porcentagem = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
-                Evolucao = new Evolucao(rng.GerarEntre(1, 17, rnd), 16, rbg.GeraComChance(10, rnd)),
                 BonusAP = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd)
             };
             return atributo;
@@ -172,7 +168,6 @@ namespace Desire.Core.Util.Geradores
                 Nivel = rng.GerarEntre(1, 5, rnd),
                 Pontos = rng.GerarEntre(1, 100, rnd),
                 Porcentagem = rvmg.Gerar(rnd),
-                Evolucao = new Evolucao(rng.GerarEntre(1, 17, rnd), 16, rbg.GeraComChance(10, rnd)),
                 Classe = Convert.ToChar(rsg.GerarTamanhoEspecifico(1, 1, rnd)),
                 Irrealidade = rvmg.Gerar(rnd),
                 Ki = rvmg.Gerar(rnd),
@@ -209,7 +204,6 @@ namespace Desire.Core.Util.Geradores
                 Nivel = rng.GerarEntre(1, 5, rnd),
                 Pontos = rng.GerarEntre(1, 100, rnd),
                 Porcentagem = rvmg.Gerar(rnd),
-                Evolucao = new Evolucao(rng.GerarEntre(1, 17, rnd), 16, rbg.GeraComChance(10, rnd)),
                 Classe = Convert.ToChar(rsg.GerarTamanhoEspecifico(1, 1, rnd)),
                 Aprendizagem = rvmg.Gerar(rnd),
                 Concentracao = rvmg.Gerar(rnd),
@@ -247,7 +241,6 @@ namespace Desire.Core.Util.Geradores
                 Nivel = rng.GerarEntre(1, 5, rnd),
                 Pontos = rng.GerarEntre(1, 100, rnd),
                 Porcentagem = rvmg.Gerar(rnd),
-                Evolucao = new Evolucao(rng.GerarEntre(1, 17, rnd), 16, rbg.GeraComChance(10, rnd)),
                 Classe = Convert.ToChar(rsg.GerarTamanhoEspecifico(1, 1, rnd)),
                 Colapso = rvmg.Gerar(rnd),
                 Impulso = rvmg.Gerar(rnd),
