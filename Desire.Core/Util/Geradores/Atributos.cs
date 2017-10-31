@@ -18,8 +18,8 @@ namespace Desire.Core.Util.Geradores
             {
                 Sustentacao = rvmg.Gerar(rnd),
                 Classe = Convert.ToChar(rsg.GerarTamanhoEspecifico(1, 1, rnd)),
-                Dureza = rvmg.Gerar(rnd),
-                Golpe = rvmg.Gerar(rnd),
+                Dureza = Convert.ToDecimal(rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd).ValorReal),
+                Golpe = Convert.ToDecimal(rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd).ValorReal),
                 Nivel = rng.GerarEntre(1, 5, rnd),
                 Pontos = rng.GerarEntre(1, 100, rnd),
                 Porcentagem = rvmg.Gerar(rnd),
@@ -93,11 +93,11 @@ namespace Desire.Core.Util.Geradores
                 Ataque = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
                 Classe = Convert.ToChar(rsg.GerarTamanhoEspecifico(1, 1, rnd)),
                 Esquiva = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
-                Iniciativa = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
+                Iniciativa = rng.GerarEntre(1, 1000, rnd),
                 Nivel = rng.GerarEntre(1, 5, rnd),
                 Pontos = rng.GerarEntre(1, 100, rnd),
                 Porcentagem = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
-                Dinamica = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
+                Dinamica = rng.GerarEntre(1, 1000, rnd),
                 Reflexo = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
                 BonusAP = Convert.ToDecimal(rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd).ValorReal)
             };
@@ -134,7 +134,7 @@ namespace Desire.Core.Util.Geradores
                 Experiencia = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
                 Nivel = rng.GerarEntre(1, 5, rnd),
                 Pontos = rng.GerarEntre(1, 100, rnd),
-                Plano = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
+                Plano = rng.GerarEntre(1, 100, rnd),
                 Porcentagem = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
                 BonusAP = Convert.ToDecimal(rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd).ValorReal)
             };
@@ -164,13 +164,13 @@ namespace Desire.Core.Util.Geradores
         {
             Ideia atributo = new Ideia()
             {
-                Base = rvmg.Gerar(rnd),
+                Base = rng.GerarEntre(1, 1000, rnd),
                 Nivel = rng.GerarEntre(1, 5, rnd),
                 Pontos = rng.GerarEntre(1, 100, rnd),
                 Porcentagem = rvmg.Gerar(rnd),
                 Classe = Convert.ToChar(rsg.GerarTamanhoEspecifico(1, 1, rnd)),
                 Irrealidade = rvmg.Gerar(rnd),
-                Ki = rvmg.Gerar(rnd),
+                Ki = rng.GerarEntre(1, 1000, rnd),
                 Misterio = rvmg.Gerar(rnd),
                 Nexo = rvmg.Gerar(rnd),
                 BonusMP = rvmg.Gerar(rnd)
@@ -244,7 +244,6 @@ namespace Desire.Core.Util.Geradores
                 Classe = Convert.ToChar(rsg.GerarTamanhoEspecifico(1, 1, rnd)),
                 Colapso = rvmg.Gerar(rnd),
                 Impulso = rvmg.Gerar(rnd),
-                Carga = rvmg.Gerar(rnd),
                 Resistencia = rvmg.Gerar(rnd),
                 Vitalidade = rvmg.Gerar(rnd),
                 BonusHP = rvmg.Gerar(rnd),

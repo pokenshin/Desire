@@ -60,11 +60,11 @@ namespace Desire.Core
         public ValorMag Precisao { get; set; }
         public ValorMag BonusHP { get; set; }
         public ValorMag BonusMP { get; set; }
-        public ValorMag BonusAP { get; set; }
-        public int BonusSP { get; set; }
+        public decimal BonusAP { get; set; }
+        public double BonusSP { get; set; }
 
         //Cerne
-        public ValorMag Iniciativa { get; set; }
+        public int Iniciativa { get; set; }
         public ValorMag Acao { get; set; }
         public ValorMag Reacao { get; set; }
         public int Turno { get; set; }
@@ -170,9 +170,9 @@ namespace Desire.Core
             this.Precisao = new ValorMag();
             this.BonusHP = new ValorMag();
             this.BonusMP = new ValorMag();
-            this.BonusAP = new ValorMag();
+            this.BonusAP = 0;
             this.BonusSP = 0;
-            this.Iniciativa = new ValorMag();
+            this.Iniciativa = 0;
             this.Acao = new ValorMag();
             this.Reacao = new ValorMag();
             this.Turno = 0;

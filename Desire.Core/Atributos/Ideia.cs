@@ -2,8 +2,8 @@
 {
     public class Ideia : Atributo
     {
-        public ValorMag Ki { get; set; }
-        public ValorMag Base { get; set; }
+        public decimal Ki { get; set; }
+        public int Base { get; set; }
         public ValorMag Misterio { get; set; }
         public ValorMag Irrealidade { get; set; }
         public ValorMag Nexo { get; set; }

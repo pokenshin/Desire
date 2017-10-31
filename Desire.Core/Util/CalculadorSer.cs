@@ -353,7 +353,7 @@ namespace Desire.Core.Util
                 switch (energia.Sigla)
                 {
                     case "AP":
-                        energia.Quantidade = energia.Quantidade + Convert.ToDouble(ser.BonusAP.ValorReal);
+                        energia.Quantidade = energia.Quantidade + Convert.ToDouble(ser.BonusAP);
                         break;
 
                     case "HP":
@@ -422,9 +422,9 @@ namespace Desire.Core.Util
 
             //Acao = vigor + vitalidade * dinamica
             ser.Acao = calculador.SomaValorMag(ser.Forca.Vigor, ser.Materia.Vitalidade);
-            ser.Acao = calculador.MultiplicaValorMag(ser.Acao, ser.Destreza.Dinamica);
+            ser.Acao = calculador.MultiplicaValorMag(ser.Acao, Convert.ToDouble(ser.Destreza.Dinamica));
             //Reacao = Vitalidade * Dinamica
-            ser.Reacao = calculador.MultiplicaValorMag(ser.Materia.Vitalidade, ser.Destreza.Dinamica);
+            ser.Reacao = calculador.MultiplicaValorMag(ser.Materia.Vitalidade, Convert.ToDouble(ser.Destreza.Dinamica));
             //Turno = valor minimo da especie dominante + 20% da maior especie
             ser.Turno = ser.Especies[0].TurnoMin + (int)calculador.CalculaPorcentagem(20, (long)(from e in ser.Especies select e.TurnoMin).Max());
 
@@ -478,7 +478,9 @@ namespace Desire.Core.Util
             ser.Precisao = calculador.DivideValorMag(ser.Movimento, 3);
 
             //Essencia = Dureza + Resistencia
-            ser.Essencia = calculador.SomaValorMag(ser.Forca.Dureza, ser.Materia.Resistencia);
+            Conversor conver = new Conversor();
+            ser.Essencia = conver.StringParaValorMag(Convert.ToString(ser.Forca.Dureza));
+            ser.Essencia = calculador.SomaValorMag(ser.Essencia, ser.Materia.Resistencia);
 
             //HP MP AP SP
             //HP = Materia
@@ -486,10 +488,10 @@ namespace Desire.Core.Util
             //MP = Criatividade + Ideia
             //SP = ((15*(pontos de todos atributos-7))*7) (somar tracinhos)
             ser.BonusHP = ser.Materia.BonusHP;
-            ser.BonusAP = calculador.SomaValorMag(ser.Forca.BonusAP, ser.Materia.BonusAP);
-            ser.BonusAP = calculador.SomaValorMag(ser.BonusAP, ser.Destreza.BonusAP);
-            ser.BonusAP = calculador.SomaValorMag(ser.BonusAP, ser.Intelecto.BonusAP);
-            ser.BonusAP = calculador.SomaValorMag(ser.BonusAP, ser.Existencia.BonusAP);
+            ser.BonusAP = ser.Forca.BonusAP + ser.Materia.BonusAP;
+            ser.BonusAP = ser.BonusAP + ser.Destreza.BonusAP;
+            ser.BonusAP = ser.BonusAP + ser.Intelecto.BonusAP;
+            ser.BonusAP = ser.BonusAP + ser.Existencia.BonusAP;
             ser.BonusMP = calculador.SomaValorMag(ser.Criatividade.BonusMP, ser.Ideia.BonusMP);
             ser.BonusSP = CalculaBonusSP(ser);
 

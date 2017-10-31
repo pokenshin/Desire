@@ -18,10 +18,23 @@ namespace Desire.Data
         }
 
         public DbSet<Forca> TabelaForca { get; set; }
+        public DbSet<Materia> TabelaMateria { get; set; }
+        public DbSet<Destreza> TabelaDestreza { get; set; }
+        public DbSet<Intelecto> TabelaIntelecto { get; set; }
+        public DbSet<Criatividade> TabelaCriatividade { get; set; }
+        public DbSet<Existencia> TabelaExistencia { get; set; }
+        public DbSet<Ideia> TabelaIdeia { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ConfiguradorForca());
+            modelBuilder.ApplyConfiguration(new ConfiguradorMateria());
+            modelBuilder.ApplyConfiguration(new ConfiguradorDestreza());
+            modelBuilder.ApplyConfiguration(new ConfiguradorIntelecto());
+            modelBuilder.ApplyConfiguration(new ConfiguradorCriatividade());
+            modelBuilder.ApplyConfiguration(new ConfiguradorExistencia());
+            modelBuilder.ApplyConfiguration(new ConfiguradorIdeia());
+
         }
     }
 }

@@ -30,14 +30,20 @@ namespace Desire.Core
         public ValorMag(string valorMag)
         {
             Conversor conversor = new Conversor();
-            //ValorMag valor = conversor.StringParaValorMag(valorReal);
-            //this.ValorReal = valorReal;
-            //this.Valor = valor.Valor;
-            //this.Magnitude = valor.Magnitude; 
-            string[] matriz = valorMag.Split('m');
-            this.Valor = Convert.ToInt32(matriz[0]);
-            this.Magnitude = Convert.ToInt32(matriz[1]);
-            this.ValorReal = conversor.ValorMagParaString(Convert.ToInt32(matriz[0]), Convert.ToInt32(matriz[1]));
+            if (valorMag.Contains("m"))
+            {
+                string[] matriz = valorMag.Split('m');
+                this.Valor = Convert.ToInt32(matriz[0]);
+                this.Magnitude = Convert.ToInt32(matriz[1]);
+                this.ValorReal = conversor.ValorMagParaString(Convert.ToInt32(matriz[0]), Convert.ToInt32(matriz[1]));
+            }
+            else
+            {
+                ValorMag valor = conversor.StringParaValorMag(valorMag);
+                this.ValorReal = valorMag;
+                this.Valor = valor.Valor;
+                this.Magnitude = valor.Magnitude;
+            }
         }
 
         public override string ToString()

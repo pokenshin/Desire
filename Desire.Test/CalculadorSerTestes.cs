@@ -41,101 +41,6 @@ namespace Desire.Test
             Assert.IsTrue(resultado == 90);
         }
 
-        //Testa a função CalculaSubatributos para ver se ela está calculando corretamente cada um dos subatributos (sem modificadores)
-        //Resultado esperado: variavel de acordo com cada especificação
-        [TestMethod]
-        public void TesteCalculaSubatributosSemMod()
-        {
-            calculador = new CalculadorSer();
-            Random rnd = new Random();
-            GeradorForca genForca = new GeradorForca();
-            GeradorMateria genMateria = new GeradorMateria();
-            GeradorDestreza genDestreza = new GeradorDestreza();
-            GeradorIdeia genIdeia = new GeradorIdeia();
-            GeradorCriatividade genCriatividade = new GeradorCriatividade();
-            GeradorExistencia genExistencia = new GeradorExistencia();
-            GeradorIntelecto genIntelecto = new GeradorIntelecto();
-            GeradorInteiro rng = new GeradorInteiro();
-
-            Ser ser = new Ser()
-            {
-                Destreza = genDestreza.Gerar(rnd),
-                Forca = genForca.Gerar(rnd),
-                Materia = genMateria.Gerar(rnd),
-                Ideia = genIdeia.Gerar(rnd),
-                Criatividade = genCriatividade.Gerar(rnd),
-                Existencia = genExistencia.Gerar(rnd),
-                Intelecto = genIntelecto.Gerar(rnd),
-                Nivel = rng.GerarEntre(1, 100, rnd)
-            };
-            
-
-            List<Especie> listaEspecies = new List<Especie>
-            {
-                new Especie()
-                {
-                    AcaoMin = 2,
-                    TurnoMin = 1,
-                    AlturaMin = new ValorMag(20, 2),
-                    AlturaMax = new ValorMag(25, 3),
-                    LarguraMin = new ValorMag(20, 2),
-                    LarguraMax = new ValorMag(25, 3),
-                    TempoMax = 100,
-                    MaturidadeMin = 20,
-                    MaturidadeMax = 50,
-                    Porcentagem = 50,
-                    DestriaMax = 4,
-                    Densidade = new ValorMag(10, 2)
-                },
-
-                new Especie()
-                {
-                    AcaoMin = 5,
-                    TurnoMin = 5,
-                    AlturaMin = new ValorMag(30, 2),
-                    AlturaMax = new ValorMag(30, 3),
-                    LarguraMin = new ValorMag(30, 2),
-                    LarguraMax = new ValorMag(30, 3),
-                    TempoMax = 200,
-                    MaturidadeMin = 10,
-                    MaturidadeMax = 190,
-                    Porcentagem = 45,
-                    DestriaMax = 4,
-                    Densidade = new ValorMag(80, 1)
-                },
-
-                new Especie()
-                {
-                    AlturaMin = new ValorMag(10, 2),
-                    AlturaMax = new ValorMag(10, 3),
-                    LarguraMin = new ValorMag(10, 2),
-                    LarguraMax = new ValorMag(10, 3),
-                    TempoMax = 300,
-                    MaturidadeMin = 100,
-                    MaturidadeMax = 299,
-                    Porcentagem = 5,
-                    DestriaMax = 2,
-                    Densidade = new ValorMag(15, 2)
-                }
-            };
-            ser.Especies = listaEspecies;
-            ser.Tempo = 32;
-
-
-
-            ser = calculador.CalculaSubatributos(ser);
-
-            //Iniciativa = Destreza.Iniciativa
-            Assert.AreEqual(ser.Destreza.Iniciativa.Valor, ser.Iniciativa.Valor);
-            Assert.AreEqual(ser.Destreza.Iniciativa.Magnitude, ser.Iniciativa.Magnitude);
-            //Destria = Pontos Destreza / 10
-            Assert.IsTrue(ser.Destria < 5);
-            //Acao = vigor + vitalidade * dinamica
-            Assert.IsNotNull(ser.Acao);
-            //Turno = valor minimo da especie dominante + 20% da maior especie
-            Assert.AreEqual(2, ser.Turno);
-        }
-
         //Calcula a geração de subatributos de um ser baseado em um ser gerado aleatóriamente
         //Somente para ver se todos os campos estão sendo preenchidos com valores não-nulos
         [TestMethod]
@@ -145,8 +50,6 @@ namespace Desire.Test
             calculador = new CalculadorSer();
             GeradorSer gerador = new GeradorSer();
             Ser ser = gerador.Gerar(rnd);
-
-            ser = calculador.CalculaSubatributos(ser);
 
             Assert.IsNotNull(ser.Iniciativa);
             Assert.IsNotNull(ser.Destria);
@@ -468,7 +371,7 @@ namespace Desire.Test
                         }
                     }
                 },
-                BonusAP = new ValorMag(10, 3),
+                BonusAP = 300000,
                 BonusHP = new ValorMag(95, 5),
                 BonusMP = new ValorMag(19, 4),
                 BonusSP = 10,
