@@ -7,7 +7,7 @@
         public ValorMag Ataque { get; set; }
         public ValorMag Dinamica { get; set; }
         public ValorMag Iniciativa { get; set; }
-        public ValorMag BonusAP { get; internal set; }
+        public decimal BonusAP { get; internal set; }
 
         public Destreza()
         {
@@ -16,7 +16,7 @@
             this.Ataque = new ValorMag();
             this.Dinamica = new ValorMag();
             this.Iniciativa = new ValorMag();
-            this.BonusAP = new ValorMag();
+            this.BonusAP = 0;
         }
     }
 }

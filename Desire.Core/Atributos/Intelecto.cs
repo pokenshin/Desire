@@ -7,7 +7,7 @@
         public ValorMag Memoria { get; set; }
         public ValorMag Senso { get; set; }
         public ValorMag Eidos { get; set; }
-        public ValorMag BonusAP { get; internal set; }
+        public decimal BonusAP { get; internal set; }
 
         public Intelecto()
         {
@@ -16,7 +16,7 @@
             this.Memoria = new ValorMag();
             this.Senso = new ValorMag();
             this.Eidos = new ValorMag();
-            this.BonusAP = new ValorMag();
+            this.BonusAP = 0;
         }
     }
 }

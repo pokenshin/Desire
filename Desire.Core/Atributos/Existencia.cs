@@ -7,6 +7,6 @@
         public ValorMag Ciencia { get; set; }
         public ValorMag Consciencia { get; set; }
         public ValorMag Plano { get; set; }
-        public ValorMag BonusAP { get; set; }
+        public decimal BonusAP { get; set; }
     }
 }

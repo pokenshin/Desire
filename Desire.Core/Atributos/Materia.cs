@@ -7,7 +7,7 @@
         public ValorMag Resistencia { get; set; }
         public ValorMag Vitalidade { get; set; }
         public ValorMag Carga { get; set; }
-        public ValorMag BonusAP { get; set; }
+        public decimal BonusAP { get; set; }
         public ValorMag BonusHP { get; set; }
 
         public Materia()
@@ -17,7 +17,7 @@
             this.Resistencia = new ValorMag();
             this.Vitalidade = new ValorMag();
             this.Carga = new ValorMag();
-            this.BonusAP = new ValorMag();
+            this.BonusAP = 0;
             this.BonusHP = new ValorMag();
         }
     }
