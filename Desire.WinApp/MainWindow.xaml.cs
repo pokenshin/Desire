@@ -15,8 +15,7 @@ using System.Windows.Shapes;
 using Desire.Data;
 using Desire.Core;
 using Desire.Core.Identidade;
-using Desire.Data;
-using System.Data.SQLite;
+
     
 namespace Desire.WinApp
 {
@@ -42,8 +41,7 @@ namespace Desire.WinApp
         private void cmb_forca_pts_mais_Click(object sender, RoutedEventArgs e)
         {
             
-
-            //using (var db = new DesireSQLiteContext(optionsBuilder.Options))
+            //using (var db = dbManager.GeraContext())
             //{
             //    Forca atributo = new Forca()
             //    {

@@ -1,15 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Desire.Data
 {
-    public class SQLiteManager
+    public class SQLiteManager: IDesignTimeDbContextFactory<SQLiteContext>
     {
-        string localArquivo = "desire.db";
+        string localArquivo = @"E:\Code\DotNet\Core\Desire\Desire.Data\Database\desire.db";
 
-        public SQLiteContext GeraContext()
+        public SQLiteContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<SQLiteContext>();
             optionsBuilder.UseSqlite("Data Source=" + localArquivo);

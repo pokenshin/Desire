@@ -18,20 +18,10 @@ namespace Desire.Data
         }
 
         public DbSet<Forca> TabelaForca { get; set; }
-        public DbSet<Evolucao> TabelaEvolucao { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-            new TypeConfigurator(modelBuilder.Entity<Forca>());
-
-            ConfiguraForca(modelBuilder);
-        }
-
-        private void ConfiguraForca(ModelBuilder modelBuilder)
-        {
             modelBuilder.ApplyConfiguration(new ConfiguradorForca());
-
         }
     }
 }
