@@ -11,6 +11,7 @@
 
         public Forca()
         {
+            this.Pontos = 1;
             this.Potencia = new ValorMag();
             this.Golpe = 0;
             this.Dureza = 0;

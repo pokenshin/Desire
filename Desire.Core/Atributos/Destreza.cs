@@ -11,6 +11,7 @@
 
         public Destreza()
         {
+            this.Pontos = 1;
             this.Reflexo = new ValorMag();
             this.Esquiva = new ValorMag();
             this.Ataque = new ValorMag();

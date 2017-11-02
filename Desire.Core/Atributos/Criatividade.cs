@@ -11,6 +11,7 @@
 
         public Criatividade()
         {
+            this.Pontos = 1;
             this.Singularidade = new ValorMag();
             this.Tutor = new ValorMag();
             this.Visualizacao = new ValorMag();

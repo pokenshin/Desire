@@ -8,6 +8,7 @@
         Title="Desire WinApp" Width="800" Height="822"
         WindowStartupLocation="Manual" 
         Left="480" Top="0">
+
     <Grid Margin="0,0,0,1">
         <TabControl HorizontalAlignment="Left" Height="771" Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
             <TabItem Header="Roleplay">
@@ -39,132 +40,125 @@
                     </Rectangle>
 
 
-                    <Label x:Name="lbl_forca_classe" Content="P" HorizontalAlignment="Left" Margin="38,171,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Label x:Name="lbl_forca_classe" Content="{Binding Personagem.Forca.Classe}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="27,109,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Height="54" Width="54"/>
                     <Button x:Name="cmb_forca_pts_mais" Content="+" HorizontalAlignment="Left" Margin="74,110,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="10" Click="cmb_forca_pts_mais_Click"/>
-                    <Button x:Name="cmb_forca_pts_menos" Content="-" HorizontalAlignment="Left" Margin="74,138,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="9" FontWeight="Bold"/>
-                    <TextBox x:Name="txb_forca_pts" HorizontalAlignment="Left" Height="23" Margin="202,146,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="34" TextAlignment="Center"/>
-                    <Label x:Name="lbl_forca_nivel" Content="1" HorizontalAlignment="Left" Margin="107,104,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <Label x:Name="lbl_forca_potencia_vl" Content="99" HorizontalAlignment="Left" Margin="249,120,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_forca_potencia_mag" Content="99" HorizontalAlignment="Left" Margin="289,146,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_forca_golpe_vl" Content="99" HorizontalAlignment="Left" Margin="321,120,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_forca_golpe_mag" Content="99" HorizontalAlignment="Left" Margin="361,146,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_forca_dureza_vl" Content="99" HorizontalAlignment="Left" Margin="391,120,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_forca_dureza_mag" Content="99" HorizontalAlignment="Left" Margin="431,146,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_forca_vigor_vl" Content="99" HorizontalAlignment="Left" Margin="463,120,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_forca_vigor_mag" Content="99" HorizontalAlignment="Left" Margin="503,146,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_forca_sustentacao_vl" Content="99" HorizontalAlignment="Left" Margin="534,120,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_forca_sustentacao_mag" Content="99" HorizontalAlignment="Left" Margin="574,146,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_forca_pct_vl" Content="99" HorizontalAlignment="Left" Margin="649,112,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <Label x:Name="lbl_forca_pct_mag" Content="99" HorizontalAlignment="Left" Margin="725,144,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="cmb_forca_pts_menos" Content="-" HorizontalAlignment="Left" Margin="74,138,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="9" FontWeight="Bold" Click="cmb_forca_pts_menos_Click"/>
+                    <Label x:Name="lbl_forca_pontos" Content="{Binding Personagem.Forca.Pontos}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="186,152,0,0" VerticalAlignment="Top" Width="52" Height="18"/>
+                    <Label x:Name="lbl_forca_nivel" Content="{Binding Personagem.Forca.Nivel}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="95,109,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Height="54" Width="55"/>
+                    <Label x:Name="lbl_forca_potencia_vl" Content="{Binding Personagem.Forca.Potencia.Valor}" Margin="245,117,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Height="45" Width="45"/>
+                    <Label x:Name="lbl_forca_potencia_mag" Content="{Binding Personagem.Forca.Potencia.Magnitude}" Margin="292,151,0,0" Padding="0" HorizontalContentAlignment="Center" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="21" Height="18"/>
+                    <Label x:Name="lbl_forca_golpe_vl" Content="{Binding Personagem.Forca.Golpe}" Margin="314,108,0,0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Height="62" Width="71"/>
+                    <Label x:Name="lbl_forca_dureza_vl" Content="{Binding Personagem.Forca.Dureza}" Margin="385,108,0,0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Height="62" Width="71"/>
+                    <Label x:Name="lbl_forca_vigor_vl" Content="{Binding Personagem.Forca.Vigor.Valor}" Margin="456,117,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Height="45" Width="45"/>
+                    <Label x:Name="lbl_forca_vigor_mag" Content="{Binding Personagem.Forca.Vigor.Magnitude}" Margin="503,151,0,0" Padding="0" HorizontalContentAlignment="Center" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="21" Height="18"/>
+                    <Label x:Name="lbl_forca_sustentacao_vl" Content="{Binding Personagem.Forca.Sustentacao.Valor}" Margin="527,117,0,0"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Height="45" Width="45"/>
+                    <Label x:Name="lbl_forca_sustentacao_mag" Content="{Binding Personagem.Forca.Sustentacao.Magnitude}" Margin="574,151,0,0" Padding="0" HorizontalContentAlignment="Center" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="21" Height="18"/>
+                    <Label x:Name="lbl_forca_pct_vl" Content="{Binding Personagem.Forca.Porcentagem.Valor}" Margin="601,108,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Height="62" Width="149"/>
+                    <Label x:Name="lbl_forca_pct_mag" Content="{Binding Personagem.Forca.Porcentagem.Magnitude}" Margin="726,149,0,0"  Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Width="23"/>
 
 
-                    <Label x:Name="lbl_materia_classe" Content="P" HorizontalAlignment="Left" Margin="38,104,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <Button x:Name="cmb_materia_pts_mais" Content="+" HorizontalAlignment="Left" Margin="74,177,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="10"/>
-                    <Button x:Name="cmb_materia_pts_menos" Content="-" HorizontalAlignment="Left" Margin="74,205,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="9" FontWeight="Bold"/>
-                    <Label x:Name="lbl_materia_nivel" Content="1" HorizontalAlignment="Left" Margin="107,171,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <TextBox x:Name="txb_materia_pts" HorizontalAlignment="Left" Height="23" Margin="202,213,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="34" TextAlignment="Center"/>
-                    <Label x:Name="lbl_materia_colapso_vl" Content="99" HorizontalAlignment="Left" Margin="249,187,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_materia_colapso_mag" Content="99" HorizontalAlignment="Left" Margin="289,213,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_materia_impulso_vl" Content="99" HorizontalAlignment="Left" Margin="321,187,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_materia_impulso_mag" Content="99" HorizontalAlignment="Left" Margin="361,213,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_materia_resistencia_vl" Content="99" HorizontalAlignment="Left" Margin="391,187,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_materia_resistencia_mag" Content="99" HorizontalAlignment="Left" Margin="431,213,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_materia_vitalidade_vl" Content="99" HorizontalAlignment="Left" Margin="463,187,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_materia_vitalidade_mag" Content="99" HorizontalAlignment="Left" Margin="503,213,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_materia_carga_vl" Content="99" HorizontalAlignment="Left" Margin="534,187,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_materia_carga_mag" Content="99" HorizontalAlignment="Left" Margin="574,213,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_materia_pct_vl" Content="99" HorizontalAlignment="Left" Margin="649,179,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <Label x:Name="lbl_materia_pct_mag" Content="99" HorizontalAlignment="Left" Margin="725,211,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_materia_classe" Content="{Binding Personagem.Materia.Classe}" HorizontalAlignment="Left" Margin="38,171,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Button x:Name="cmb_materia_pts_mais" Content="+" HorizontalAlignment="Left" Margin="74,177,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="10" Click="cmb_materia_pts_mais_Click"/>
+                    <Button x:Name="cmb_materia_pts_menos" Content="-" HorizontalAlignment="Left" Margin="74,205,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="9" FontWeight="Bold" Click="cmb_materia_pts_menos_Click"/>
+                    <Label x:Name="lbl_materia_nivel" Content="{Binding Personagem.Materia.Nivel}" HorizontalAlignment="Left" Margin="107,171,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Label x:Name="lbl_materia_pts" Content="{Binding Personagem.Materia.Pontos}" HorizontalAlignment="Left" Margin="207,211,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_materia_colapso_vl" Content="{Binding Personagem.Materia.Colapso.Valor}" HorizontalAlignment="Left" Margin="249,187,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_materia_colapso_mag" Content="{Binding Personagem.Materia.Colapso.Magnitude}" HorizontalAlignment="Left" Margin="289,213,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_materia_impulso_vl" Content="{Binding Personagem.Materia.Impulso.Valor}" HorizontalAlignment="Left" Margin="321,187,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_materia_impulso_mag" Content="{Binding Personagem.Materia.Impulso.Magnitude}" HorizontalAlignment="Left" Margin="361,213,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_materia_resistencia_vl" Content="{Binding Personagem.Materia.Resistencia.Valor}" HorizontalAlignment="Left" Margin="391,187,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_materia_resistencia_mag" Content="{Binding Personagem.Materia.Resistencia.Magnitude}" HorizontalAlignment="Left" Margin="431,213,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_materia_vitalidade_vl" Content="{Binding Personagem.Materia.Vitalidade.Valor}" HorizontalAlignment="Left" Margin="463,187,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_materia_vitalidade_mag" Content="{Binding Personagem.Materia.Vitalidade.Magnitude}" HorizontalAlignment="Left" Margin="503,213,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_materia_carga_vl" Content="{Binding Personagem.Materia.Carga.Valor}" HorizontalAlignment="Left" Margin="534,187,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_materia_carga_mag" Content="{Binding Personagem.Materia.Carga.Magnitude}" HorizontalAlignment="Left" Margin="574,213,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_materia_pct_vl" Content="{Binding Personagem.Materia.Porcentagem.Valor}" HorizontalAlignment="Left" Margin="649,179,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Label x:Name="lbl_materia_pct_mag" Content="{Binding Personagem.Materia.Porcentagem.Magnitude}" HorizontalAlignment="Left" Margin="725,211,0,0" VerticalAlignment="Top"/>
 
-                    <Label x:Name="lbl_destreza_classe" Content="P" HorizontalAlignment="Left" Margin="38,238,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <Button x:Name="cmb_destreza_pts_menos" Content="-" HorizontalAlignment="Left" Margin="74,272,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="9" FontWeight="Bold"/>
-                    <Button x:Name="cmb_destreza_pts_mais" Content="+" HorizontalAlignment="Left" Margin="74,244,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="10"/>
-                    <Label x:Name="lbl_destreza_nivel" Content="1" HorizontalAlignment="Left" Margin="107,238,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <TextBox x:Name="txb_destreza_pts" HorizontalAlignment="Left" Height="23" Margin="202,280,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="34" TextAlignment="Center"/>
-                    <Label x:Name="lbl_destreza_reflexo_vl" Content="99" HorizontalAlignment="Left" Margin="249,254,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_destreza_reflexo_mag" Content="99" HorizontalAlignment="Left" Margin="289,280,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_destreza_esquiva_vl" Content="99" HorizontalAlignment="Left" Margin="321,254,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_destreza_esquiva_mag" Content="99" HorizontalAlignment="Left" Margin="361,280,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_destreza_ataque_vl" Content="99" HorizontalAlignment="Left" Margin="391,254,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_destreza_ataque_mag" Content="99" HorizontalAlignment="Left" Margin="431,280,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_destreza_dinamica_vl" Content="99" HorizontalAlignment="Left" Margin="463,254,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_destreza_dinamica_mag" Content="99" HorizontalAlignment="Left" Margin="503,280,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_destreza_iniciativa_vl" Content="99" HorizontalAlignment="Left" Margin="534,254,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_destreza_iniciativa_mag" Content="99" HorizontalAlignment="Left" Margin="574,280,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_destreza_pct_vl" Content="99" HorizontalAlignment="Left" Margin="649,246,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <Label x:Name="lbl_destreza_pct_mag" Content="99" HorizontalAlignment="Left" Margin="725,278,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_destreza_classe" Content="{Binding Personagem.Destreza.Classe}" HorizontalAlignment="Left" Margin="38,238,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Button x:Name="cmb_destreza_pts_menos" Content="-" HorizontalAlignment="Left" Margin="74,272,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="9" FontWeight="Bold" Click="cmb_destreza_pts_menos_Click"/>
+                    <Button x:Name="cmb_destreza_pts_mais" Content="+" HorizontalAlignment="Left" Margin="74,244,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="10" Click="cmb_destreza_pts_mais_Click"/>
+                    <Label x:Name="lbl_destreza_nivel" Content="{Binding Personagem.Destreza.Nivel}" HorizontalAlignment="Left" Margin="107,238,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Label x:Name="lbl_destreza_pts" Content="{Binding Personagem.Destreza.Pontos}" HorizontalAlignment="Left" Margin="207,277,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_destreza_reflexo_vl" Content="{Binding Personagem.Destreza.Reflexo.Valor}" HorizontalAlignment="Left" Margin="249,254,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_destreza_reflexo_mag" Content="{Binding Personagem.Destreza.Reflexo.Magnitude}" HorizontalAlignment="Left" Margin="289,280,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_destreza_esquiva_vl" Content="{Binding Personagem.Destreza.Esquiva.Valor}" HorizontalAlignment="Left" Margin="321,254,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_destreza_esquiva_mag" Content="{Binding Personagem.Destreza.Reflexo.Magnitude}" HorizontalAlignment="Left" Margin="361,280,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_destreza_ataque_vl" Content="{Binding Personagem.Destreza.Ataque.Valor}" HorizontalAlignment="Left" Margin="391,254,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_destreza_ataque_mag" Content="{Binding Personagem.Destreza.Ataque.Magnitude}" HorizontalAlignment="Left" Margin="431,280,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_destreza_dinamica_vl" Content="{Binding Personagem.Destreza.Dinamica}" HorizontalAlignment="Left" Margin="463,254,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_destreza_iniciativa_vl" Content="{Binding Personagem.Destreza.Iniciativa}" HorizontalAlignment="Left" Margin="534,254,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_destreza_pct_vl" Content="{Binding Personagem.Destreza.Porcentagem.Valor}" HorizontalAlignment="Left" Margin="649,246,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Label x:Name="lbl_destreza_pct_mag" Content="{Binding Personagem.Destreza.Porcentagem.Magnitude}" HorizontalAlignment="Left" Margin="725,278,0,0" VerticalAlignment="Top"/>
 
-                    <Label x:Name="lbl_intelecto_classe" Content="P" HorizontalAlignment="Left" Margin="38,305,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <Button x:Name="cmb_intelecto_pts_menos" Content="-" HorizontalAlignment="Left" Margin="74,339,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="9" FontWeight="Bold"/>
-                    <Button x:Name="cmb_intelecto_pts_mais" Content="+" HorizontalAlignment="Left" Margin="74,311,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="10"/>
-                    <Label x:Name="lbl_intelecto_nivel" Content="1" HorizontalAlignment="Left" Margin="107,305,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <TextBox x:Name="txb_intelecto_pts" HorizontalAlignment="Left" Height="23" Margin="202,347,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="34" TextAlignment="Center"/>
-                    <Label x:Name="lbl_intelecto_concentracao_vl" Content="99" HorizontalAlignment="Left" Margin="249,321,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_intelecto_concetracao_mag" Content="99" HorizontalAlignment="Left" Margin="289,347,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_intelecto_aprendizagem_vl" Content="99" HorizontalAlignment="Left" Margin="321,321,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_intelecto_aprendizagem_mag" Content="99" HorizontalAlignment="Left" Margin="361,347,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_intelecto_memoria_vl" Content="99" HorizontalAlignment="Left" Margin="391,321,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_intelecto_memoria_mag" Content="99" HorizontalAlignment="Left" Margin="431,347,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_intelecto_senso_vl" Content="99" HorizontalAlignment="Left" Margin="463,321,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_intelecto_senso_mag" Content="99" HorizontalAlignment="Left" Margin="503,347,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_intelecto_eidos_vl" Content="99" HorizontalAlignment="Left" Margin="534,321,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_intelecto_eidos_mag" Content="99" HorizontalAlignment="Left" Margin="574,347,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_intelecto_pct_vl" Content="99" HorizontalAlignment="Left" Margin="649,313,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <Label x:Name="lbl_intelecto_pct_mag" Content="99" HorizontalAlignment="Left" Margin="725,345,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_intelecto_classe" Content="{Binding Personagem.Intelecto.Classe}" HorizontalAlignment="Left" Margin="38,305,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Button x:Name="cmb_intelecto_pts_menos" Content="-" HorizontalAlignment="Left" Margin="74,339,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="9" FontWeight="Bold" Click="cmb_intelecto_pts_menos_Click"/>
+                    <Button x:Name="cmb_intelecto_pts_mais" Content="+" HorizontalAlignment="Left" Margin="74,311,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="10" Click="cmb_intelecto_pts_mais_Click"/>
+                    <Label x:Name="lbl_intelecto_nivel" Content="{Binding Personagem.Intelecto.Nivel}" HorizontalAlignment="Left" Margin="107,305,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Label x:Name="lbl_intelecto_pts" Content="{Binding Personagem.Intelecto.Pontos}" HorizontalAlignment="Left" Margin="208,344,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_intelecto_concentracao_vl" Content="{Binding Personagem.Intelecto.Concentracao.Valor}" HorizontalAlignment="Left" Margin="249,321,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_intelecto_concetracao_mag" Content="{Binding Personagem.Intelecto.Concentracao.Magnitude}" HorizontalAlignment="Left" Margin="289,347,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_intelecto_aprendizagem_vl" Content="{Binding Personagem.Intelecto.Aprendizagem.Valor}" HorizontalAlignment="Left" Margin="321,321,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_intelecto_aprendizagem_mag" Content="{Binding Personagem.Intelecto.Aprendizagem.Magnitude}" HorizontalAlignment="Left" Margin="361,347,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_intelecto_memoria_vl" Content="{Binding Personagem.Intelecto.Memoria.Valor}" HorizontalAlignment="Left" Margin="391,321,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_intelecto_memoria_mag" Content="{Binding Personagem.Intelecto.Memoria.Magnitude}" HorizontalAlignment="Left" Margin="431,347,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_intelecto_senso_vl" Content="{Binding Personagem.Intelecto.Senso.Valor}" HorizontalAlignment="Left" Margin="463,321,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_intelecto_senso_mag" Content="{Binding Personagem.Intelecto.Senso.Magnitude}" HorizontalAlignment="Left" Margin="503,347,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_intelecto_eidos_vl" Content="{Binding Personagem.Intelecto.Eidos.Valor}" HorizontalAlignment="Left" Margin="534,321,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_intelecto_eidos_mag" Content="{Binding Personagem.Intelecto.Eidos.Magnitude}" HorizontalAlignment="Left" Margin="574,347,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_intelecto_pct_vl" Content="{Binding Personagem.Intelecto.Porcentagem.Valor}" HorizontalAlignment="Left" Margin="649,313,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Label x:Name="lbl_intelecto_pct_mag" Content="{Binding Personagem.Intelecto.Porcentagem.Magnitude}" HorizontalAlignment="Left" Margin="725,345,0,0" VerticalAlignment="Top"/>
 
-                    <Label x:Name="lbl_criatividade_classe" Content="P" HorizontalAlignment="Left" Margin="38,372,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <Button x:Name="cmb_criatividade_pts_menos" Content="-" HorizontalAlignment="Left" Margin="74,406,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="9" FontWeight="Bold"/>
-                    <Button x:Name="cmb_criatividade_pts_mais" Content="+" HorizontalAlignment="Left" Margin="74,378,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="10"/>
-                    <Label x:Name="lbl_criatividade_nivel" Content="1" HorizontalAlignment="Left" Margin="107,372,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <TextBox x:Name="txb_criatividade_pts" HorizontalAlignment="Left" Height="23" Margin="202,414,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="34" TextAlignment="Center"/>
-                    <Label x:Name="lbl_criatividade_singularidade_vl" Content="99" HorizontalAlignment="Left" Margin="249,388,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_criatividade_singularidade_mag" Content="99" HorizontalAlignment="Left" Margin="289,414,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_criatividade_tutor_vl" Content="99" HorizontalAlignment="Left" Margin="321,388,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_criatividade_tutor_mag" Content="99" HorizontalAlignment="Left" Margin="361,414,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_criatividade_visualizacao_vl" Content="99" HorizontalAlignment="Left" Margin="391,388,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_criatividade_visualizacao_mag" Content="99" HorizontalAlignment="Left" Margin="431,414,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_criatividade_invencao_vl" Content="99" HorizontalAlignment="Left" Margin="463,388,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_criatividade_invencao_mag" Content="99" HorizontalAlignment="Left" Margin="503,414,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_criatividade_realidade_vl" Content="99" HorizontalAlignment="Left" Margin="534,388,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_criatividade_realidade_mag" Content="99" HorizontalAlignment="Left" Margin="574,414,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_criatividade_pct_vl" Content="99" HorizontalAlignment="Left" Margin="649,380,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <Label x:Name="lbl_criatividade_pct_mag" Content="99" HorizontalAlignment="Left" Margin="725,412,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_criatividade_classe" Content="{Binding Personagem.Criatividade.Classe}" HorizontalAlignment="Left" Margin="38,372,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Button x:Name="cmb_criatividade_pts_menos" Content="-" HorizontalAlignment="Left" Margin="74,406,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="9" FontWeight="Bold" Click="cmb_criatividade_pts_menos_Click"/>
+                    <Button x:Name="cmb_criatividade_pts_mais" Content="+" HorizontalAlignment="Left" Margin="74,378,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="10" Click="cmb_criatividade_pts_mais_Click"/>
+                    <Label x:Name="lbl_criatividade_nivel" Content="{Binding Personagem.Criatividade.Nivel}" HorizontalAlignment="Left" Margin="107,372,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Label x:Name="lbl_criatividade_pts" Content="{Binding Personagem.Criatividade.Pontos}" HorizontalAlignment="Left" Margin="208,411,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_criatividade_singularidade_vl" Content="{Binding Personagem.Criatividade.Singularidade.Valor}" HorizontalAlignment="Left" Margin="249,388,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_criatividade_singularidade_mag" Content="{Binding Personagem.Criatividade.Singularidade.Magnitude}" HorizontalAlignment="Left" Margin="289,414,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_criatividade_tutor_vl" Content="{Binding Personagem.Criatividade.Tutor.Valor}" HorizontalAlignment="Left" Margin="321,388,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_criatividade_tutor_mag" Content="{Binding Personagem.Criatividade.Tutor.Magnitude}" HorizontalAlignment="Left" Margin="361,414,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_criatividade_visualizacao_vl" Content="{Binding Personagem.Criatividade.Visualizacao.Valor}" HorizontalAlignment="Left" Margin="391,388,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_criatividade_visualizacao_mag" Content="{Binding Personagem.Criatividade.Visualizacao.Magnitude}" HorizontalAlignment="Left" Margin="431,414,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_criatividade_invencao_vl" Content="{Binding Personagem.Criatividade.Invencao.Valor}" HorizontalAlignment="Left" Margin="463,388,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_criatividade_invencao_mag" Content="{Binding Personagem.Criatividade.Invencao.Magnitude}" HorizontalAlignment="Left" Margin="503,414,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_criatividade_realidade_vl" Content="{Binding Personagem.Criatividade.Realidade.Valor}" HorizontalAlignment="Left" Margin="534,388,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_criatividade_realidade_mag" Content="{Binding Personagem.Criatividade.Realidade.Magnitude}" HorizontalAlignment="Left" Margin="574,414,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_criatividade_pct_vl" Content="{Binding Personagem.Criatividade.Porcentagem.Valor}" HorizontalAlignment="Left" Margin="649,380,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Label x:Name="lbl_criatividade_pct_mag" Content="{Binding Personagem.Criatividade.Porcentagem.Magnitude}" HorizontalAlignment="Left" Margin="725,412,0,0" VerticalAlignment="Top"/>
 
-                    <Label x:Name="lbl_existencia_classe" Content="P" HorizontalAlignment="Left" Margin="38,439,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <Button x:Name="cmb_existencia_pts_mais" Content="+" HorizontalAlignment="Left" Margin="74,445,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="10"/>
-                    <Button x:Name="cmb_existencia_pts_menos" Content="-" HorizontalAlignment="Left" Margin="74,473,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="9" FontWeight="Bold"/>
-                    <Label x:Name="lbl_existencia_nivel" Content="1" HorizontalAlignment="Left" Margin="107,439,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <TextBox x:Name="txb_existencia_pts" HorizontalAlignment="Left" Height="23" Margin="202,481,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="34" TextAlignment="Center"/>
-                    <Label x:Name="lbl_existencia_conhecimento_vl" Content="99" HorizontalAlignment="Left" Margin="249,455,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_existencia_conhecimento_mag" Content="99" HorizontalAlignment="Left" Margin="289,481,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_existencia_experiencia_vl" Content="99" HorizontalAlignment="Left" Margin="321,455,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_existencia_experiencia_mag" Content="99" HorizontalAlignment="Left" Margin="361,481,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_existencia_ciencia_vl" Content="99" HorizontalAlignment="Left" Margin="391,455,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_existencia_ciencia_mag" Content="99" HorizontalAlignment="Left" Margin="431,481,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_existencia_consciencia_vl" Content="99" HorizontalAlignment="Left" Margin="463,455,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_existencia_consciencia_mag" Content="99" HorizontalAlignment="Left" Margin="503,481,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_existencia_plano_vl" Content="99" HorizontalAlignment="Left" Margin="534,455,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_existencia_plano_mag" Content="99" HorizontalAlignment="Left" Margin="574,481,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_existencia_pct_vl" Content="99" HorizontalAlignment="Left" Margin="649,447,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <Label x:Name="lbl_existencia_pct_mag" Content="99" HorizontalAlignment="Left" Margin="725,479,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_existencia_classe" Content="{Binding Personagem.Existencia.Classe}" HorizontalAlignment="Left" Margin="38,439,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Button x:Name="cmb_existencia_pts_mais" Content="+" HorizontalAlignment="Left" Margin="74,445,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="10" Click="cmb_existencia_pts_mais_Click"/>
+                    <Button x:Name="cmb_existencia_pts_menos" Content="-" HorizontalAlignment="Left" Margin="74,473,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="9" FontWeight="Bold" Click="cmb_existencia_pts_menos_Click"/>
+                    <Label x:Name="lbl_existencia_nivel" Content="{Binding Personagem.Existencia.Nivel}" HorizontalAlignment="Left" Margin="107,439,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Label x:Name="lbl_existencia_pts" Content="{Binding Personagem.Existencia.Pontos}" HorizontalAlignment="Left" Margin="208,479,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_existencia_conhecimento_vl" Content="{Binding Personagem.Existencia.Conhecimento.Valor}" HorizontalAlignment="Left" Margin="249,455,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_existencia_conhecimento_mag" Content="{Binding Personagem.Existencia.Conhecimento.Magnitude}" HorizontalAlignment="Left" Margin="289,481,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_existencia_experiencia_vl" Content="{Binding Personagem.Existencia.Experiencia.Valor}" HorizontalAlignment="Left" Margin="321,455,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_existencia_experiencia_mag" Content="{Binding Personagem.Existencia.Experiencia.Magnitude}" HorizontalAlignment="Left" Margin="361,481,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_existencia_ciencia_vl" Content="{Binding Personagem.Existencia.Ciencia.Valor}" HorizontalAlignment="Left" Margin="391,455,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_existencia_ciencia_mag" Content="{Binding Personagem.Existencia.Ciencia.Magnitude}" HorizontalAlignment="Left" Margin="431,481,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_existencia_consciencia_vl" Content="{Binding Personagem.Existencia.Consciencia.Valor}" HorizontalAlignment="Left" Margin="463,455,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_existencia_consciencia_mag" Content="{Binding Personagem.Existencia.Consciencia.Magnitude}" HorizontalAlignment="Left" Margin="503,481,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_existencia_plano_vl" Content="{Binding Personagem.Existencia.Plano}" HorizontalAlignment="Left" Margin="534,455,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_existencia_pct_vl" Content="{Binding Personagem.Existencia.Porcentagem.Valor}" HorizontalAlignment="Left" Margin="649,447,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Label x:Name="lbl_existencia_pct_mag" Content="{Binding Personagem.Existencia.Porcentagem.Magnitude}" HorizontalAlignment="Left" Margin="725,479,0,0" VerticalAlignment="Top"/>
 
-                    <Label x:Name="lbl_ideia_classe" Content="P" HorizontalAlignment="Left" Margin="38,506,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <Button x:Name="cmb_ideia_pts_mais" Content="+" HorizontalAlignment="Left" Margin="74,512,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="10"/>
-                    <Button x:Name="cmb_ideia_pts_menos" Content="-" HorizontalAlignment="Left" Margin="74,540,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="9" FontWeight="Bold"/>
-                    <Label x:Name="lbl_ideia_nivel" Content="1" HorizontalAlignment="Left" Margin="107,506,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <TextBox x:Name="txb_ideia_pts" HorizontalAlignment="Left" Height="23" Margin="202,548,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="34" TextAlignment="Center"/>
-                    <Label x:Name="lbl_ideia_ki_vl" Content="99" HorizontalAlignment="Left" Margin="249,522,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_ideia_ki_mag" Content="99" HorizontalAlignment="Left" Margin="289,548,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_ideia_base_vl" Content="99" HorizontalAlignment="Left" Margin="321,522,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_ideia_base_mag" Content="99" HorizontalAlignment="Left" Margin="361,548,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_ideia_misterio_vl" Content="99" HorizontalAlignment="Left" Margin="391,522,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_ideia_misterio_mag" Content="99" HorizontalAlignment="Left" Margin="431,548,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_ideia_irrealidade_vl" Content="99" HorizontalAlignment="Left" Margin="463,522,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_ideia_irrealidade_mag" Content="99" HorizontalAlignment="Left" Margin="503,548,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_ideia_nexo_vl" Content="99" HorizontalAlignment="Left" Margin="534,522,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-                    <Label x:Name="lbl_ideia_nexo_mag" Content="99" HorizontalAlignment="Left" Margin="574,548,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_ideia_pct_vl" Content="99" HorizontalAlignment="Left" Margin="649,514,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
-                    <Label x:Name="lbl_ideia_pct_mag" Content="99" HorizontalAlignment="Left" Margin="725,546,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_ideia_classe" Content="{Binding Personagem.Ideia.Classe}" HorizontalAlignment="Left" Margin="38,506,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Button x:Name="cmb_ideia_pts_mais" Content="+" HorizontalAlignment="Left" Margin="74,512,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="10" Click="cmb_ideia_pts_mais_Click"/>
+                    <Button x:Name="cmb_ideia_pts_menos" Content="-" HorizontalAlignment="Left" Margin="74,540,0,0" VerticalAlignment="Top" Width="25" Height="25" FontSize="9" FontWeight="Bold" Click="cmb_ideia_pts_menos_Click"/>
+                    <Label x:Name="lbl_ideia_nivel" Content="{Binding Personagem.Ideia.Nivel}" HorizontalAlignment="Left" Margin="107,506,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Label x:Name="lbl_ideia_pts" Content="{Binding Personagem.Ideia.Pontos}" HorizontalAlignment="Left" Margin="208,544,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_ideia_ki_vl" Content="{Binding Personagem.Ideia.Ki}" HorizontalAlignment="Left" Margin="249,522,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_ideia_base_vl" Content="{Binding Personagem.Ideia.Base}" HorizontalAlignment="Left" Margin="321,522,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_ideia_misterio_vl" Content="{Binding Personagem.Ideia.Misterio.Valor}" HorizontalAlignment="Left" Margin="391,522,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_ideia_misterio_mag" Content="{Binding Personagem.Ideia.Misterio.Magnitude}" HorizontalAlignment="Left" Margin="431,548,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_ideia_irrealidade_vl" Content="{Binding Personagem.Ideia.Irrealidade.Valor}" HorizontalAlignment="Left" Margin="463,522,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_ideia_irrealidade_mag" Content="{Binding Personagem.Ideia.Irrealidade.Magnitude}" HorizontalAlignment="Left" Margin="503,548,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_ideia_nexo_vl" Content="{Binding Personagem.Ideia.Nexo.Valor}" HorizontalAlignment="Left" Margin="534,522,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="lbl_ideia_nexo_mag" Content="{Binding Personagem.Ideia.Nexo.Magnitude}" HorizontalAlignment="Left" Margin="574,548,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_ideia_pct_vl" Content="{Binding Personagem.Ideia.Porcentagem.Valor}" HorizontalAlignment="Left" Margin="649,514,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>
+                    <Label x:Name="lbl_ideia_pct_mag" Content="{Binding Personagem.Ideia.Porcentagem.Magnitude}" HorizontalAlignment="Left" Margin="725,546,0,0" VerticalAlignment="Top"/>
                     <Rectangle HorizontalAlignment="Left" Height="141" Margin="11,587,0,0" Stroke="Black" VerticalAlignment="Top" Width="745">
                         <Rectangle.Fill>
                             <ImageBrush ImageSource="/Resources/Desire-SubAtributos.png" />
@@ -195,7 +189,7 @@
                     <Label x:Name="lbl_apbonus_mag" Content="99" HorizontalAlignment="Left" Margin="274,700,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="lbl_spbonus_vl" Content="99" HorizontalAlignment="Left" Margin="314,688,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
                     <Label x:Name="lbl_spbonus_mag" Content="99" HorizontalAlignment="Left" Margin="355,700,0,0" VerticalAlignment="Top"/>
-                    
+
                     <Label x:Name="lbl_iniciativa_vl" Content="99" HorizontalAlignment="Left" Margin="444,598,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
                     <Label x:Name="lbl_iniciativa_mag" Content="99" HorizontalAlignment="Left" Margin="485,610,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="lbl_acao_vl" Content="99" HorizontalAlignment="Left" Margin="525,598,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>

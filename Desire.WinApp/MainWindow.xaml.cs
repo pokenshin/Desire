@@ -15,51 +15,198 @@ using System.Windows.Shapes;
 using Desire.Data;
 using Desire.Core;
 using Desire.Core.Identidade;
+using Desire.Data.Operacoes;
+using System.ComponentModel;
 
-    
 namespace Desire.WinApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : INotifyPropertyChanged
     {
-        Ser ser;
+        private Ser ser;
+        public Ser Personagem
+        {
+            get{ return ser; }
+            set
+            {
+                ser = value;
+                NotifyPropertyChanged("Personagem");
+            }
+        }
+
+        private DbConsultas dbConsultas;
 
         public MainWindow()
         {
+            Personagem = new Ser();
+            dbConsultas = new DbConsultas();
+            consultaAtributos();
             InitializeComponent();
-            //Instancia novo ser e inicializa componentes de UI
-            //InicializaSer();
-       }
+            this.DataContext = this;
+        }
 
-        private void InicializaSer()
+        private void consultaAtributos()
         {
-            ser = new Ser();
+            ser.Forca = dbConsultas.RetornaForca(ser.Forca.Pontos);
+            ser.Materia = dbConsultas.RetornaMateria(ser.Materia.Pontos);
+            ser.Destreza = dbConsultas.RetornaDestreza(ser.Destreza.Pontos);
+            ser.Intelecto = dbConsultas.RetornaIntelecto(ser.Intelecto.Pontos);
+            ser.Criatividade = dbConsultas.RetornaCriatividade(ser.Criatividade.Pontos);
+            ser.Existencia = dbConsultas.RetornaExistencia(ser.Existencia.Pontos);
+            ser.Ideia = dbConsultas.RetornaIdeia(ser.Ideia.Pontos);
+            Personagem = ser;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
         private void cmb_forca_pts_mais_Click(object sender, RoutedEventArgs e)
         {
-            
-            //using (var db = dbManager.GeraContext())
-            //{
-            //    Forca atributo = new Forca()
-            //    {
-            //        Pontos = 1,
-            //        Classe = 'P',
-            //        Nivel = 1,
-            //        BonusAP = new ValorMag(),
-            //        Dureza = new ValorMag(),
-            //        Evolucao = new Evolucao(),
-            //        Golpe = new ValorMag(),
-            //        Porcentagem = new ValorMag(),
-            //        Potencia = new ValorMag(),
-            //        Sustentacao = new ValorMag(),
-            //        Vigor = new ValorMag()
-            //    };
-            //    db.TabelaForca.Add(atributo);
-            //    db.SaveChanges();
-            //}
+            if (ser.Forca.Pontos < 110)
+            {
+                ser.Forca.Pontos++;
+                ser.Forca = dbConsultas.RetornaForca(ser.Forca.Pontos);
+                Personagem = ser;
+            }
+        }
+
+        private void cmb_forca_pts_menos_Click(object sender, RoutedEventArgs e)
+        {
+            if (ser.Forca.Pontos > 1)
+            { 
+                ser.Forca.Pontos--;
+                ser.Forca = dbConsultas.RetornaForca(ser.Forca.Pontos);
+                Personagem = ser;
+            }
+        }
+
+        private void cmb_materia_pts_mais_Click(object sender, RoutedEventArgs e)
+        {
+            if (ser.Materia.Pontos < 110)
+            {
+                ser.Materia.Pontos++;
+                ser.Materia = dbConsultas.RetornaMateria(ser.Materia.Pontos);
+                Personagem = ser;
+            }
+        }
+
+        private void cmb_materia_pts_menos_Click(object sender, RoutedEventArgs e)
+        {
+            if (ser.Materia.Pontos > 1)
+            {
+                ser.Materia.Pontos--;
+                ser.Materia = dbConsultas.RetornaMateria(ser.Materia.Pontos);
+                Personagem = ser;
+            }
+        }
+
+        private void cmb_destreza_pts_mais_Click(object sender, RoutedEventArgs e)
+        {
+            if (ser.Destreza.Pontos < 110)
+            {
+                ser.Destreza.Pontos++;
+                ser.Destreza = dbConsultas.RetornaDestreza(ser.Destreza.Pontos);
+                Personagem = ser;
+            }
+        }
+
+        private void cmb_destreza_pts_menos_Click(object sender, RoutedEventArgs e)
+        {
+            if (ser.Destreza.Pontos > 1)
+            {
+                ser.Destreza.Pontos--;
+                ser.Destreza = dbConsultas.RetornaDestreza(ser.Destreza.Pontos);
+                Personagem = ser;
+            }
+        }
+
+        private void cmb_intelecto_pts_mais_Click(object sender, RoutedEventArgs e)
+        {
+            if (ser.Intelecto.Pontos < 110)
+            {
+                ser.Intelecto.Pontos++;
+                ser.Intelecto = dbConsultas.RetornaIntelecto(ser.Intelecto.Pontos);
+                Personagem = ser;
+            }
+        }
+
+        private void cmb_intelecto_pts_menos_Click(object sender, RoutedEventArgs e)
+        {
+            if (ser.Intelecto.Pontos > 1)
+            {
+                ser.Intelecto.Pontos--;
+                ser.Intelecto = dbConsultas.RetornaIntelecto(ser.Intelecto.Pontos);
+                Personagem = ser;
+            }
+        }
+
+        private void cmb_criatividade_pts_mais_Click(object sender, RoutedEventArgs e)
+        {
+            if (ser.Criatividade.Pontos < 110)
+            {
+                ser.Criatividade.Pontos++;
+                ser.Criatividade = dbConsultas.RetornaCriatividade(ser.Criatividade.Pontos);
+                Personagem = ser;
+            }
+        }
+
+        private void cmb_criatividade_pts_menos_Click(object sender, RoutedEventArgs e)
+        {
+            if (ser.Criatividade.Pontos > 1)
+            {
+                ser.Criatividade.Pontos--;
+                ser.Criatividade = dbConsultas.RetornaCriatividade(ser.Criatividade.Pontos);
+                Personagem = ser;
+            }
+        }
+
+        private void cmb_existencia_pts_mais_Click(object sender, RoutedEventArgs e)
+        {
+            if (ser.Existencia.Pontos < 110)
+            {
+                ser.Existencia.Pontos++;
+                ser.Existencia = dbConsultas.RetornaExistencia(ser.Existencia.Pontos);
+                Personagem = ser;
+            }
+        }
+
+        private void cmb_existencia_pts_menos_Click(object sender, RoutedEventArgs e)
+        {
+            if (ser.Existencia.Pontos > 1)
+            {
+                ser.Existencia.Pontos--;
+                ser.Existencia = dbConsultas.RetornaExistencia(ser.Existencia.Pontos);
+                Personagem = ser;
+            }
+        }
+
+        private void cmb_ideia_pts_mais_Click(object sender, RoutedEventArgs e)
+        {
+            if (ser.Ideia.Pontos < 110)
+            {
+                ser.Ideia.Pontos++;
+                ser.Ideia = dbConsultas.RetornaIdeia(ser.Ideia.Pontos);
+                Personagem = ser;
+            }
+        }
+
+        private void cmb_ideia_pts_menos_Click(object sender, RoutedEventArgs e)
+        {
+            if (ser.Ideia.Pontos > 1)
+            {
+                ser.Ideia.Pontos--;
+                ser.Ideia = dbConsultas.RetornaIdeia(ser.Ideia.Pontos);
+                Personagem = ser;
+            }
         }
     }
 }

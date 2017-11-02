@@ -11,6 +11,7 @@
 
         public Materia()
         {
+            this.Pontos = 1;
             this.Colapso = new ValorMag();
             this.Impulso = new ValorMag();
             this.Resistencia = new ValorMag();

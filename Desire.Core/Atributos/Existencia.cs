@@ -11,6 +11,7 @@
 
         public Existencia()
         {
+            this.Pontos = 1;
             this.BonusAP = 0;
             this.Ciencia = new ValorMag();
             this.Classe = "P";

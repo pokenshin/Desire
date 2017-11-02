@@ -11,6 +11,7 @@
 
         public Intelecto()
         {
+            this.Pontos = 1;
             this.Concentracao = new ValorMag();
             this.Aprendizagem = new ValorMag();
             this.Memoria = new ValorMag();
