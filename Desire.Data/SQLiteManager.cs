@@ -8,7 +8,7 @@ namespace Desire.Data
 {
     public class SQLiteManager: IDesignTimeDbContextFactory<SQLiteContext>
     {
-        string localArquivo = @"E:\Code\DotNet\Core\Desire\Desire.Data\Database\desire.db";
+        string localArquivo = @"E:\Code\DotNet\Core\Desire\Desire.Data\Database\desire_test.db";
 
         public SQLiteContext CreateDbContext(string[] args)
         {

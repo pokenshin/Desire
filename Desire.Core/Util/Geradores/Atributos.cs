@@ -17,7 +17,7 @@ namespace Desire.Core.Util.Geradores
             Forca atributo = new Forca()
             {
                 Sustentacao = rvmg.Gerar(rnd),
-                Classe = Convert.ToChar(rsg.GerarTamanhoEspecifico(1, 1, rnd)),
+                Classe = rsg.GerarTamanhoEspecifico(1, 1, rnd),
                 Dureza = Convert.ToDecimal(rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd).ValorReal),
                 Golpe = Convert.ToDecimal(rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd).ValorReal),
                 Nivel = rng.GerarEntre(1, 5, rnd),
@@ -53,7 +53,7 @@ namespace Desire.Core.Util.Geradores
         {
             Criatividade atributo = new Criatividade()
             {
-                Classe = Convert.ToChar(rsg.GerarTamanhoEspecifico(1, 1, rnd)),
+                Classe = rsg.GerarTamanhoEspecifico(1, 1, rnd),
                 Invencao = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
                 Nivel = rng.GerarEntre(1, 5, rnd),
                 Pontos = rng.GerarEntre(1, 100, rnd),
@@ -91,7 +91,7 @@ namespace Desire.Core.Util.Geradores
             Destreza atributo = new Destreza()
             {
                 Ataque = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
-                Classe = Convert.ToChar(rsg.GerarTamanhoEspecifico(1, 1, rnd)),
+                Classe = rsg.GerarTamanhoEspecifico(1, 1, rnd),
                 Esquiva = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
                 Iniciativa = rng.GerarEntre(1, 1000, rnd),
                 Nivel = rng.GerarEntre(1, 5, rnd),
@@ -128,7 +128,7 @@ namespace Desire.Core.Util.Geradores
             Existencia atributo = new Existencia()
             {
                 Ciencia = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
-                Classe = Convert.ToChar(rsg.GerarTamanhoEspecifico(1, 1, rnd)),
+                Classe = rsg.GerarTamanhoEspecifico(1, 1, rnd),
                 Conhecimento = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
                 Consciencia = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
                 Experiencia = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
@@ -168,7 +168,7 @@ namespace Desire.Core.Util.Geradores
                 Nivel = rng.GerarEntre(1, 5, rnd),
                 Pontos = rng.GerarEntre(1, 100, rnd),
                 Porcentagem = rvmg.Gerar(rnd),
-                Classe = Convert.ToChar(rsg.GerarTamanhoEspecifico(1, 1, rnd)),
+                Classe = rsg.GerarTamanhoEspecifico(1, 1, rnd),
                 Irrealidade = rvmg.Gerar(rnd),
                 Ki = rng.GerarEntre(1, 1000, rnd),
                 Misterio = rvmg.Gerar(rnd),
@@ -204,7 +204,7 @@ namespace Desire.Core.Util.Geradores
                 Nivel = rng.GerarEntre(1, 5, rnd),
                 Pontos = rng.GerarEntre(1, 100, rnd),
                 Porcentagem = rvmg.Gerar(rnd),
-                Classe = Convert.ToChar(rsg.GerarTamanhoEspecifico(1, 1, rnd)),
+                Classe = rsg.GerarTamanhoEspecifico(1, 1, rnd),
                 Aprendizagem = rvmg.Gerar(rnd),
                 Concentracao = rvmg.Gerar(rnd),
                 Eidos = rvmg.Gerar(rnd),
@@ -241,7 +241,7 @@ namespace Desire.Core.Util.Geradores
                 Nivel = rng.GerarEntre(1, 5, rnd),
                 Pontos = rng.GerarEntre(1, 100, rnd),
                 Porcentagem = rvmg.Gerar(rnd),
-                Classe = Convert.ToChar(rsg.GerarTamanhoEspecifico(1, 1, rnd)),
+                Classe = rsg.GerarTamanhoEspecifico(1, 1, rnd),
                 Colapso = rvmg.Gerar(rnd),
                 Impulso = rvmg.Gerar(rnd),
                 Resistencia = rvmg.Gerar(rnd),

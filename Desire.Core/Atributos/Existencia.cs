@@ -13,7 +13,7 @@
         {
             this.BonusAP = 0;
             this.Ciencia = new ValorMag();
-            this.Classe = 'P';
+            this.Classe = "P";
             this.Conhecimento = new ValorMag();
             this.Consciencia = new ValorMag();
             this.Experiencia = new ValorMag();

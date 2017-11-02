@@ -23,12 +23,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Database\desire_bkp_20171031_1403.db">
+    <None Update="Database\desire_test.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Database\desire.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
