@@ -427,13 +427,14 @@ namespace Desire.Core.Util
             ser.Turno = ser.Especies[0].TurnoMin + (int)calculador.CalculaPorcentagem(20, (long)(from e in ser.Especies select e.TurnoMin).Max());
 
             //Altura = aleatorio a partir da especie dominante
-            ser.Altura = genValorMag.GerarEntre(ser.Especies[0].AlturaMin, ser.Especies[0].AlturaMax, rnd);
+            if (ser.Altura.Valor == 0)
+                ser.Altura = genValorMag.GerarEntre(ser.Especies[0].AlturaMin, ser.Especies[0].AlturaMax, rnd);
 
-            //Comprimento = Pontos em matéria
             ser.Comprimento = new ValorMag(Convert.ToString(ser.Materia.Pontos));
 
             //Largura = Aleatorio entre largura min e largura max da especie dominante
-            ser.Largura = genValorMag.GerarEntre(ser.Especies[0].LarguraMin, ser.Especies[0].LarguraMax, rnd);
+            if (ser.Largura.Valor == 0)
+                ser.Largura = genValorMag.GerarEntre(ser.Especies[0].LarguraMin, ser.Especies[0].LarguraMax, rnd);
 
             //Massa = Volume * Densidade da Especie
             ValorMag volume = calculador.MultiplicaValorMag(ser.Altura, ser.Comprimento);
