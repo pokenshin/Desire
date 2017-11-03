@@ -277,13 +277,13 @@ namespace Desire.WinApp
 
             ser = gerador.Gerar(rnd);
 
-            ser.Forca = dbConsultas.RetornaForca(rng.GerarEntre(1, 110, rnd));
-            ser.Materia = dbConsultas.RetornaMateria(rng.GerarEntre(1, 110, rnd));
-            ser.Destreza = dbConsultas.RetornaDestreza(rng.GerarEntre(1, 110, rnd));
-            ser.Intelecto = dbConsultas.RetornaIntelecto(rng.GerarEntre(1, 110, rnd));
-            ser.Criatividade = dbConsultas.RetornaCriatividade(rng.GerarEntre(1, 110, rnd));
-            ser.Existencia = dbConsultas.RetornaExistencia(rng.GerarEntre(1, 110, rnd));
-            ser.Ideia = dbConsultas.RetornaIdeia(rng.GerarEntre(1, 110, rnd));
+            ser.Forca = dbConsultas.RetornaForca(rng.GerarEntre(1, 30, rnd));
+            ser.Materia = dbConsultas.RetornaMateria(rng.GerarEntre(1, 30, rnd));
+            ser.Destreza = dbConsultas.RetornaDestreza(rng.GerarEntre(1, 30, rnd));
+            ser.Intelecto = dbConsultas.RetornaIntelecto(rng.GerarEntre(1, 30, rnd));
+            ser.Criatividade = dbConsultas.RetornaCriatividade(rng.GerarEntre(1, 30, rnd));
+            ser.Existencia = dbConsultas.RetornaExistencia(rng.GerarEntre(1, 30, rnd));
+            ser.Ideia = dbConsultas.RetornaIdeia(rng.GerarEntre(1, 30, rnd));
 
             ser = calculadorSer.CalculaSubatributos(ser);
             lbl_rei_valor.Content = ser.Reis.Count();

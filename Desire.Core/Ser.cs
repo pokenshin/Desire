@@ -21,6 +21,7 @@ namespace Desire.Core
         public List<Rei> Reis { get; set; }
         public decimal Ki { get; set; }
         public int Nivel { get; set; }
+        public string Essencia { get; set; }
 
         //Atributos
         public Forca Forca { get; set; }
@@ -72,7 +73,7 @@ namespace Desire.Core
         public ValorMag Altura { get; set; }
         public ValorMag Largura { get; set; }
         public ValorMag Comprimento { get; set; }
-        public ValorMag Essencia { get; set; }
+        public ValorMag Composicao { get; set; }
         public ValorMag Massa { get; set; }
 
         //Subatributos Extras
@@ -99,7 +100,6 @@ namespace Desire.Core
         public ValorMag PoderMaximo { get; set; }
 
         //Origem do Poder / Virtudes / Dons
-        public string OrigemPoder { get; set; }
         public List<Modificador> Virtudes { get; set; }
         public List<Modificador> Defeitos { get; set; }
 
@@ -115,7 +115,7 @@ namespace Desire.Core
         public List<Equipamento> Equipamentos { get; set; }
         public List<Item> Posses { get; set; }
 
-        //Cansaço / Natureza / Fé / Karma
+        //Cansaço / Natureza / Fé / Karma / Alma
         public int CansacoAtual { get; set; }
         public int CansacoMax { get; set; }
         public Natureza Natureza { get; set; }
@@ -125,6 +125,7 @@ namespace Desire.Core
         public int Karma { get; set; }
         public Destino Destino { get; set; }
         public Carisma Carisma { get; set; }
+        public List<string> Alma { get; set; }
 
         //Elo Divino
         public string EloDivino { get; set; }
@@ -180,7 +181,7 @@ namespace Desire.Core
             this.Altura = new ValorMag();
             this.Largura = new ValorMag();
             this.Comprimento = new ValorMag();
-            this.Essencia = new ValorMag();
+            this.Essencia = "";
             this.Massa = new ValorMag();
             this.SubatributoExtraNome1 = "";
             this.SubatributoExtraValor1 = new ValorMag();
@@ -193,7 +194,6 @@ namespace Desire.Core
             this.ForcaVontade = new ValorMag();
             this.Ira = new ValorMag();
             this.PoderMaximo = new ValorMag();
-            this.OrigemPoder = "";
             this.Virtudes = new List<Modificador>();
             this.Defeitos = new List<Modificador>();
             this.Resistencias = new List<Resistencia>();

@@ -478,8 +478,8 @@ namespace Desire.Core.Util
 
             //Essencia = Dureza + Resistencia
             Conversor conver = new Conversor();
-            ser.Essencia = conver.StringParaValorMag(Convert.ToString(ser.Forca.Dureza));
-            ser.Essencia = calculador.SomaValorMag(ser.Essencia, ser.Materia.Resistencia);
+            ser.Composicao = conver.StringParaValorMag(Convert.ToString(ser.Forca.Dureza));
+            ser.Composicao = calculador.SomaValorMag(ser.Composicao, ser.Materia.Resistencia);
 
             //HP MP AP SP
             //HP = Materia

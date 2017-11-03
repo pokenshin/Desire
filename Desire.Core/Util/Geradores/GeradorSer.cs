@@ -47,7 +47,7 @@ namespace Desire.Core.Util.Geradores
                 Indole = genIndole.Gerar(rnd),
                 Reis = genRei.GerarLista(rng.GerarEntre(0, 5, rnd), rnd),
                 Ki = rng.GerarEntre(0, 1000, rnd),
-                Nivel = rng.GerarEntre(0, 100000, rnd),
+                Nivel = rng.GerarEntre(0, 1000, rnd),
                 //Atributos
                 Forca = genForca.Gerar(rnd),
                 Materia = genMateria.Gerar(rnd),
@@ -68,8 +68,6 @@ namespace Desire.Core.Util.Geradores
                 Pericias = genPericia.GerarLista(rng.GerarEntre(1, 20, rnd), rnd),
                 //Itens e Equips
                 Posses = genItem.GerarLista(rng.GerarEntre(1, 20, rnd), rnd),
-                //Origem do Poder
-                OrigemPoder = genString.GerarTamanhoEspecifico(2, 20, rnd),
                 //Virtudes
                 Virtudes = genModificador.GerarListaComOrigem("Virtudes", 3, rng.GerarEntre(1, 5, rnd), rnd, '+'),
                 //Defeitos
