@@ -247,7 +247,8 @@ namespace Desire.Core.Util.Geradores
                 Resistencia = rvmg.Gerar(rnd),
                 Vitalidade = rvmg.Gerar(rnd),
                 BonusHP = rvmg.Gerar(rnd),
-                BonusAP = Convert.ToDecimal(rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd).ValorReal)
+                BonusAP = Convert.ToDecimal(rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd).ValorReal),
+                Carga = rvmg.Gerar(rnd)
             };
             return atributo;
         }

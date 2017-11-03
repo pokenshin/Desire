@@ -64,6 +64,10 @@ namespace Desire.Data.Configuradores
             {
                 b.Ignore("ValorReal");
             });
+            builder.OwnsOne(a => a.Carga, b =>
+            {
+                b.Ignore("ValorReal");
+            });
         }
     }
 

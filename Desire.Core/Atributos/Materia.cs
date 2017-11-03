@@ -8,6 +8,7 @@
         public ValorMag Vitalidade { get; set; }
         public decimal BonusAP { get; set; }
         public ValorMag BonusHP { get; set; }
+        public ValorMag Carga { get; set; }
 
         public Materia()
         {
@@ -18,6 +19,7 @@
             this.Vitalidade = new ValorMag();
             this.BonusAP = 0;
             this.BonusHP = new ValorMag();
+            this.Carga = new ValorMag();
         }
     }
 }

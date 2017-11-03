@@ -17,11 +17,11 @@ namespace Desire.Core.Util
 
         public ValorMag MultiplicaValorMag(ValorMag valorMag1, ValorMag valorMag2)
         {
-            if (valorMag1.ValorReal == "1")
+            if (valorMag1.ToString() == "1m2" || valorMag1.ToString() == "10m1")
                 return valorMag2;
-            else if (valorMag2.ValorReal == "1")
+            else if (valorMag2.ToString() == "1m2" || valorMag2.ToString() == "10m1")
                 return valorMag1;
-            else if (valorMag1.ValorReal == "0" || valorMag2.ValorReal == "1")
+            else if (valorMag1.Valor == 0 || valorMag2.Valor == 0)
                 return new ValorMag(0, 1);
             else
             {
@@ -76,7 +76,7 @@ namespace Desire.Core.Util
         {
             if (multiplicador == 1)
                 return valorMag1;
-            else if (valorMag1.ValorReal == "0" || multiplicador == 0)
+            else if (valorMag1 == new ValorMag() || multiplicador == 0)
                 return new ValorMag(0, 1);
             else
                 return MultiplicaValorMag(valorMag1, new ValorMag(Convert.ToString(multiplicador)));
@@ -84,18 +84,31 @@ namespace Desire.Core.Util
 
         public ValorMag MultiplicaValorMag(ValorMag numero, double multiplicador)
         {
-            
-            double valorFinal = numero.Valor * multiplicador;
-            int magFinal = numero.Magnitude;
+            if (multiplicador == 1)
+                return numero;
+            else if (numero == new ValorMag() || multiplicador == 0)
+                return new ValorMag(0, 1);
+            else
+                return MultiplicaValorMag(numero, new ValorMag(Convert.ToString(multiplicador)));
+            //double valorFinal = numero.Valor * multiplicador;
+            //int magFinal = numero.Magnitude;
 
-            if (valorFinal < 10)
-            { 
-                magFinal = magFinal - 1;
-                valorFinal = valorFinal * 10;
-            }
+            //if (valorFinal < 10)
+            //{ 
+            //    magFinal = magFinal - 1;
+            //    valorFinal = valorFinal * 10;
+            //}
+            //else if (valorFinal > 99)
+            //{
+            //    while (valorFinal > 99)
+            //    { 
+            //        valorFinal = valorFinal / 100;
+            //        magFinal = magFinal + 1;
+            //    }
+            //}
 
-            ValorMag resultado = new ValorMag((int)Math.Floor(valorFinal), magFinal);
-            return resultado;
+            //ValorMag resultado = new ValorMag((int)Math.Floor(valorFinal), magFinal);
+            //return resultado;
         }
         
         //Retorna a porcentagem de um determinado valor arredondado para baixo

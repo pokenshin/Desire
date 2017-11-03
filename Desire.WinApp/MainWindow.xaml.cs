@@ -16,7 +16,9 @@ using Desire.Data;
 using Desire.Core;
 using Desire.Core.Identidade;
 using Desire.Data.Operacoes;
+using Desire.Core.Util;
 using System.ComponentModel;
+using Desire.Core.Util.Geradores;
 
 namespace Desire.WinApp
 {
@@ -37,11 +39,14 @@ namespace Desire.WinApp
         }
 
         private DbConsultas dbConsultas;
+        private CalculadorSer calculadorSer;
 
         public MainWindow()
         {
             Personagem = new Ser();
             dbConsultas = new DbConsultas();
+            calculadorSer = new CalculadorSer();
+            //geraSerAleatorio();
             consultaAtributos();
             InitializeComponent();
             this.DataContext = this;
@@ -75,6 +80,7 @@ namespace Desire.WinApp
             {
                 ser.Forca.Pontos++;
                 ser.Forca = dbConsultas.RetornaForca(ser.Forca.Pontos);
+                ser = calculadorSer.CalculaSubatributos(ser);
                 Personagem = ser;
             }
         }
@@ -85,6 +91,7 @@ namespace Desire.WinApp
             { 
                 ser.Forca.Pontos--;
                 ser.Forca = dbConsultas.RetornaForca(ser.Forca.Pontos);
+                ser = calculadorSer.CalculaSubatributos(ser);
                 Personagem = ser;
             }
         }
@@ -95,6 +102,7 @@ namespace Desire.WinApp
             {
                 ser.Materia.Pontos++;
                 ser.Materia = dbConsultas.RetornaMateria(ser.Materia.Pontos);
+                ser = calculadorSer.CalculaSubatributos(ser);
                 Personagem = ser;
             }
         }
@@ -105,6 +113,7 @@ namespace Desire.WinApp
             {
                 ser.Materia.Pontos--;
                 ser.Materia = dbConsultas.RetornaMateria(ser.Materia.Pontos);
+                ser = calculadorSer.CalculaSubatributos(ser);
                 Personagem = ser;
             }
         }
@@ -115,6 +124,7 @@ namespace Desire.WinApp
             {
                 ser.Destreza.Pontos++;
                 ser.Destreza = dbConsultas.RetornaDestreza(ser.Destreza.Pontos);
+                ser = calculadorSer.CalculaSubatributos(ser);
                 Personagem = ser;
             }
         }
@@ -125,6 +135,7 @@ namespace Desire.WinApp
             {
                 ser.Destreza.Pontos--;
                 ser.Destreza = dbConsultas.RetornaDestreza(ser.Destreza.Pontos);
+                ser = calculadorSer.CalculaSubatributos(ser);
                 Personagem = ser;
             }
         }
@@ -135,6 +146,7 @@ namespace Desire.WinApp
             {
                 ser.Intelecto.Pontos++;
                 ser.Intelecto = dbConsultas.RetornaIntelecto(ser.Intelecto.Pontos);
+                ser = calculadorSer.CalculaSubatributos(ser);
                 Personagem = ser;
             }
         }
@@ -145,6 +157,7 @@ namespace Desire.WinApp
             {
                 ser.Intelecto.Pontos--;
                 ser.Intelecto = dbConsultas.RetornaIntelecto(ser.Intelecto.Pontos);
+                ser = calculadorSer.CalculaSubatributos(ser);
                 Personagem = ser;
             }
         }
@@ -155,6 +168,7 @@ namespace Desire.WinApp
             {
                 ser.Criatividade.Pontos++;
                 ser.Criatividade = dbConsultas.RetornaCriatividade(ser.Criatividade.Pontos);
+                ser = calculadorSer.CalculaSubatributos(ser);
                 Personagem = ser;
             }
         }
@@ -165,6 +179,7 @@ namespace Desire.WinApp
             {
                 ser.Criatividade.Pontos--;
                 ser.Criatividade = dbConsultas.RetornaCriatividade(ser.Criatividade.Pontos);
+                ser = calculadorSer.CalculaSubatributos(ser);
                 Personagem = ser;
             }
         }
@@ -175,6 +190,7 @@ namespace Desire.WinApp
             {
                 ser.Existencia.Pontos++;
                 ser.Existencia = dbConsultas.RetornaExistencia(ser.Existencia.Pontos);
+                ser = calculadorSer.CalculaSubatributos(ser);
                 Personagem = ser;
             }
         }
@@ -185,6 +201,7 @@ namespace Desire.WinApp
             {
                 ser.Existencia.Pontos--;
                 ser.Existencia = dbConsultas.RetornaExistencia(ser.Existencia.Pontos);
+                ser = calculadorSer.CalculaSubatributos(ser);
                 Personagem = ser;
             }
         }
@@ -195,6 +212,7 @@ namespace Desire.WinApp
             {
                 ser.Ideia.Pontos++;
                 ser.Ideia = dbConsultas.RetornaIdeia(ser.Ideia.Pontos);
+                ser = calculadorSer.CalculaSubatributos(ser);
                 Personagem = ser;
             }
         }
@@ -205,8 +223,34 @@ namespace Desire.WinApp
             {
                 ser.Ideia.Pontos--;
                 ser.Ideia = dbConsultas.RetornaIdeia(ser.Ideia.Pontos);
+                ser = calculadorSer.CalculaSubatributos(ser);
                 Personagem = ser;
             }
+        }
+
+        private void cmb_aleatorio_Click(object sender, RoutedEventArgs e)
+        {
+            geraSerAleatorio();
+            Personagem = ser;
+        }
+
+        private void geraSerAleatorio()
+        {
+            GeradorSer gerador = new GeradorSer();
+            GeradorInteiro rng = new GeradorInteiro();
+            Random rnd = new Random();
+
+            ser = gerador.Gerar(rnd);
+
+            ser.Forca = dbConsultas.RetornaForca(rng.GerarEntre(1, 110, rnd));
+            ser.Materia = dbConsultas.RetornaMateria(rng.GerarEntre(1, 110, rnd));
+            ser.Destreza = dbConsultas.RetornaDestreza(rng.GerarEntre(1, 110, rnd));
+            ser.Intelecto = dbConsultas.RetornaIntelecto(rng.GerarEntre(1, 110, rnd));
+            ser.Criatividade = dbConsultas.RetornaCriatividade(rng.GerarEntre(1, 110, rnd));
+            ser.Existencia = dbConsultas.RetornaExistencia(rng.GerarEntre(1, 110, rnd));
+            ser.Ideia = dbConsultas.RetornaIdeia(rng.GerarEntre(1, 110, rnd));
+
+            ser = calculadorSer.CalculaSubatributos(ser);
         }
     }
 }

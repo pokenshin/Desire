@@ -28,8 +28,6 @@ namespace Desire.Core.Util
             ser.Deslocamentos = CalculaDeslocamentosBase(ser);
             //Pericias
             ser.Pericias = CriaListaPericiasSer(ser);
-            //Subatributos
-            ser = CalculaSubatributos(ser);
             //Habilidades
             ser.Habilidades = CriaListaHabilidades(ser);
             //Cansaço

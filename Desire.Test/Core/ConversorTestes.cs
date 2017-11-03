@@ -7,7 +7,7 @@ using Desire.Core;
 using Desire.Core.Identidade;
 
 
-namespace Desire.Test
+namespace Desire.Test.Core
 {
     [TestClass]
     public class ConversorTestes
@@ -21,6 +21,21 @@ namespace Desire.Test
             conversor = new Conversor();
 
             Assert.AreEqual("2500000000", conversor.ValorMagParaString(25, 10));
+        }
+
+        //Testa a função StringParaValorMag para números positivos menores que 1
+        //Resultado esperado: 10m0
+        [TestMethod]
+        public void TesteStringParaValorMag()
+        {
+            conversor = new Conversor();
+            string numero = "584797,5683";
+            int valor = 58;
+            int mag = 6;
+            ValorMag resultado = conversor.StringParaValorMag(numero);
+
+            Assert.AreEqual(valor, resultado.Valor);
+            Assert.AreEqual(mag, resultado.Magnitude);
         }
 
         //Testa a função LongParaValorMag para ver se está convertendo corretamente

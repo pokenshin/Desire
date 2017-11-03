@@ -13,7 +13,9 @@
         <TabControl HorizontalAlignment="Left" Height="771" Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
             <TabItem Header="Roleplay">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,4">
+
                     <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="75" Margin="11,12,0,0" Stroke="Black" VerticalAlignment="Top" Width="745"/>
+                    <Button x:Name="cmb_aleatorio" Content="Aleatório" HorizontalAlignment="Left" Margin="68,22,0,0" VerticalAlignment="Top" Width="75" Click="cmb_aleatorio_Click"/>
                     <Label x:Name="lbl_especie" Content="Espécie:" HorizontalAlignment="Left" Margin="209,17,0,0" VerticalAlignment="Top"/>
                     <ComboBox x:Name="cbb_especie" HorizontalAlignment="Left" Margin="258,21,0,0" VerticalAlignment="Top" Width="131"/>
                     <Label x:Name="lbl_classe" Content="Classe:" HorizontalAlignment="Left" Margin="401,17,0,0" VerticalAlignment="Top"/>
@@ -165,57 +167,54 @@
                         </Rectangle.Fill>
                     </Rectangle>
 
-                    <Label x:Name="lbl_instinto_vl" Content="99" HorizontalAlignment="Left" Margin="70,598,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_instinto_mag" Content="99" HorizontalAlignment="Left" Margin="111,610,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_raciocinio_vl" Content="99" HorizontalAlignment="Left" Margin="152,598,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_raciocinio_mag" Content="99" HorizontalAlignment="Left" Margin="193,610,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_subconsciencia_vl" Content="99" HorizontalAlignment="Left" Margin="233,598,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_subconsciencia_mag" Content="99" HorizontalAlignment="Left" Margin="274,610,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_autocontrole_vl" Content="99" HorizontalAlignment="Left" Margin="314,598,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_autocontrole_mag" Content="99" HorizontalAlignment="Left" Margin="355,610,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_anatomia_vl" Content="99" HorizontalAlignment="Left" Margin="70,643,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_anatomia_mag" Content="99" HorizontalAlignment="Left" Margin="111,655,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_animo_vl" Content="99" HorizontalAlignment="Left" Margin="152,644,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_animo_mag" Content="99" HorizontalAlignment="Left" Margin="193,656,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_movimento_vl" Content="99" HorizontalAlignment="Left" Margin="233,644,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_movimento_mag" Content="99" HorizontalAlignment="Left" Margin="274,656,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_precisao_vl" Content="99" HorizontalAlignment="Left" Margin="314,644,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_precisao_mag" Content="99" HorizontalAlignment="Left" Margin="355,656,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_hpbonus_vl" Content="99" HorizontalAlignment="Left" Margin="70,688,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_hpbonus_mag" Content="99" HorizontalAlignment="Left" Margin="111,700,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_mpbonus_vl" Content="99" HorizontalAlignment="Left" Margin="151,688,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_mpbonus_mag" Content="99" HorizontalAlignment="Left" Margin="192,700,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_apbonus_vl" Content="99" HorizontalAlignment="Left" Margin="233,688,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_apbonus_mag" Content="99" HorizontalAlignment="Left" Margin="274,700,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_spbonus_vl" Content="99" HorizontalAlignment="Left" Margin="314,688,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_spbonus_mag" Content="99" HorizontalAlignment="Left" Margin="355,700,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_instinto_vl" Content="{Binding Personagem.Instinto.Valor}" HorizontalAlignment="Left" Margin="70,598,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_instinto_mag" Content="{Binding Personagem.Instinto.Magnitude}" HorizontalAlignment="Left" Margin="111,610,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_raciocinio_vl" Content="{Binding Personagem.Raciocinio.Valor}" HorizontalAlignment="Left" Margin="152,598,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_raciocinio_mag" Content="{Binding Personagem.Raciocinio.Magnitude}" HorizontalAlignment="Left" Margin="193,610,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_subconsciencia_vl" Content="{Binding Personagem.Subconsciencia.Valor}" HorizontalAlignment="Left" Margin="233,598,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_subconsciencia_mag" Content="{Binding Personagem.Subconsciencia.Magnitude}" HorizontalAlignment="Left" Margin="274,610,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_autocontrole_vl" Content="{Binding Personagem.Autocontrole.Valor}" HorizontalAlignment="Left" Margin="314,598,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_autocontrole_mag" Content="{Binding Personagem.Autocontrole.Magnitude}" HorizontalAlignment="Left" Margin="355,610,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_anatomia_vl" Content="{Binding Personagem.Anatomia.Valor}" HorizontalAlignment="Left" Margin="70,643,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_anatomia_mag" Content="{Binding Personagem.Anatomia.Magnitude}" HorizontalAlignment="Left" Margin="111,655,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_animo_vl" Content="{Binding Personagem.Animo.Valor}" HorizontalAlignment="Left" Margin="152,644,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_animo_mag" Content="{Binding Personagem.Animo.Magnitude}" HorizontalAlignment="Left" Margin="193,656,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_movimento_vl" Content="{Binding Personagem.Movimento.Valor}" HorizontalAlignment="Left" Margin="233,644,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_movimento_mag" Content="{Binding Personagem.Movimento.Magnitude}" HorizontalAlignment="Left" Margin="274,656,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_precisao_vl" Content="{Binding Personagem.Precisao.Valor}" HorizontalAlignment="Left" Margin="314,644,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_precisao_mag" Content="{Binding Personagem.Precisao.Magnitude}" HorizontalAlignment="Left" Margin="355,656,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_hpbonus_vl" Content="{Binding Personagem.BonusHP.Valor}" HorizontalAlignment="Left" Margin="70,688,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_hpbonus_mag" Content="{Binding Personagem.BonusHP.Magnitude}" HorizontalAlignment="Left" Margin="111,700,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_mpbonus_vl" Content="{Binding Personagem.BonusMP.Valor}" HorizontalAlignment="Left" Margin="151,688,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_mpbonus_mag" Content="{Binding Personagem.BonusMP.Magnitude}" HorizontalAlignment="Left" Margin="192,700,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_apbonus_vl" Content="{Binding Personagem.BonusAP}" HorizontalAlignment="Left" Margin="233,688,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_spbonus_vl" Content="{Binding Personagem.BonusSP}" HorizontalAlignment="Left" Margin="314,688,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
 
-                    <Label x:Name="lbl_iniciativa_vl" Content="99" HorizontalAlignment="Left" Margin="444,598,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_iniciativa_mag" Content="99" HorizontalAlignment="Left" Margin="485,610,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_acao_vl" Content="99" HorizontalAlignment="Left" Margin="525,598,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_acao_mag" Content="99" HorizontalAlignment="Left" Margin="566,610,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_reacao_vl" Content="99" HorizontalAlignment="Left" Margin="607,598,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_reacao_mag" Content="99" HorizontalAlignment="Left" Margin="648,610,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_turno_vl" Content="99" HorizontalAlignment="Left" Margin="688,598,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_turno_mag" Content="99" HorizontalAlignment="Left" Margin="729,610,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_destria_vl" Content="99" HorizontalAlignment="Left" Margin="444,642,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_destria_mag" Content="99" HorizontalAlignment="Left" Margin="485,654,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_altura_vl" Content="99" HorizontalAlignment="Left" Margin="525,642,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_altura_mag" Content="99" HorizontalAlignment="Left" Margin="566,654,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_largura_vl" Content="99" HorizontalAlignment="Left" Margin="607,642,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_largura_mag" Content="99" HorizontalAlignment="Left" Margin="648,654,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_comprimento_vl" Content="99" HorizontalAlignment="Left" Margin="688,642,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_comprimento_mag" Content="99" HorizontalAlignment="Left" Margin="729,654,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_essencia_vl" Content="99" HorizontalAlignment="Left" Margin="444,688,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_essencia_mag" Content="99" HorizontalAlignment="Left" Margin="485,700,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_massa_vl" Content="99" HorizontalAlignment="Left" Margin="525,688,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_massa_mag" Content="99" HorizontalAlignment="Left" Margin="566,700,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_bonus1_nome" Content="Bonus 1" HorizontalAlignment="Left" Margin="593,676,0,0" VerticalAlignment="Top" Width="78"/>
-                    <Label x:Name="lbl_bonus1_vl" Content="99" HorizontalAlignment="Left" Margin="607,688,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_bonus1_mag" Content="99" HorizontalAlignment="Left" Margin="648,700,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbl_bonus2_nome" Content="Bonus 2" HorizontalAlignment="Left" Margin="675,676,0,0" VerticalAlignment="Top" Width="77"/>
-                    <Label x:Name="lbl_bonus2_vl" Content="99" HorizontalAlignment="Left" Margin="688,688,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
-                    <Label x:Name="lbl_bonus2_mag" Content="99" HorizontalAlignment="Left" Margin="729,700,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_iniciativa_vl" Content="{Binding Personagem.Iniciativa}" HorizontalAlignment="Left" Margin="444,598,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_acao_vl" Content="{Binding Personagem.Acao.Valor}" HorizontalAlignment="Left" Margin="525,598,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_acao_mag" Content="{Binding Personagem.Acao.Magnitude}" HorizontalAlignment="Left" Margin="566,610,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_reacao_vl" Content="{Binding Personagem.Reacao.Valor}" HorizontalAlignment="Left" Margin="607,598,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_reacao_mag" Content="{Binding Personagem.Reacao.Magnitude}" HorizontalAlignment="Left" Margin="648,610,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_turno_vl" Content="{Binding Personagem.Turno}" HorizontalAlignment="Left" Margin="688,598,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_destria_vl" Content="{Binding Personagem.Destria}" HorizontalAlignment="Left" Margin="444,642,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_altura_vl" Content="{Binding Personagem.Altura.Valor}" HorizontalAlignment="Left" Margin="525,642,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_altura_mag" Content="{Binding Personagem.Altura.Magnitude}" HorizontalAlignment="Left" Margin="566,654,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_largura_vl" Content="{Binding Personagem.Largura.Valor}" HorizontalAlignment="Left" Margin="607,642,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_largura_mag" Content="{Binding Personagem.Largura.Magnitude}" HorizontalAlignment="Left" Margin="648,654,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_comprimento_vl" Content="{Binding Personagem.Comprimento.Valor}" HorizontalAlignment="Left" Margin="688,642,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_comprimento_mag" Content="{Binding Personagem.Comprimento.Magnitude}" HorizontalAlignment="Left" Margin="729,654,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_essencia_vl" Content="{Binding Personagem.Essencia.Valor}" HorizontalAlignment="Left" Margin="444,688,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_essencia_mag" Content="{Binding Personagem.Essencia.Magnitude}" HorizontalAlignment="Left" Margin="485,700,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_massa_vl" Content="{Binding Personagem.Massa.Valor}" HorizontalAlignment="Left" Margin="525,688,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_massa_mag" Content="{Binding Personagem.Massa.Magnitude}" HorizontalAlignment="Left" Margin="566,700,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_bonus1_nome" Content="{Binding Personagem.SubatributoExtraNome1}" HorizontalAlignment="Left" Margin="593,676,0,0" VerticalAlignment="Top" Width="78"/>
+                    <Label x:Name="lbl_bonus1_vl" Content="{Binding Personagem.SubatributoExtraValor1.Valor}" HorizontalAlignment="Left" Margin="607,688,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_bonus1_mag" Content="{Binding Personagem.SubatributoExtraValor1.Magnitude}" HorizontalAlignment="Left" Margin="648,700,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lbl_bonus2_nome" Content="{Binding Personagem.SubatributoExtraNome2}" HorizontalAlignment="Left" Margin="675,676,0,0" VerticalAlignment="Top" Width="77"/>
+                    <Label x:Name="lbl_bonus2_vl" Content="{Binding Personagem.SubatributoExtraValor2.Valor}" HorizontalAlignment="Left" Margin="688,688,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold"/>
+                    <Label x:Name="lbl_bonus2_mag" Content="{Binding Personagem.SubatributoExtraValor2.Magnitude}" HorizontalAlignment="Left" Margin="729,700,0,0" VerticalAlignment="Top"/>
+                    
+
                 </Grid>
             </TabItem>
             <TabItem Header="Combate">
