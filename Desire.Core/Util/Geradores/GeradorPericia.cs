@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Desire.Core.Ciencias;
+using Desire.Core.Modificadores;
 
 namespace Desire.Core.Util.Geradores
 {
@@ -22,7 +23,7 @@ namespace Desire.Core.Util.Geradores
 
             foreach (Modificador mod in pericia.Modificadores)
             {
-                pericia.Caracteristicas = pericia.Caracteristicas + mod.Nome + " ";
+                pericia.Caracteristicas = pericia.Caracteristicas + mod.ToString() + " ";
             }
 
             return pericia;

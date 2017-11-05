@@ -15,7 +15,7 @@ namespace Desire.Core
         public ValorMag()
         {
             this.Valor = 0;
-            this.Magnitude = 1;
+            this.Magnitude = 0;
             this.ValorReal = "0";
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Desire.Core.Modificadores;
 
 namespace Desire.Core.Util.Geradores
 {
@@ -57,31 +58,26 @@ namespace Desire.Core.Util.Geradores
 
         public Modificador GerarComOrigem(string origem, int id, Random rnd, char tipo = 'R')
         {
-            //TODO: Gerar modifiadores menos random e com mais sentido
-            //TODO: Melhorar nome do modificador
-            //TODO: Tratamento especial para modificadores de classe
-            //TODO: Criar magnitude do modificador para limitar sua apelação e direcionar uso
             GeradorInteiro rng = new GeradorInteiro();
-            GeradorValorMag genValorMag = new GeradorValorMag();
-            //PropertyInfo[] propriedades = typeof(Ser).GetProperties().Where(p => p.PropertyType == typeof(int)).ToArray<PropertyInfo>();
+            GeradorValorMag rvmg = new GeradorValorMag();
+            int tipoModificador = rng.GerarEntre(1, 12, rnd);
             PropertyInfo[] propriedades = typeof(Ser).GetTypeInfo().DeclaredProperties.Where(p => p.PropertyType == typeof(int)).ToArray<PropertyInfo>();
             string alvo = propriedades[rng.GerarEntre(0, propriedades.Count() - 1, rnd)].Name;
-            ValorMag valor = genValorMag.Gerar(rnd);
-            if (tipo == 'R')
-                tipo = tiposModificadores[rng.GerarEntre(0, tiposModificadores.Count() - 1, rnd)];
 
-            string nome = alvo + tipo + valor;
-
-            Modificador modificador = new Modificador()
+            switch (tipoModificador)
             {
-                Nome = nome,
-                Alvo = alvo,
-                Valor = valor,
-                Tipo = tipo,
-                Origem = origem,
-                OrigemId = id
-            };
-            return modificador;
+                case 1:
+                    ModSomaValorMag modificador = new ModSomaValorMag()
+                    {
+                        Alvo = alvo,
+                        Origem = origem,
+                        Valor = rvmg.GerarEntre(new ValorMag(10, 1), new ValorMag(99, 10), rnd)
+                    };
+                    return modificador;
+
+                default:
+                    return null;
+            }
         }
     }
 }

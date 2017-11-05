@@ -5,6 +5,7 @@ using Desire.Core.Itens;
 using Desire.Core.Identidade;
 using Desire.Core.Ciencias;
 using Desire.Core.Energias;
+using Desire.Core.Modificadores;
 
 namespace Desire.Core
 {
@@ -62,7 +63,7 @@ namespace Desire.Core
         public ValorMag BonusHP { get; set; }
         public ValorMag BonusMP { get; set; }
         public decimal BonusAP { get; set; }
-        public double BonusSP { get; set; }
+        public decimal BonusSP { get; set; }
 
         //Cerne
         public int Iniciativa { get; set; }

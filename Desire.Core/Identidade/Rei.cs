@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Desire.Core.Modificadores;
 
 namespace Desire.Core.Identidade
 {

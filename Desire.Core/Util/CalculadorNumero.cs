@@ -124,6 +124,52 @@ namespace Desire.Core.Util
             return valor / total;
         }
 
+        public ValorMag SubtraiValorMag(ValorMag valorMag1, ValorMag valorMag2)
+        {
+            if (valorMag1.ToString() == valorMag2.ToString())
+                return new ValorMag();
+
+            int valorFinal = 0;
+            int magnitudeFinal = 0;
+            int valor1 = valorMag1.Valor;
+            int valor2 = valorMag2.Valor;
+            int mag1 = valorMag1.Magnitude;
+            int mag2 = valorMag2.Magnitude;
+
+            if (mag1 == mag2)
+            {
+                magnitudeFinal = mag1;
+                valorFinal = valor1 - valor2;
+
+                if (valorFinal < 0)
+                {
+                    valorFinal = valorFinal * 10;
+                    magnitudeFinal = magnitudeFinal - 1;
+                }
+            }
+            else if (mag1 - mag2 == 1 || mag1 - mag2 == -1)
+            {
+                magnitudeFinal = Math.Max(mag1, mag2);
+
+                if (magnitudeFinal == mag1)
+                    valorFinal = valor1 - (valor2 / 10);
+                else
+                    valorFinal = valor2 - (valor1 / 10);
+            }
+            else
+            {
+                magnitudeFinal = Math.Max(mag1, mag2);
+                if (magnitudeFinal == mag1)
+                    valorFinal = valor1;
+                else
+                    valorFinal = valor2;
+            }
+
+            ValorMag resultado = new ValorMag(valorFinal, magnitudeFinal);
+
+            return resultado;
+        }
+
         public ValorMag SomaValorMag(ValorMag valorMag1, ValorMag valorMag2)
         {
             int valorFinal = 0;

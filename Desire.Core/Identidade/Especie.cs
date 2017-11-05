@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Numerics;
-using Desire.Core.Identidade;
 using Desire.Core.Ciencias;
 using Desire.Core.Energias;
+using Desire.Core.Modificadores;
 
 namespace Desire.Core.Identidade
 {

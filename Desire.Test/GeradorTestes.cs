@@ -9,6 +9,7 @@ using Desire.Core.Identidade;
 using Desire.Core.Util.Geradores;
 using Desire.Core.Energias;
 using Desire.Core.Ciencias;
+using Desire.Core.Modificadores;
 
 namespace Desire.Test
 {

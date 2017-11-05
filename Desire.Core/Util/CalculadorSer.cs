@@ -10,6 +10,7 @@ using Desire.Core.Identidade;
 using Desire.Core.Ciencias;
 using Desire.Core.Util.Geradores;
 using Desire.Core.Energias;
+using Desire.Core.Modificadores;
 
 namespace Desire.Core.Util
 {
@@ -351,15 +352,15 @@ namespace Desire.Core.Util
                 switch (energia.Sigla)
                 {
                     case "AP":
-                        energia.Quantidade = energia.Quantidade + Convert.ToDouble(ser.BonusAP);
+                        energia.Quantidade = energia.Quantidade + Convert.ToDecimal(ser.BonusAP);
                         break;
 
                     case "HP":
-                        energia.Quantidade = energia.Quantidade + Convert.ToDouble(ser.BonusHP.ValorReal);
+                        energia.Quantidade = energia.Quantidade + Convert.ToDecimal(ser.BonusHP.ValorReal);
                         break;
 
                     case "MP":
-                        energia.Quantidade = energia.Quantidade + Convert.ToDouble(ser.BonusMP.ValorReal);
+                        energia.Quantidade = energia.Quantidade + Convert.ToDecimal(ser.BonusMP.ValorReal);
                         break;
 
                     case "SP":

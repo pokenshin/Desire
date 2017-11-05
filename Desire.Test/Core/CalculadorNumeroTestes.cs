@@ -8,12 +8,43 @@ using System.Collections.Generic;
 using System.Linq;
 using Desire.Core.Identidade;
 
-namespace Desire.Test
+namespace Desire.Test.Core
 {
     [TestClass]
     public class CalculadorNumeroTestes
     {
         CalculadorNumero calculador;
+
+        //Realiza diversos testes com a função SubtraiValorMag nos três cenários possíveis:
+        //Dois numeros iguais
+        //Dois numeros com diferença de magnitude em 1
+        //Dois numeros com diferença maior que 1 de magnitude
+        [TestMethod]
+        public void TesteSubtraiValorMag()
+        {
+            calculador = new CalculadorNumero();
+
+            ValorMag valorMagIgual1 = new ValorMag(50, 2);
+            ValorMag valorMagIgual2 = new ValorMag(50, 2);
+            ValorMag resultadoMagIgual = calculador.SubtraiValorMag(valorMagIgual1, valorMagIgual2);
+
+            Assert.IsTrue(resultadoMagIgual.Valor == 0);
+
+            ValorMag valorMagPerto1 = new ValorMag(50, 4);
+            ValorMag valorMagPerto2 = new ValorMag(50, 3);
+            ValorMag resultadoMagPerto = calculador.SubtraiValorMag(valorMagPerto1, valorMagPerto2);
+
+            Assert.IsTrue(resultadoMagPerto.Valor == 45);
+            Assert.IsTrue(resultadoMagPerto.Magnitude == 4);
+
+            ValorMag valorMagLonge1 = new ValorMag(50, 8);
+            ValorMag valorMagLonge2 = new ValorMag(50, 3);
+            ValorMag resultadoMagLonge = calculador.SubtraiValorMag(valorMagLonge1, valorMagLonge2);
+
+            Assert.IsTrue(resultadoMagLonge.Valor == 50);
+            Assert.IsTrue(resultadoMagLonge.Magnitude == 8);
+            Assert.IsTrue(resultadoMagLonge.ValorReal == "50000000");
+        }
         
         //Testa a função CalculaPorcentagem para ver se ela retorna a porcentagem certa de um valor
         //Resultado esperado: dado 20% de 133, retornar 26 (arredondado de 26.6)
