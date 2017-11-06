@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Desire.WinApp.ViewModels"
         mc:Ignorable="d"
-        Title="Desire WinApp" Width="800" Height="822"
+        Title="Desire WinApp" Width="800" Height="848"
         WindowStartupLocation="CenterScreen" 
         Left="480" Top="0" ResizeMode="NoResize" IsManipulationEnabled="True">
 
@@ -14,9 +14,53 @@
     </Window.Resources>
   
     <Grid Margin="0,0,0,1">
-        <TabControl HorizontalAlignment="Left" Height="771" Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Personagem">
+                    <MenuItem Header="_Novo" />
+                    <MenuItem Header="_Abrir.." />
+                    <MenuItem Header="_Salvar" />
+                    <Separator />
+                    <MenuItem Header="_Sair" />
+                </MenuItem>
+                <MenuItem Header="_Atributos">
+                    <MenuItem Header="Força" />
+                    <MenuItem Header="Destreza" />
+                    <MenuItem Header="Matéria" />
+                    <MenuItem Header="Intelecto" />
+                    <MenuItem Header="Criatividade" />
+                    <MenuItem Header="Existência" />
+                    <MenuItem Header="Idéia" />
+                </MenuItem>
+                <MenuItem Header="_Espécies">
+                    <MenuItem Header="Criar" />
+                    <MenuItem Header="Visualizar" />
+                </MenuItem>
+                <MenuItem Header="_Classes">
+                    <MenuItem Header="Criar" />
+                    <MenuItem Header="Visualizar" />
+                </MenuItem>
+                <MenuItem Header="_Perícias">
+                    <MenuItem Header="Criar" />
+                    <MenuItem Header="Visualizar" />
+                </MenuItem>
+                <MenuItem Header="_Habilidades">
+                    <MenuItem Header="Criar" />
+                    <MenuItem Header="Visualizar" />
+                </MenuItem>
+                <MenuItem Header="_Outros">
+
+                </MenuItem>
+            </Menu>
+            <TextBox AcceptsReturn="True" />
+        </DockPanel>
+
+
+
+
+        <TabControl HorizontalAlignment="Left" Height="771" Margin="10,30,0,0" VerticalAlignment="Top" Width="772">
             <TabItem Header="Roleplay">
-                <Grid Background="#FFE5E5E5" Margin="0,0,0,4">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,-2">
 
                     <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="75" Margin="11,12,0,0" Stroke="Black" VerticalAlignment="Top" Width="745"/>
                     <Label x:Name="lbl_especie" Content="Espécie:" HorizontalAlignment="Left" Margin="18,17,0,0" VerticalAlignment="Top"/>
@@ -25,7 +69,7 @@
                     <ComboBox x:Name="cbb_classe" HorizontalAlignment="Left" Margin="310,23,0,0" VerticalAlignment="Top" Width="131" />
                     <Label x:Name="lbl_indole" Content="Índole:" HorizontalAlignment="Left" Margin="476,18,0,0" VerticalAlignment="Top"/>
                     <ComboBox x:Name="cbb_indole" HorizontalAlignment="Left" Margin="519,22,0,0" VerticalAlignment="Top" Width="131"/>
-                    <Button x:Name="cmb_aleatorio" Content="Aleatório" HorizontalAlignment="Left" Margin="673,22,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="cmb_aleatorio" Content="Aleatorio" HorizontalAlignment="Left" Margin="673,22,0,0" VerticalAlignment="Top" Width="75" Command="{Binding CmdSerAleatorio, Mode=OneWay, Source={StaticResource mainViewModel}}"/>
 
                     <Label x:Name="lbl_total_pontos" Content="Total Pontos:" HorizontalAlignment="Left" Margin="37,50,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="lbl_total_pontos_vl" Content="{Binding PontosGastos, Mode=OneWay, Source={StaticResource mainViewModel}}" HorizontalAlignment="Left" Margin="107,50,0,0" VerticalAlignment="Top" Width="56"/>
@@ -53,8 +97,8 @@
                     <Label x:Name="lbl_forca_pontos" Content="{Binding Personagem.Forca.Pontos, Source={StaticResource mainViewModel}}" Margin="184,145,0,0" Padding ="0" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="43" Height="22" FontSize="18"/>
                     <Label x:Name="lbl_forca_potencia_vl" Content="{Binding Personagem.Forca.Potencia.Valor, Source={StaticResource mainViewModel}}" Margin="245,117,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="24" Height="45" Width="45"/>
                     <Label x:Name="lbl_forca_potencia_mag" Content="{Binding Personagem.Forca.Potencia.Magnitude, Source={StaticResource mainViewModel}}" Margin="292,151,0,0" Padding="0" HorizontalContentAlignment="Center" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="21" Height="18"/>
-                    <Label x:Name="lbl_forca_golpe_vl" Content="{Binding Personagem.Forca.Golpe, Source={StaticResource mainViewModel}}" Margin="314,108,0,0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  VerticalAlignment="Top" FontSize="24" Height="62" Width="71"/>
-                    <Label x:Name="lbl_forca_dureza_vl" Content="{Binding Personagem.Forca.Dureza, Source={StaticResource mainViewModel}}" Margin="385,108,0,0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  VerticalAlignment="Top" FontSize="24" Height="62" Width="71"/>
+                    <Label x:Name="lbl_forca_golpe_vl" Content="{Binding Personagem.Forca.Golpe, Source={StaticResource mainViewModel}}" Margin="314,108,0,0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  VerticalAlignment="Top" FontSize="{Binding FontSizeForcaGolpe, Mode=OneWay, Source={StaticResource mainViewModel}}" Height="62" Width="71"/>
+                    <Label x:Name="lbl_forca_dureza_vl" Content="{Binding Personagem.Forca.Dureza, Source={StaticResource mainViewModel}}" Margin="385,108,0,0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  VerticalAlignment="Top" FontSize="{Binding FontSizeForcaDureza, Mode=OneWay, Source={StaticResource mainViewModel}}" Height="62" Width="71"/>
                     <Label x:Name="lbl_forca_vigor_vl" Content="{Binding Personagem.Forca.Vigor.Valor, Source={StaticResource mainViewModel}}" Margin="456,117,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="24" Height="45" Width="45"/>
                     <Label x:Name="lbl_forca_vigor_mag" Content="{Binding Personagem.Forca.Vigor.Magnitude, Source={StaticResource mainViewModel}}" Margin="503,151,0,0" Padding="0" HorizontalContentAlignment="Center" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="21" Height="18"/>
                     <Label x:Name="lbl_forca_sustentacao_vl" Content="{Binding Personagem.Forca.Sustentacao.Valor, Source={StaticResource mainViewModel}}" Margin="527,117,0,0"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="24" Height="45" Width="45"/>

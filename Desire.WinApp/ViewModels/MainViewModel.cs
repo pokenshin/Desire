@@ -20,7 +20,7 @@ namespace Desire.WinApp.ViewModels
         private int fontSizeSubatributos = 22;
         private int multiplicadorFontSizeSubatributos = 3;
         private int fontSizeAtributos = 24;
-        private int multiplicadorFontSizeAtributos = 2;
+        private int multiplicadorFontSizeAtributos = 3;
         private int tamanhoMaximoStringAtributos = 4;
         private int tamanhoMaximoStringSubatributos = 5;
         private DbConsultas dbConsultas;
@@ -35,6 +35,18 @@ namespace Desire.WinApp.ViewModels
             {
                 ser = value;
                 NotifyPropertyChanged("Personagem");
+                NotifyPropertyChanged("FontSizeForcaGolpe");
+                NotifyPropertyChanged("FontSizeForcaDureza");
+                NotifyPropertyChanged("FontSizeDestrezaDinamica");
+                NotifyPropertyChanged("FontSizeDestrezaIniciativa");
+                NotifyPropertyChanged("FontSizeExistenciaPlano");
+                NotifyPropertyChanged("FontSizeIdeiaKi");
+                NotifyPropertyChanged("FontSizeIdeiaBase");
+                NotifyPropertyChanged("FontSizeApBonus");
+                NotifyPropertyChanged("FontSizeSpBonus");
+                NotifyPropertyChanged("FontSizeIniciativa");
+                NotifyPropertyChanged("FontSizeTurno");
+                NotifyPropertyChanged("FontSizeDestria");
             }
         }
 
@@ -46,6 +58,28 @@ namespace Desire.WinApp.ViewModels
         public string ReisCount
         {
             get { return Convert.ToString(ser.Reis.Count()); }
+        }
+
+        public int FontSizeForcaGolpe
+        {
+            get
+            {
+                if (ser.Forca.Golpe.ToString().Count() > tamanhoMaximoStringAtributos)
+                    return calculaFontSizeAtributo(ser.Forca.Golpe.ToString().Count());
+                else
+                    return fontSizeAtributos;
+            }
+        }
+
+        public int FontSizeForcaDureza
+        {
+            get
+            {
+                if (ser.Forca.Dureza.ToString().Count() > tamanhoMaximoStringAtributos)
+                    return calculaFontSizeAtributo(ser.Forca.Dureza.ToString().Count());
+                else
+                    return fontSizeAtributos;
+            }
         }
 
         public int FontSizeDestrezaDinamica
@@ -163,7 +197,7 @@ namespace Desire.WinApp.ViewModels
             get; private set;
         }
 
-        public RelayCommand<string> CmdDiminuiAtributo
+        public RelayCommand CmdSerAleatorio
         {
             get; private set;
         }
@@ -364,6 +398,7 @@ namespace Desire.WinApp.ViewModels
         private void criaComandos()
         {
             CmdAlteraAtributo = new RelayCommand<string>((s) => alteraAtributo(s), (s) => validaAlterarAtributo(s));
+            CmdSerAleatorio = new RelayCommand(geraSerAleatorio);
         }
 
         private int calculaFontSizeAtributo(int tamanhoString)
@@ -388,94 +423,18 @@ namespace Desire.WinApp.ViewModels
             atualizaSer();
         }
 
-        public void CmdDiminuniForca(object sender, RoutedEventArgs e)
-        {
-            if (ser.Forca.Pontos > 1)
-            {
-
-            }
-        }
-
-        private void CmdDiminuiMateria(object sender, RoutedEventArgs e)
-        {
-            if (ser.Materia.Pontos > 1)
-            {
-                ser.Materia.Pontos--;
-                NotifyPropertyChanged("PontosGastos");
-                ser.Materia = dbConsultas.RetornaMateria(ser.Materia.Pontos);
-                ser = calculadorSer.CalculaSubatributos(ser);
-                atualizaSer();
-            }
-        }
-
-        private void cmb_destreza_pts_menos_Click(object sender, RoutedEventArgs e)
-        {
-            if (ser.Destreza.Pontos > 1)
-            {
-                ser.Destreza.Pontos--;
-                NotifyPropertyChanged("PontosGastos");
-                ser.Destreza = dbConsultas.RetornaDestreza(ser.Destreza.Pontos);
-                ser = calculadorSer.CalculaSubatributos(ser);
-                atualizaSer();
-            }
-        }
-
-        private void cmb_intelecto_pts_menos_Click(object sender, RoutedEventArgs e)
-        {
-            if (ser.Intelecto.Pontos > 1)
-            {
-                ser.Intelecto.Pontos--;
-                NotifyPropertyChanged("PontosGastos");
-                ser.Intelecto = dbConsultas.RetornaIntelecto(ser.Intelecto.Pontos);
-                ser = calculadorSer.CalculaSubatributos(ser);
-                atualizaSer();
-            }
-        }
-
-        private void cmb_criatividade_pts_menos_Click(object sender, RoutedEventArgs e)
-        {
-            if (ser.Criatividade.Pontos > 1)
-            {
-                ser.Criatividade.Pontos--;
-                NotifyPropertyChanged("PontosGastos");
-                ser.Criatividade = dbConsultas.RetornaCriatividade(ser.Criatividade.Pontos);
-                ser = calculadorSer.CalculaSubatributos(ser);
-                atualizaSer();
-            }
-        }
-
-        private void cmb_existencia_pts_menos_Click(object sender, RoutedEventArgs e)
-        {
-            if (ser.Existencia.Pontos > 1)
-            {
-                ser.Existencia.Pontos--;
-                NotifyPropertyChanged("PontosGastos");
-                ser.Existencia = dbConsultas.RetornaExistencia(ser.Existencia.Pontos);
-                ser = calculadorSer.CalculaSubatributos(ser);
-                atualizaSer();
-            }
-        }
-
-        private void cmb_ideia_pts_menos_Click(object sender, RoutedEventArgs e)
-        {
-            if (ser.Ideia.Pontos > 1)
-            {
-                ser.Ideia.Pontos--;
-                NotifyPropertyChanged("PontosGastos");
-                ser.Ideia = dbConsultas.RetornaIdeia(ser.Ideia.Pontos);
-                ser = calculadorSer.CalculaSubatributos(ser);
-                atualizaSer();
-            }
-        }
-
         private void cmb_aleatorio_Click(object sender, RoutedEventArgs e)
         {
             geraSerAleatorio();
-            atualizaSer();
         }
 
         private void atualizaSer()
         {
+            NotifyPropertyChanged("ReisCount");
+            NotifyPropertyChanged("PontosGastos");
+            NotifyPropertyChanged("Personagem");
+            
+            ser = calculadorSer.CalculaSubatributos(ser);
             Personagem = ser;
         }
 
@@ -495,9 +454,6 @@ namespace Desire.WinApp.ViewModels
             ser.Existencia = dbConsultas.RetornaExistencia(rng.GerarEntre(1, 30, rnd));
             ser.Ideia = dbConsultas.RetornaIdeia(rng.GerarEntre(1, 30, rnd));
 
-            ser = calculadorSer.CalculaSubatributos(ser);
-            NotifyPropertyChanged("ReisCount");
-            NotifyPropertyChanged("PontosGastos");
             atualizaSer();
         }
 

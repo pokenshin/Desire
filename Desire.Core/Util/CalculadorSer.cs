@@ -491,7 +491,7 @@ namespace Desire.Core.Util
             ser.BonusAP = ser.Forca.BonusAP + ser.Materia.BonusAP;
             ser.BonusAP = ser.BonusAP + ser.Destreza.BonusAP;
             ser.BonusAP = ser.BonusAP + ser.Intelecto.BonusAP;
-            ser.BonusAP = ser.BonusAP + ser.Existencia.BonusAP;
+            ser.BonusAP = Math.Floor(ser.BonusAP + ser.Existencia.BonusAP);
             ser.BonusMP = calculador.SomaValorMag(ser.Criatividade.BonusMP, ser.Ideia.BonusMP);
             ser.BonusSP = CalculaBonusSP(ser);
 
