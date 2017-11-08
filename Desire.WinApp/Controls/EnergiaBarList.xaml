@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="Desire.WinApp.Controls.EnergiaBarList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Desire.WinApp.Controls"
+             mc:Ignorable="d" Background="White" Width="246.61" Height="32.373">
+    <Grid>
+        <Rectangle HorizontalAlignment="Left" Height="30" Stroke="Black" VerticalAlignment="Top" Width="192" Margin="53,0,0,0" Fill="#FFFF9696"/>
+        <Rectangle HorizontalAlignment="Left" Height="30" Stroke="Black" VerticalAlignment="Top" Width="54" Margin="-1,0,0,0"/>
+        <Label x:Name="lbl_sigla" Content="HP" HorizontalAlignment="Left" Margin="11,-1,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="lbl_valor" Content="1245172837102 / 1571902738013 (100%)" HorizontalAlignment="Left" Margin="53,0,0,0" VerticalContentAlignment="center" VerticalAlignment="Top" HorizontalContentAlignment="Right" Width="192" FontSize="10" Height="30"/>
+
+    </Grid>
+</UserControl>

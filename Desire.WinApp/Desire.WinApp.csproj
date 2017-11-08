@@ -179,12 +179,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\EnergiaBarList.xaml.cs">
+      <DependentUpon>EnergiaBarList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TabAuxEspecies.xaml.cs">
       <DependentUpon>TabAuxEspecies.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CommandHandler.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Page Include="Controls\EnergiaBarList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -229,7 +229,7 @@ namespace Desire.Core.Util
                     resultado.AddRange(rei.Modificadores);
             }
 
-            resultado.AddRange(ser.Virtudes);
+            resultado.AddRange(ser.Dons);
             resultado.AddRange(ser.Defeitos);
             
             return resultado;
@@ -477,7 +477,7 @@ namespace Desire.Core.Util
             ser.Precisao = calculador.SomaValorMag(ser.Movimento, ser.Destreza.Porcentagem);
             ser.Precisao = calculador.DivideValorMag(ser.Movimento, 3);
 
-            //Essencia = Dureza + Resistencia
+            //Composição = Dureza + Resistencia
             Conversor conver = new Conversor();
             ser.Composicao = conver.StringParaValorMag(Convert.ToString(ser.Forca.Dureza));
             ser.Composicao = calculador.SomaValorMag(ser.Composicao, ser.Materia.Resistencia);

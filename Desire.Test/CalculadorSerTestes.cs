@@ -1,8 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Diagnostics;
 using Desire.Core;
-using Desire.Core.Itens;
 using Desire.Core.Util;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,7 +64,6 @@ namespace Desire.Test
             Assert.IsNotNull(ser.Animo);
             Assert.IsNotNull(ser.Movimento);
             Assert.IsNotNull(ser.Precisao);
-            Assert.IsNotNull(ser.Essencia);
             Assert.IsNotNull(ser.Massa);
         }
 

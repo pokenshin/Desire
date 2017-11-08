@@ -32,8 +32,8 @@ namespace Desire.Core.Util.Geradores
             GeradorEquipamento genEquipamento = new GeradorEquipamento();
             GeradorHabilidade genHabilidade = new GeradorHabilidade();
             GeradorEvolucao genEvolucao = new GeradorEvolucao();
+            GeradorEnergia genEnergia = new GeradorEnergia();
             CalculadorSer calculador = new CalculadorSer();
-
 
             string primeiroNome = genString.GerarTamanhoEspecifico(2, 6, rnd);
             string segundoNome = genString.GerarTamanhoEspecifico(0, 9, rnd);
@@ -42,7 +42,8 @@ namespace Desire.Core.Util.Geradores
             {
                 Origem = genOrigem.Gerar(rnd),
                 Tempo = rng.GerarEntre(1, 1000, rnd),
-                Especies = genEspecie.GerarLista(rng.GerarEntre(1, 3, rnd), rnd),
+                //Reverter alteração para gerar mais de uma espécie quando a interface de espécies estiver criada
+                Especies = genEspecie.GerarLista(rng.GerarEntre(1, 1, rnd), rnd),
                 Classes = genClasse.GerarLista(rng.GerarEntre(1, 3, rnd), rnd),
                 Indole = genIndole.Gerar(rnd),
                 Reis = genRei.GerarLista(rng.GerarEntre(0, 5, rnd), rnd),
@@ -69,7 +70,7 @@ namespace Desire.Core.Util.Geradores
                 //Itens e Equips
                 Posses = genItem.GerarLista(rng.GerarEntre(1, 20, rnd), rnd),
                 //Virtudes
-                Virtudes = genModificador.GerarListaComOrigem("Virtudes", 3, rng.GerarEntre(1, 5, rnd), rnd, '+'),
+                Dons = genModificador.GerarListaComOrigem("Virtudes", 3, rng.GerarEntre(1, 5, rnd), rnd, '+'),
                 //Defeitos
                 Defeitos = genModificador.GerarListaComOrigem("Defeitos", 6, rng.GerarEntre(1, 5, rnd), rnd, '-'),
                 //Resistências
@@ -90,7 +91,9 @@ namespace Desire.Core.Util.Geradores
                 SubatributoExtraNome2 = genString.GerarTamanhoEspecifico(3, 10, rnd),
                 SubatributoExtraValor2 = genValorMag.Gerar(rnd),
                 //Habilidades
-                Habilidades = genHabilidade.GerarLista(rng.GerarEntre(2, 10, rnd), rnd)
+                Habilidades = genHabilidade.GerarLista(rng.GerarEntre(2, 10, rnd), rnd),
+                //Alma
+                Alma = genString.GerarLista(5, rnd)
             };
             //Itens Equipados
             ser.Equipamentos = genEquipamento.GerarLista(ser.Especies[0].MaxItensEquipados, rnd);

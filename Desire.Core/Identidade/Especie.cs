@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Numerics;
 using Desire.Core.Ciencias;
 using Desire.Core.Energias;
 using Desire.Core.Modificadores;
+using Desire.Core.Itens;
 
 namespace Desire.Core.Identidade
 {
@@ -30,6 +30,8 @@ namespace Desire.Core.Identidade
         public int NivelMin { get; set; }
         public int NivelMax { get; set; }
         public int TempoMax { get; set; }
+        //Essencia
+        public Esfera Essencia { get; set; }
         //Lista de Energias
         public List<Energia> Energias { get; set; }
         //Minimo de Atributos

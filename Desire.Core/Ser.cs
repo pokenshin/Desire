@@ -22,7 +22,6 @@ namespace Desire.Core
         public List<Rei> Reis { get; set; }
         public decimal Ki { get; set; }
         public int Nivel { get; set; }
-        public string Essencia { get; set; }
 
         //Atributos
         public Forca Forca { get; set; }
@@ -101,7 +100,7 @@ namespace Desire.Core
         public ValorMag PoderMaximo { get; set; }
 
         //Origem do Poder / Virtudes / Dons
-        public List<Modificador> Virtudes { get; set; }
+        public List<Modificador> Dons { get; set; }
         public List<Modificador> Defeitos { get; set; }
 
         //Resistencias / Fraquesas
@@ -182,7 +181,6 @@ namespace Desire.Core
             this.Altura = new ValorMag();
             this.Largura = new ValorMag();
             this.Comprimento = new ValorMag();
-            this.Essencia = "";
             this.Massa = new ValorMag();
             this.SubatributoExtraNome1 = "";
             this.SubatributoExtraValor1 = new ValorMag();
@@ -195,7 +193,7 @@ namespace Desire.Core
             this.ForcaVontade = new ValorMag();
             this.Ira = new ValorMag();
             this.PoderMaximo = new ValorMag();
-            this.Virtudes = new List<Modificador>();
+            this.Dons = new List<Modificador>();
             this.Defeitos = new List<Modificador>();
             this.Resistencias = new List<Resistencia>();
             this.PontosGraduacao = 0;

@@ -35,6 +35,10 @@ namespace Desire.WinApp.ViewModels
             {
                 ser = value;
                 NotifyPropertyChanged("Personagem");
+                NotifyPropertyChanged("ReisCount");
+                NotifyPropertyChanged("PontosGastos");
+                NotifyPropertyChanged("Nivel");
+                NotifyPropertyChanged("Ki");
                 NotifyPropertyChanged("FontSizeForcaGolpe");
                 NotifyPropertyChanged("FontSizeForcaDureza");
                 NotifyPropertyChanged("FontSizeDestrezaDinamica");
@@ -47,6 +51,37 @@ namespace Desire.WinApp.ViewModels
                 NotifyPropertyChanged("FontSizeIniciativa");
                 NotifyPropertyChanged("FontSizeTurno");
                 NotifyPropertyChanged("FontSizeDestria");
+            }
+        }
+
+        public string Nivel {
+            get
+            {
+                return Convert.ToString(this.ser.Nivel);
+            }
+            set
+            {
+                if (int.TryParse(value, out int valor))
+                {
+                    this.ser.Nivel = valor;
+                    atualizaPersonagem();
+                }
+            }
+        }
+
+        public string Ki
+        {
+            get
+            {
+                return Convert.ToString(this.ser.Ki);
+            }
+            set
+            {
+                if (int.TryParse(value, out int valor))
+                {
+                    this.ser.Ki = valor;
+                    atualizaPersonagem();
+                }
             }
         }
 
@@ -207,7 +242,6 @@ namespace Desire.WinApp.ViewModels
             dbConsultas = new DbConsultas();
             calculadorSer = new CalculadorSer();
             geraSerAleatorio();
-            atualizaSer();
             criaComandos();
         }
 
@@ -269,7 +303,7 @@ namespace Desire.WinApp.ViewModels
                     break;
 
                 case "Criatividade--":
-                    ser.Criatividade.Pontos++;
+                    ser.Criatividade.Pontos--;
                     ser.Criatividade = dbConsultas.RetornaCriatividade(ser.Criatividade.Pontos);
                     break;
 
@@ -299,7 +333,7 @@ namespace Desire.WinApp.ViewModels
 
             NotifyPropertyChanged("PontosGastos");
             ser = calculadorSer.CalculaSubatributos(ser);
-            atualizaSer();
+            atualizaPersonagem();
         }
 
         private bool validaAlterarAtributo(string atributo)
@@ -420,7 +454,7 @@ namespace Desire.WinApp.ViewModels
             ser.Criatividade = dbConsultas.RetornaCriatividade(ser.Criatividade.Pontos);
             ser.Existencia = dbConsultas.RetornaExistencia(ser.Existencia.Pontos);
             ser.Ideia = dbConsultas.RetornaIdeia(ser.Ideia.Pontos);
-            atualizaSer();
+            atualizaPersonagem();
         }
 
         private void cmb_aleatorio_Click(object sender, RoutedEventArgs e)
@@ -428,13 +462,9 @@ namespace Desire.WinApp.ViewModels
             geraSerAleatorio();
         }
 
-        private void atualizaSer()
+        private void atualizaPersonagem()
         {
-            NotifyPropertyChanged("ReisCount");
-            NotifyPropertyChanged("PontosGastos");
-            NotifyPropertyChanged("Personagem");
-            
-            ser = calculadorSer.CalculaSubatributos(ser);
+            ser = calculadorSer.CalculaSer(ser);
             Personagem = ser;
         }
 
@@ -446,15 +476,15 @@ namespace Desire.WinApp.ViewModels
 
             ser = gerador.Gerar(rnd);
 
-            ser.Forca = dbConsultas.RetornaForca(rng.GerarEntre(1, 30, rnd));
-            ser.Materia = dbConsultas.RetornaMateria(rng.GerarEntre(1, 30, rnd));
-            ser.Destreza = dbConsultas.RetornaDestreza(rng.GerarEntre(1, 30, rnd));
-            ser.Intelecto = dbConsultas.RetornaIntelecto(rng.GerarEntre(1, 30, rnd));
-            ser.Criatividade = dbConsultas.RetornaCriatividade(rng.GerarEntre(1, 30, rnd));
-            ser.Existencia = dbConsultas.RetornaExistencia(rng.GerarEntre(1, 30, rnd));
-            ser.Ideia = dbConsultas.RetornaIdeia(rng.GerarEntre(1, 30, rnd));
+            ser.Forca = dbConsultas.RetornaForca(ser.Forca.Pontos);
+            ser.Materia = dbConsultas.RetornaMateria(ser.Forca.Pontos);
+            ser.Destreza = dbConsultas.RetornaDestreza(ser.Destreza.Pontos);
+            ser.Intelecto = dbConsultas.RetornaIntelecto(ser.Intelecto.Pontos);
+            ser.Criatividade = dbConsultas.RetornaCriatividade(ser.Criatividade.Pontos);
+            ser.Existencia = dbConsultas.RetornaExistencia(ser.Existencia.Pontos);
+            ser.Ideia = dbConsultas.RetornaIdeia(ser.Ideia.Pontos);
 
-            atualizaSer();
+            Personagem = ser;
         }
 
         
