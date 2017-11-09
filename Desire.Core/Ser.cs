@@ -61,7 +61,7 @@ namespace Desire.Core
         public ValorMag Precisao { get; set; }
         public ValorMag BonusHP { get; set; }
         public ValorMag BonusMP { get; set; }
-        public decimal BonusAP { get; set; }
+        public decimal BonusCP { get; set; }
         public decimal BonusSP { get; set; }
 
         //Cerne
@@ -171,7 +171,7 @@ namespace Desire.Core
             this.Precisao = new ValorMag();
             this.BonusHP = new ValorMag();
             this.BonusMP = new ValorMag();
-            this.BonusAP = 0;
+            this.BonusCP = 0;
             this.BonusSP = 0;
             this.Iniciativa = 0;
             this.Acao = new ValorMag();

@@ -7,12 +7,12 @@
         public ValorMag Ciencia { get; set; }
         public ValorMag Consciencia { get; set; }
         public int Plano { get; set; }
-        public decimal BonusAP { get; set; }
+        public decimal BonusCP { get; set; }
 
         public Existencia()
         {
             this.Pontos = 1;
-            this.BonusAP = 0;
+            this.BonusCP = 0;
             this.Ciencia = new ValorMag();
             this.Classe = "P";
             this.Conhecimento = new ValorMag();

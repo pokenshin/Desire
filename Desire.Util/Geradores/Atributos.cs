@@ -26,7 +26,7 @@ namespace Desire.Util.Geradores
                 Porcentagem = rvmg.Gerar(rnd),
                 Potencia = rvmg.Gerar(rnd),
                 Vigor = rvmg.Gerar(rnd),
-                BonusAP = Convert.ToDecimal(rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd).ValorReal)
+                BonusCP = Convert.ToDecimal(rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd).ValorReal)
             };
             return atributo;
         }
@@ -100,7 +100,7 @@ namespace Desire.Util.Geradores
                 Porcentagem = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
                 Dinamica = rng.GerarEntre(1, 1000, rnd),
                 Reflexo = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
-                BonusAP = Convert.ToDecimal(rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd).ValorReal)
+                BonusCP = Convert.ToDecimal(rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd).ValorReal)
             };
             return atributo;
         }
@@ -137,7 +137,7 @@ namespace Desire.Util.Geradores
                 Pontos = rng.GerarEntre(1, 100, rnd),
                 Plano = rng.GerarEntre(1, 100, rnd),
                 Porcentagem = rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd),
-                BonusAP = Convert.ToDecimal(rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd).ValorReal)
+                BonusCP = Convert.ToDecimal(rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd).ValorReal)
             };
             return atributo;
         }
@@ -211,7 +211,7 @@ namespace Desire.Util.Geradores
                 Eidos = rvmg.Gerar(rnd),
                 Memoria = rvmg.Gerar(rnd),
                 Senso = rvmg.Gerar(rnd),
-                BonusAP = Convert.ToDecimal(rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd).ValorReal)
+                BonusCP = Convert.ToDecimal(rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd).ValorReal)
             };
             return atributo;
         }
@@ -248,7 +248,7 @@ namespace Desire.Util.Geradores
                 Resistencia = rvmg.Gerar(rnd),
                 Vitalidade = rvmg.Gerar(rnd),
                 BonusHP = rvmg.Gerar(rnd),
-                BonusAP = Convert.ToDecimal(rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd).ValorReal),
+                BonusCP = Convert.ToDecimal(rvmg.GerarEntre(new ValorMag(10, 0), new ValorMag(99, 15), rnd).ValorReal),
                 Carga = rvmg.Gerar(rnd)
             };
             return atributo;

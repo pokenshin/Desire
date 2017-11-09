@@ -7,7 +7,7 @@
         public decimal Dureza { get; set; }
         public ValorMag Vigor { get; set; }
         public ValorMag Sustentacao { get; set; }
-        public decimal BonusAP { get; set; }
+        public decimal BonusCP { get; set; }
 
         public Forca()
         {
@@ -17,7 +17,7 @@
             this.Dureza = 0;
             this.Vigor = new ValorMag();
             this.Sustentacao = new ValorMag();
-            this.BonusAP = 0;
+            this.BonusCP = 0;
         }
     }
 }

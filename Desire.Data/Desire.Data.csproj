@@ -29,10 +29,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Database\desire_test.db">
+    <None Update="Database\desire.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Database\desire.db">
+    <None Update="Database\desire_test.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

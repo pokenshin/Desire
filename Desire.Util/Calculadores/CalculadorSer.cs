@@ -352,7 +352,7 @@ namespace Desire.Util.Calculadores
                 switch (energia.Sigla)
                 {
                     case "AP":
-                        energia.Quantidade = energia.Quantidade + Convert.ToDecimal(ser.BonusAP);
+                        energia.Quantidade = energia.Quantidade + Convert.ToDecimal(ser.BonusCP);
                         break;
 
                     case "HP":
@@ -492,10 +492,10 @@ namespace Desire.Util.Calculadores
             //MP = Criatividade + Ideia
             //SP = ((15*(pontos de todos atributos-7))*7) (somar tracinhos)
             ser.BonusHP = ser.Materia.BonusHP;
-            ser.BonusAP = ser.Forca.BonusAP + ser.Materia.BonusAP;
-            ser.BonusAP = ser.BonusAP + ser.Destreza.BonusAP;
-            ser.BonusAP = ser.BonusAP + ser.Intelecto.BonusAP;
-            ser.BonusAP = Math.Floor(ser.BonusAP + ser.Existencia.BonusAP);
+            ser.BonusCP = ser.Forca.BonusCP + ser.Materia.BonusCP;
+            ser.BonusCP = ser.BonusCP + ser.Destreza.BonusCP;
+            ser.BonusCP = ser.BonusCP + ser.Intelecto.BonusCP;
+            ser.BonusCP = Math.Floor(ser.BonusCP + ser.Existencia.BonusCP);
             ser.BonusMP = calculador.SomaValorMag(ser.Criatividade.BonusMP, ser.Ideia.BonusMP);
             ser.BonusSP = CalculaBonusSP(ser);
 

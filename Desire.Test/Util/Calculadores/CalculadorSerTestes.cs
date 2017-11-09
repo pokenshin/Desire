@@ -368,7 +368,7 @@ namespace Desire.Test.Util.Calculadores
                         }
                     }
                 },
-                BonusAP = 300000,
+                BonusCP = 300000,
                 BonusHP = new ValorMag(95, 5),
                 BonusMP = new ValorMag(19, 4),
                 BonusSP = 10,

@@ -172,12 +172,12 @@ namespace Desire.WinApp.ViewModels
             }
         }
 
-        public int FontSizeApBonus
+        public int FontSizeCpBonus
         {
             get
             {
-                if (ser.BonusAP.ToString().Count() > tamanhoMaximoStringSubatributos)
-                    return calculaFontSizeSubAtributo(ser.BonusAP.ToString().Count());
+                if (ser.BonusCP.ToString().Count() > tamanhoMaximoStringSubatributos)
+                    return calculaFontSizeSubAtributo(ser.BonusCP.ToString().Count());
                 else
                     return fontSizeSubatributos;
             }

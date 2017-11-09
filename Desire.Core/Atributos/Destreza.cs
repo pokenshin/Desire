@@ -7,7 +7,7 @@
         public ValorMag Ataque { get; set; }
         public decimal Dinamica { get; set; }
         public int Iniciativa { get; set; }
-        public decimal BonusAP { get; set; }
+        public decimal BonusCP { get; set; }
 
         public Destreza()
         {
@@ -17,7 +17,7 @@
             this.Ataque = new ValorMag();
             this.Dinamica = 0;
             this.Iniciativa = 0;
-            this.BonusAP = 0;
+            this.BonusCP = 0;
         }
     }
 }
