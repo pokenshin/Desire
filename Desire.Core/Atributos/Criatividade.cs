@@ -7,7 +7,7 @@
         public ValorMag Visualizacao { get; set; }
         public ValorMag Invencao { get; set; }
         public ValorMag Realidade { get; set; }
-        public ValorMag BonusMP { get; internal set; }
+        public ValorMag BonusMP { get; set; }
 
         public Criatividade()
         {

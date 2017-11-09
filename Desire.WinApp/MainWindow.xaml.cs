@@ -16,9 +16,9 @@ using Desire.Data;
 using Desire.Core;
 using Desire.Core.Identidade;
 using Desire.Data.Operacoes;
-using Desire.Core.Util;
+using Desire.Util;
 using System.ComponentModel;
-using Desire.Core.Util.Geradores;
+using Desire.Util.Geradores;
 
 namespace Desire.WinApp
 {

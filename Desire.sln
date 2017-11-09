@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desire.WinApp", "Desire.Win
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desire.Data", "Desire.Data\Desire.Data.csproj", "{4CA88A1F-65FE-4C31-B94C-0E0C81363533}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desire.Util", "Desire.Util\Desire.Util.csproj", "{CBCD7D29-29E5-4C80-9FCA-C786C835DC5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,15 +107,31 @@ Global
 		{4CA88A1F-65FE-4C31-B94C-0E0C81363533}.Release|x64.Build.0 = Release|Any CPU
 		{4CA88A1F-65FE-4C31-B94C-0E0C81363533}.Release|x86.ActiveCfg = Release|Any CPU
 		{4CA88A1F-65FE-4C31-B94C-0E0C81363533}.Release|x86.Build.0 = Release|Any CPU
+		{CBCD7D29-29E5-4C80-9FCA-C786C835DC5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBCD7D29-29E5-4C80-9FCA-C786C835DC5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBCD7D29-29E5-4C80-9FCA-C786C835DC5D}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{CBCD7D29-29E5-4C80-9FCA-C786C835DC5D}.Debug|ARM.Build.0 = Debug|Any CPU
+		{CBCD7D29-29E5-4C80-9FCA-C786C835DC5D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CBCD7D29-29E5-4C80-9FCA-C786C835DC5D}.Debug|x64.Build.0 = Debug|Any CPU
+		{CBCD7D29-29E5-4C80-9FCA-C786C835DC5D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CBCD7D29-29E5-4C80-9FCA-C786C835DC5D}.Debug|x86.Build.0 = Debug|Any CPU
+		{CBCD7D29-29E5-4C80-9FCA-C786C835DC5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBCD7D29-29E5-4C80-9FCA-C786C835DC5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBCD7D29-29E5-4C80-9FCA-C786C835DC5D}.Release|ARM.ActiveCfg = Release|Any CPU
+		{CBCD7D29-29E5-4C80-9FCA-C786C835DC5D}.Release|ARM.Build.0 = Release|Any CPU
+		{CBCD7D29-29E5-4C80-9FCA-C786C835DC5D}.Release|x64.ActiveCfg = Release|Any CPU
+		{CBCD7D29-29E5-4C80-9FCA-C786C835DC5D}.Release|x64.Build.0 = Release|Any CPU
+		{CBCD7D29-29E5-4C80-9FCA-C786C835DC5D}.Release|x86.ActiveCfg = Release|Any CPU
+		{CBCD7D29-29E5-4C80-9FCA-C786C835DC5D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_UseGlobalSettings = True
-		BuildVersion_UpdateFileVersion = True
-		BuildVersion_UpdateAssemblyVersion = True
-		BuildVersion_StartDate = 2000/1/1
 		SolutionGuid = {A5486A5A-1E19-40FB-8DB9-AF918C6F0281}
+		BuildVersion_StartDate = 2000/1/1
+		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_UpdateFileVersion = True
+		BuildVersion_UseGlobalSettings = True
 	EndGlobalSection
 EndGlobal

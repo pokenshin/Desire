@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using Desire.Core;
 using Desire.Data.Operacoes;
-using Desire.Core.Util;
+using Desire.Util.Calculadores;
 using System.Windows;
-using Desire.Core.Util.Geradores;
+using Desire.Util.Geradores;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.CommandWpf;
 

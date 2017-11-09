@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Desire.Core.Util;
+using Desire.Util;
 using Desire.Core;
 using Desire.Core.Identidade;
 

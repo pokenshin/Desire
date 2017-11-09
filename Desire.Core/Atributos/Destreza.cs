@@ -7,7 +7,7 @@
         public ValorMag Ataque { get; set; }
         public decimal Dinamica { get; set; }
         public int Iniciativa { get; set; }
-        public decimal BonusAP { get; internal set; }
+        public decimal BonusAP { get; set; }
 
         public Destreza()
         {

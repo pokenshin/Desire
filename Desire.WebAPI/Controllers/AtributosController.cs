@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Desire.Core;
 using Desire.WebAPI.Models.Atributos;
 using Desire.WebAPI.Data;
-using Desire.Core.Util.Geradores;
+using Desire.Util.Geradores;
 using Microsoft.EntityFrameworkCore;
 
 namespace Desire.WebAPI.Controllers

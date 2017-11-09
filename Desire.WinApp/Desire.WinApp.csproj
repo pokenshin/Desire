@@ -245,6 +245,10 @@
       <Project>{4ca88a1f-65fe-4c31-b94c-0e0c81363533}</Project>
       <Name>Desire.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Desire.Util\Desire.Util.csproj">
+      <Project>{cbcd7d29-29e5-4c80-9fca-c786c835dc5d}</Project>
+      <Name>Desire.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Desire-Atributos.png" />

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Desire.Core;
-using Desire.Core.Util.Geradores;
+using Desire.Util.Geradores;
 
 namespace Desire.WebAPI.Controllers
 {

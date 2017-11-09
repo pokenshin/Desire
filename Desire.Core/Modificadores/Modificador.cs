@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using Desire.Core.Util;
 using Desire.Core.Ciencias;
 using Desire.Core.Energias;
 
@@ -16,8 +15,5 @@ namespace Desire.Core.Modificadores
         //"R" = Remove Pericia / Habilidade / Energia
 
         public string Origem { get; set; }
-
-        public abstract Ser AplicaModificador(Ser ser);
-        public abstract Ser RemoveModificador(Ser ser);
     }
 }

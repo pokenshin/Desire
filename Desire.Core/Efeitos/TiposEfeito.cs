@@ -15,7 +15,7 @@ namespace Desire.Core.Efeitos
         IAlvoHabilidade TipoDeAlvo { get; set; }
     }
 
-    class EfeitoDano : IEfeito
+    public class EfeitoDano : IEfeito
     {
         public string Tipo => "Dano";
         public ValorMag Valor { get; set; }
@@ -25,7 +25,7 @@ namespace Desire.Core.Efeitos
         public IAlvoHabilidade TipoDeAlvo { get; set; }
     }
 
-    class EfeitoCura : IEfeito
+    public class EfeitoCura : IEfeito
     {
         public string Tipo => "Cura";
         public ValorMag Valor { get; set; }
@@ -35,7 +35,7 @@ namespace Desire.Core.Efeitos
         public IAlvoHabilidade TipoDeAlvo { get; set; }
     }
 
-    class EfeitoModificador:IEfeito
+    public class EfeitoModificador:IEfeito
     {
         public string Tipo => "Modificador";
         public Modificador Modificador { get; set; }

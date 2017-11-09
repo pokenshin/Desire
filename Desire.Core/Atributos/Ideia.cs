@@ -7,7 +7,7 @@
         public ValorMag Misterio { get; set; }
         public ValorMag Irrealidade { get; set; }
         public ValorMag Nexo { get; set; }
-        public ValorMag BonusMP { get; internal set; }
+        public ValorMag BonusMP { get; set; }
 
         public Ideia()
         {

@@ -18,38 +18,10 @@ namespace Desire.Core.Modificadores
         {
             return "Adiciona a perícia: " + this.Alvo.Nome + " (" + this.Origem + ")";
         }
-
-        public override Ser AplicaModificador(Ser ser)
-        {
-            if (!ser.Pericias.Contains(this.Alvo))
-                ser.Pericias.Add(this.Alvo);
-            return ser;
-        }
-
-        public override Ser RemoveModificador(Ser ser)
-        {
-            if (ser.Pericias.Contains(this.Alvo))
-                ser.Pericias.Remove(this.Alvo);
-            return ser;
-        }
     }
 
     public class ModRemovePericia : ModPericia
     {
-        public override Ser AplicaModificador(Ser ser)
-        {
-            if (ser.Pericias.Contains(this.Alvo))
-                ser.Pericias.Remove(this.Alvo);
-            return ser;
-        }
-
-        public override Ser RemoveModificador(Ser ser)
-        {
-            if (!ser.Pericias.Contains(this.Alvo))
-                ser.Pericias.Add(this.Alvo);
-            return ser;
-        }
-
         public override string ToString()
         {
             return "Remove a perícia: " + this.Alvo.Nome + " (" + this.Origem + ")";
